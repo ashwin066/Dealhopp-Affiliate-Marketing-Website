@@ -12,17 +12,15 @@ require_once 'vendor/autoload.php';
 $google_client = new Google_Client();
 
 //Set the OAuth 2.0 Client ID
-$google_client->setClientId('424645655483-ci2bt0o8gpnsg2lu8gsvjb0bp4oc8q2m.apps.googleusercontent.com');
+$google_client->setClientId('');
 
 //Set the OAuth 2.0 Client Secret key
-$google_client->setClientSecret('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');
+$google_client->setClientSecret('');
 
 //Set the OAuth 2.0 Redirect URI
-$google_client->setRedirectUri('http://localhost/dealhopp/');
+$google_client->setRedirectUri('http://localhost:8080/dealhopp/');
 
 // to get the email and profile 
 $google_client->addScope('email');
 
 $google_client->addScope('profile');
-
-?> 

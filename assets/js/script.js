@@ -38,7 +38,7 @@ for (let i = 0; i < mobileMenuOpenBtn.length; i++) {
 }
 
 
-
+ 
 
 
 // accordion variables

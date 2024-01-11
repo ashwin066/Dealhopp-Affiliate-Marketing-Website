@@ -2,16 +2,16 @@
 session_start();
 
 if (isset($_COOKIE['username'])) {
-  $_SESSION['username'] = $_COOKIE['username'];
+    $_SESSION['username'] = $_COOKIE['username'];
 }
 if (isset($_COOKIE['user_id'])) {
-  $_SESSION['user_id'] = $_COOKIE['user_id'];
+    $_SESSION['user_id'] = $_COOKIE['user_id'];
 }
 if (isset($_COOKIE['user_image'])) {
-  $_SESSION['user_image'] = $_COOKIE['user_image'];
+    $_SESSION['user_image'] = $_COOKIE['user_image'];
 }
 if (isset($_COOKIE['user_type'])) {
-  $_SESSION['user_type'] = $_COOKIE['user_type'];
+    $_SESSION['user_type'] = $_COOKIE['user_type'];
 }
 
 include('includes/connect.php');
@@ -23,11 +23,11 @@ include('user_area/common_function_user.php');
 
 <head>
     <?php
-  if (!isset($_SESSION['username'])) {
-    get_login_form();
-    get_signup_form();
-  }
-  ?>
+    if (!isset($_SESSION['username'])) {
+        get_login_form();
+        get_signup_form();
+    }
+    ?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -90,7 +90,6 @@ include('user_area/common_function_user.php');
                     brand: brand,
                     category: category,
                     price: price,
-                    search: $("#search").val()
                 },
                 success: function(response) {
                     $("#result").html(response);
@@ -101,7 +100,6 @@ include('user_area/common_function_user.php');
         };
         $(".product_check").ready(myHandler);
         $(".product_check").on("click", myHandler);
-        $(".search").on("keyup", myHandler);
         $('#search input[type="text"]').blur(function() {
 
             $.urlParam = function(name) {
@@ -205,11 +203,11 @@ include('user_area/common_function_user.php');
     - HEADER
   -->
     <?php
-  get_back_to_top();
-   get_slide_notify();
+    get_back_to_top();
+    get_slide_notify();
 
-  include 'parts/nav.php';
-  ?>
+    include 'parts/nav.php';
+    ?>
     <!--
     - MAIN
   -->
@@ -230,7 +228,7 @@ include('user_area/common_function_user.php');
       - CATEGORY
     -->
         <div class="container">
-            <div class=" a_filter a_p-15">
+            <div class=" a_filter">
                 <!--
       - BANNER
     -->
@@ -282,20 +280,20 @@ include('user_area/common_function_user.php');
                             id="filter">
                             <div class="category mb-1">
                                 <div class="category-item-container has-scrollbar"> <?php
-                                                                    get_Brands()
-                                                                    ?> </div>
+                                                                                    get_Brands()
+                                                                                    ?> </div>
                                 <!-- <div class="category-item-container  has-scrollbar"></div> -->
                             </div>
                             <!--Category-->
                             <div class="category mb-1">
                                 <div class="category-item-container"> <?php
-                                                      get_category()
-                                                      ?> </div>
+                                                                        get_category()
+                                                                        ?> </div>
                             </div>
                             <div class="category">
                                 <div class="category-item-container"> <?php
-                                                      get_price_filter()
-                                                      ?> </div>
+                                                                        get_price_filter()
+                                                                        ?> </div>
                             </div>
                         </div>
                         <div id="blobs-container" class="position-relative"> <?php get_titles(); ?> </div>
@@ -314,8 +312,8 @@ include('user_area/common_function_user.php');
                 </div>
             </div>
         </div> <?php
-            get_post_popup();
-            ?>
+                get_post_popup();
+                ?>
         <!--
       -TESTIMONIALS, CTA & SERVICE
     -->
@@ -357,14 +355,27 @@ include('user_area/common_function_user.php');
  
  -->
     </main>
+    <!--
+    - FOOTER
+  -->
+    <div style="
+    display: flex;
+    align-items: baseline;
+    justify-content: center;">
+        <h6 style="color:grey;">Made with <i class="fa fa-heart heart text-danger"></i>
+            &
+            <i class="fas fa-coffee heart text-danger"></i> by&nbsp;
+        </h6>
+        <a title="View my instagram" href="https://www.instagram.com/ashwin_r66/" target="_blank"
+            style="font-size: 1rem !important;text-transform:capitalize !important" class="footer-category-title">Ashwin
+            R</a>
 
 
-
+    </div>
     <?php
    
   include 'parts/footer.php';
   ?>
-
     <!--
     - custom js link
   -->

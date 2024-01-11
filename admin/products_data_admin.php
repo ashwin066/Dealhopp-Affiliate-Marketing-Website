@@ -1,4 +1,3 @@
-
 <?php
 
 include ('includes/connect.php');
@@ -40,6 +39,8 @@ if($result->num_rows>0){
       $product_id=$row['product_id'];
       $product_title=$row['product_title'];
       $product_description=$row['product_description'];
+      $coupon = $row['coupon'];
+      $is_coupon = $row['is_coupon'];
       $product_old_price=$row['product_old_price'];
       $product_price=$row['product_price'];
       $product_keywords=$row['product_keywords'];
@@ -95,6 +96,7 @@ if($result->num_rows>0){
         $pin_product='';
       }
     
+      if($is_coupon!=1){
 
       $output .= '<div class="showcase">
         <div class="showcase-banner">
@@ -170,7 +172,82 @@ if($result->num_rows>0){
         </div>
         
         </div>
+        ';}else{
+           $percent_off = '<div class="small text-orange a_dis_max mx-auto text-wrap  showcase-badge2"><span class="font-weight-bold a_no_result_title">COUPON CODE</span></div>';
+           $output .= '
+             <div class="showcase">
+        <div class="showcase-banner ">
+        <a id="add-dark-here" href="product_details.php?product_id=' . $product_id . '&detail=' . $product_keywords . '&title=' . $product_title . '">
+        
+        <img  draggable="false" src="admin' . $brand_logo . '" alt="Dealhopp product Image" height="160" class="p-2 product-img default">
+        ' . $deal_expired . '
+        <img draggable="false" src="admin' . $brand_logo . '"  alt="Dealhopp product Image" height="160" class="p-2 product-img hover">
+        </a> 
+         
+        
+        ' . $pin_product . '
+        
+        <div class=" showcase-rating">
+         '.$percent_off.'
+ 
+        <img class="flame" src="assets/images/icons/flame.png" alt="">
+        
+        <div class="progress"  ' . $deal_scale . '>
+        <div class="progress-bar text_wrap" role="progressbar" aria-valuenow="70"
+        aria-valuemin="0" aria-valuemax="100" style="width:100%">
+       
+        </div>     
+      
+            </div> 
+          </div>
+        </div>
+        
+        
+        <div class="showcase-content">
+        <div class="a_store_logo">
+          <a href="#" class="showcase-category text_wrap">'.$category_title.'</a>
+        
+          <img class="ml-auto" src="admin/'.$brand_logo.'" alt="">
+          </div>
+          
+          <a href="product_details.php?product_id='.$product_id.'">
+        
+            <a class="showcase-title text_wrap">'.$product_title.'</a>
+            
+          </a>
+          <a style="text-decoration:none;" href="load-deal/redirect.php?redirect='.$product_id.'&store='.$brand_id.'" target="_blank">
+          <div class="price-box">
+            
+            <button class="btn a_btn">'.$price_expired.'<br>
+            <del class="small">₹'.$product_old_price.'.00</del><span class="b_sc">&nbsp;Buy Now  <i class="fa fa-arrow-right"></i></span></button>
+            
+        </div></a>
+        </div>
+        
+        <div class="promoblock">
+        <div class="tgrid">
+        <div class="img-dd tgrid-cell">
+        <a rel="nofollow" href="/users/17417"><img src="user_area/user_img/preview (24).png" alt="Grey">
+        
+        
+        </a></div>
+        <div class="tgrid-cell">
+        <div class="promouser">
+        <a rel="nofollow" href="/users/17417" class="a_tbn text-orange">Ashwin</a>
+        </div>
+        <div class="promotime">
+        
+        <span class="p-0 text-secondary float-right a_updated text_wrap">'.$timeago.'</span>
+        
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        </div>
         ';
+            
+        }
 }
 
 }
