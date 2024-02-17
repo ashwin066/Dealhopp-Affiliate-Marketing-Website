@@ -335,9 +335,7 @@ function get_slide_notify()
       <i class="fa-solid fa-circle-xmark"></i>
       </button>
 
-      <div class="newsletter-img">
-        <img src="./assets/images/newsletter.png" alt="subscribe newsletter" width="400" height="400">
-      </div>
+     
 
       <div class="newsletter">
 
@@ -438,7 +436,26 @@ function get_Brands()
   }
 }
 
+function get_promo_banners()
+{
+  global $con;
+  // Fetch Promo Banners from Database
+  $select_promo_banners = "SELECT * FROM `promo_banners`";
+  $result_promo_banners = mysqli_query($con, $select_promo_banners);
 
+  if ($result_promo_banners) {
+    while ($row = mysqli_fetch_assoc($result_promo_banners)) {
+      // Display each banner in the table rows
+
+      echo '<a href="' . $row['link'] . '" target="_blank">
+                                    <div class="slider-item">
+                                        <img src="admin/' . $row['image'] . '"
+                                            alt="' . $row['title'] . '" class="banner-img">
+                                    </div>
+                                </a>';
+    }
+  }
+}
 
 
 function get_Brands_card()
@@ -446,18 +463,18 @@ function get_Brands_card()
   global $con;
   $select_brands = "Select * from `brands`";
   $result_brands = mysqli_query($con, $select_brands);
- 
+
   while ($row_data = mysqli_fetch_assoc($result_brands)) {
     $brand_title = $row_data['brand_title'];
     $brand_id = $row_data['brand_id'];
     $brand_logo = $row_data['brand_logo'];
     $brand_select = '';
 
-    
+
 
     echo '   
    
-      <div class=" col-sm-2 brand_card "> <span class="position-absolute text-center fixed-bottom bg-dealhopp text-light title rounded-bottom">'.$brand_title.'</span>
+      <div class=" col-sm-2 brand_card "> <span class="position-absolute text-center fixed-bottom bg-dealhopp text-light title rounded-bottom">' . $brand_title . '</span>
           <img src="admin/' . $brand_logo . '" alt="' . $brand_title . '"  >
          
         </div> 
@@ -805,39 +822,41 @@ function get_user_products()
         if ($row_count > 0) {
           echo '<div class="product-grid">';
           while ($row_data = mysqli_fetch_assoc($result_product)) {
-                $product_id = $row_data['product_id'];
-        $product_title = $row_data['product_title'];
-        $product_description = $row_data['product_description'];
-        $coupon = $row_data['coupon'];
-         $is_coupon = $row_data['is_coupon'];
-        $product_old_price = $row_data['product_old_price'];
-        $product_price = $row_data['product_price'];
-        $product_keywords = $row_data['product_keywords'];
-        $product_category = $row_data['product_category'];
-        $product_brand = $row_data['product_brand'];
-        $product_img1 = $row_data['product_img1'];
-        $product_img2 = $row_data['product_img2'];
-        $product_img3 = $row_data['product_img3'];
-        $product_link = $row_data['product_link'];
-        $product_status = $row_data['status'];
-        $time = $row_data['date']; $pinned = $row_data['pinned'];
+            $product_id = $row_data['product_id'];
+            $product_title = $row_data['product_title'];
+            $product_description = $row_data['product_description'];
+            $coupon = $row_data['coupon'];
+            $is_coupon = $row_data['is_coupon'];
+            $product_old_price = $row_data['product_old_price'];
+            $product_price = $row_data['product_price'];
+            $product_keywords = $row_data['product_keywords'];
+            $product_category = $row_data['product_category'];
+            $product_brand = $row_data['product_brand'];
+            $product_img1 = $row_data['product_img1'];
+            $product_img2 = $row_data['product_img2'];
+            $product_img3 = $row_data['product_img3'];
+            $product_link = $row_data['product_link'];
+            $product_status = $row_data['status'];
+            $time = $row_data['date'];
+            $pinned = $row_data['pinned'];
 
-       
+
 
 
             if ($product_old_price !== '0') {
-              $num  = 0;$str=0;
-          if (
-            $product_old_price != '' && $product_price != '' &&  $is_coupon != 1
-          ) {
-            $myNumber1 = $product_old_price;
-            $myNumber2 = $product_price;
-            $multiply = $myNumber2 * 100;
-            $answer = $multiply / $myNumber1;
-            $finalanswer = 100 - $answer;
-            $str = $finalanswer;
-            $num = (int)$str;
-          }
+              $num  = 0;
+              $str = 0;
+              if (
+                $product_old_price != '' && $product_price != '' &&  $is_coupon != 1
+              ) {
+                $myNumber1 = $product_old_price;
+                $myNumber2 = $product_price;
+                $multiply = $myNumber2 * 100;
+                $answer = $multiply / $myNumber1;
+                $finalanswer = 100 - $answer;
+                $str = $finalanswer;
+                $num = (int)$str;
+              }
 
               if ($str < 0) {
                 $percent_off = '';
@@ -882,9 +901,10 @@ function get_user_products()
               $pin_product = '';
             }
 
-            $output='';
-if($is_coupon!=1) {
-            $output.= '
+            $output = '';
+
+            if ($is_coupon != 1) {
+              $output .= '
 <div class="showcase">
         <div class="showcase-banner">
         <a href="../product_details.php?product_id=' . $product_id . '&detail=' . $product_keywords . '&title=' . $product_title . '">
@@ -939,8 +959,9 @@ if($is_coupon!=1) {
          
         
         </div>
-    ';}else{
-          $output.= '
+    ';
+            } else {
+              $output .= '
 <div class="showcase">
        <div class="showcase-banner ">
         <a id="add-dark-here" href="product_details.php?product_id=' . $product_id . '&detail=' . $product_keywords . '&title=' . $product_title . '">
@@ -954,7 +975,7 @@ if($is_coupon!=1) {
         ' . $pin_product . '
         
         <div class=" showcase-rating">
-         '.$percent_off.'
+         ' . $percent_off . '
  
         <img class="flame" src="../assets/images/icons/flame.png" alt="">
         
@@ -990,9 +1011,9 @@ if($is_coupon!=1) {
         
         </div>
     ';
-      }
+            }
 
-      echo $output;
+            echo $output;
             $count++;
             if ($count >= 13) {
               echo '<div class="showcase">
@@ -1058,11 +1079,11 @@ function get_public_user_products()
     if ($row_count > 0) {
       echo '<div class="product-grid">';
       while ($row_data = mysqli_fetch_assoc($result_product)) {
-            $product_id = $row_data['product_id'];
+        $product_id = $row_data['product_id'];
         $product_title = $row_data['product_title'];
         $product_description = $row_data['product_description'];
         $coupon = $row_data['coupon'];
-         $is_coupon = $row_data['is_coupon'];
+        $is_coupon = $row_data['is_coupon'];
         $product_old_price = $row_data['product_old_price'];
         $product_price = $row_data['product_price'];
         $product_keywords = $row_data['product_keywords'];
@@ -1075,11 +1096,11 @@ function get_public_user_products()
         $product_status = $row_data['status'];
         $time = $row_data['date'];
 
-     
+
 
 
         if ($product_old_price !== '0') {
-           $num  = 0;
+          $num  = 0;
           if (
             $product_old_price != '' && $product_price != '' &&  $is_coupon != 1
           ) {
@@ -1289,6 +1310,8 @@ required="required">
   }
 
 
+
+
   echo '
       </select>
     </div>
@@ -1346,35 +1369,35 @@ function get_trending_products()
     $result_product = mysqli_query($con, $select_product);
 
     while ($row_data = mysqli_fetch_assoc($result_product)) {
-           $product_id = $row_data['product_id'];
-        $product_title = $row_data['product_title'];
-        $product_description = $row_data['product_description'];
-        $coupon = $row_data['coupon'];
-         $is_coupon = $row_data['is_coupon'];
-        $product_old_price = $row_data['product_old_price'];
-        $product_price = $row_data['product_price'];
-        $product_keywords = $row_data['product_keywords'];
-        $product_category = $row_data['product_category'];
-        $product_brand = $row_data['product_brand'];
-        $product_img1 = $row_data['product_img1'];
-        $product_img2 = $row_data['product_img2'];
-        $product_img3 = $row_data['product_img3'];
-        $product_link = $row_data['product_link'];
-        $product_status = $row_data['status'];
-        $time = $row_data['date'];
+      $product_id = $row_data['product_id'];
+      $product_title = $row_data['product_title'];
+      $product_description = $row_data['product_description'];
+      $coupon = $row_data['coupon'];
+      $is_coupon = $row_data['is_coupon'];
+      $product_old_price = $row_data['product_old_price'];
+      $product_price = $row_data['product_price'];
+      $product_keywords = $row_data['product_keywords'];
+      $product_category = $row_data['product_category'];
+      $product_brand = $row_data['product_brand'];
+      $product_img1 = $row_data['product_img1'];
+      $product_img2 = $row_data['product_img2'];
+      $product_img3 = $row_data['product_img3'];
+      $product_link = $row_data['product_link'];
+      $product_status = $row_data['status'];
+      $time = $row_data['date'];
 
-        $num  = 0;
-          if (
-            $product_old_price != '' && $product_price != '' &&  $is_coupon != 1
-          ) {
-            $myNumber1 = $product_old_price;
-            $myNumber2 = $product_price;
-            $multiply = $myNumber2 * 100;
-            $answer = $multiply / $myNumber1;
-            $finalanswer = 100 - $answer;
-            $str = $finalanswer;
-            $num = (int)$str;
-          }
+      $num  = 0;
+      if (
+        $product_old_price != '' && $product_price != '' &&  $is_coupon != 1
+      ) {
+        $myNumber1 = $product_old_price;
+        $myNumber2 = $product_price;
+        $multiply = $myNumber2 * 100;
+        $answer = $multiply / $myNumber1;
+        $finalanswer = 100 - $answer;
+        $str = $finalanswer;
+        $num = (int)$str;
+      }
 
 
       $category_title = $row_data['category_title'];
@@ -1478,11 +1501,11 @@ function get_unique_categories_brand()
       $result_product = mysqli_query($con, $select_product);
 
       while ($row_data = mysqli_fetch_assoc($result_product)) {
-             $product_id = $row_data['product_id'];
+        $product_id = $row_data['product_id'];
         $product_title = $row_data['product_title'];
         $product_description = $row_data['product_description'];
         $coupon = $row_data['coupon'];
-         $is_coupon = $row_data['is_coupon'];
+        $is_coupon = $row_data['is_coupon'];
         $product_old_price = $row_data['product_old_price'];
         $product_price = $row_data['product_price'];
         $product_keywords = $row_data['product_keywords'];
@@ -1496,17 +1519,17 @@ function get_unique_categories_brand()
         $time = $row_data['date'];
 
         $num  = 0;
-          if (
-            $product_old_price != '' && $product_price != '' &&  $is_coupon != 1
-          ) {
-            $myNumber1 = $product_old_price;
-            $myNumber2 = $product_price;
-            $multiply = $myNumber2 * 100;
-            $answer = $multiply / $myNumber1;
-            $finalanswer = 100 - $answer;
-            $str = $finalanswer;
-            $num = (int)$str;
-          }
+        if (
+          $product_old_price != '' && $product_price != '' &&  $is_coupon != 1
+        ) {
+          $myNumber1 = $product_old_price;
+          $myNumber2 = $product_price;
+          $multiply = $myNumber2 * 100;
+          $answer = $multiply / $myNumber1;
+          $finalanswer = 100 - $answer;
+          $str = $finalanswer;
+          $num = (int)$str;
+        }
 
 
         $category_title = $row_data['category_title'];
@@ -1583,11 +1606,11 @@ function get_unique_categories()
       $result_product = mysqli_query($con, $select_product);
 
       while ($row_data = mysqli_fetch_assoc($result_product)) {
-               $product_id = $row_data['product_id'];
+        $product_id = $row_data['product_id'];
         $product_title = $row_data['product_title'];
         $product_description = $row_data['product_description'];
         $coupon = $row_data['coupon'];
-         $is_coupon = $row_data['is_coupon'];
+        $is_coupon = $row_data['is_coupon'];
         $product_old_price = $row_data['product_old_price'];
         $product_price = $row_data['product_price'];
         $product_keywords = $row_data['product_keywords'];
@@ -1601,17 +1624,17 @@ function get_unique_categories()
         $time = $row_data['date'];
 
         $num  = 0;
-          if (
-            $product_old_price != '' && $product_price != '' &&  $is_coupon != 1
-          ) {
-            $myNumber1 = $product_old_price;
-            $myNumber2 = $product_price;
-            $multiply = $myNumber2 * 100;
-            $answer = $multiply / $myNumber1;
-            $finalanswer = 100 - $answer;
-            $str = $finalanswer;
-            $num = (int)$str;
-          }
+        if (
+          $product_old_price != '' && $product_price != '' &&  $is_coupon != 1
+        ) {
+          $myNumber1 = $product_old_price;
+          $myNumber2 = $product_price;
+          $multiply = $myNumber2 * 100;
+          $answer = $multiply / $myNumber1;
+          $finalanswer = 100 - $answer;
+          $str = $finalanswer;
+          $num = (int)$str;
+        }
 
 
         $category_title = $row_data['category_title'];
@@ -1690,7 +1713,7 @@ function get_unique_brands()
         $product_title = $row_data['product_title'];
         $product_description = $row_data['product_description'];
         $coupon = $row_data['coupon'];
-         $is_coupon = $row_data['is_coupon'];
+        $is_coupon = $row_data['is_coupon'];
         $product_old_price = $row_data['product_old_price'];
         $product_price = $row_data['product_price'];
         $product_keywords = $row_data['product_keywords'];
@@ -1704,17 +1727,17 @@ function get_unique_brands()
         $time = $row_data['date'];
 
         $num  = 0;
-          if (
-            $product_old_price != '' && $product_price != '' &&  $is_coupon != 1
-          ) {
-            $myNumber1 = $product_old_price;
-            $myNumber2 = $product_price;
-            $multiply = $myNumber2 * 100;
-            $answer = $multiply / $myNumber1;
-            $finalanswer = 100 - $answer;
-            $str = $finalanswer;
-            $num = (int)$str;
-          }
+        if (
+          $product_old_price != '' && $product_price != '' &&  $is_coupon != 1
+        ) {
+          $myNumber1 = $product_old_price;
+          $myNumber2 = $product_price;
+          $multiply = $myNumber2 * 100;
+          $answer = $multiply / $myNumber1;
+          $finalanswer = 100 - $answer;
+          $str = $finalanswer;
+          $num = (int)$str;
+        }
 
         $category_title = $row_data['category_title'];
         $category_id = $row_data['category_id'];
@@ -2224,12 +2247,15 @@ function get_related_product()
     $search_query = "Select * from `products` JOIN `category` JOIN `brands` WHERE products.product_keywords like ('%$keyword%') AND products.product_id != '$product_i' AND products.product_category=category.category_id AND products.product_brand=brands.brand_id ORDER BY date desc";
     $result_product = mysqli_query($con, $search_query);
 
-    while ($row_data = mysqli_fetch_assoc($result_product)) {
-             $product_id = $row_data['product_id'];
+    if (mysqli_num_rows($result_product) == 0) {
+      echo "No similar products found.";
+    } else {
+      while ($row_data = mysqli_fetch_assoc($result_product)) {
+        $product_id = $row_data['product_id'];
         $product_title = $row_data['product_title'];
         $product_description = $row_data['product_description'];
         $coupon = $row_data['coupon'];
-         $is_coupon = $row_data['is_coupon'];
+        $is_coupon = $row_data['is_coupon'];
         $product_old_price = $row_data['product_old_price'];
         $product_price = $row_data['product_price'];
         $product_keywords = $row_data['product_keywords'];
@@ -2242,11 +2268,12 @@ function get_related_product()
         $product_status = $row_data['status'];
         $time = $row_data['date'];
 
-      
 
 
-      if ($product_old_price !== '0') {
-       $num  = 0;$str=0;
+
+        if ($product_old_price !== '0') {
+          $num  = 0;
+          $str = 0;
           if (
             $product_old_price != '' && $product_price != '' &&  $is_coupon != 1
           ) {
@@ -2259,35 +2286,35 @@ function get_related_product()
             $num = (int)$str;
           }
 
-        if ($str < 0) {
+          if ($str < 0) {
+            $percent_off = '';
+            $deal_scale = 'style="display:none;"';
+            $num = '';
+          } else {
+            $percent_off = '<div class="small text-orange position-absolute m-2 text-wrap  showcase-badge2"><span class="font-weight-bold a_no_result_title">' . $num . '%&nbsp;</span><span class="small font-weight-bold">OFF</span></div>';
+            $deal_scale = '';
+          }
+        }
+        if ($product_old_price == '0') {
           $percent_off = '';
           $deal_scale = 'style="display:none;"';
           $num = '';
-        } else {
-          $percent_off = '<div class="small text-orange position-absolute m-2 text-wrap  showcase-badge2"><span class="font-weight-bold a_no_result_title">' . $num . '%&nbsp;</span><span class="small font-weight-bold">OFF</span></div>';
-          $deal_scale = '';
         }
-      }
-      if ($product_old_price == '0') {
-        $percent_off = '';
-        $deal_scale = 'style="display:none;"';
-        $num = '';
-      }
 
-      $category_title = $row_data['category_title'];
-      $category_id = $row_data['category_id'];
-      $category_logo = $row_data['category_logo'];
-      $brand_title = $row_data['brand_title'];
-      $brand_id = $row_data['brand_id'];
-      $brand_logo = $row_data['brand_logo'];
+        $category_title = $row_data['category_title'];
+        $category_id = $row_data['category_id'];
+        $category_logo = $row_data['category_logo'];
+        $brand_title = $row_data['brand_title'];
+        $brand_id = $row_data['brand_id'];
+        $brand_logo = $row_data['brand_logo'];
 
-      $timeago = get_timeago(strtotime($time));
-      if ($product_status == "true") {
+        $timeago = get_timeago(strtotime($time));
+        if ($product_status == "true") {
 
 
-        $output = '';
-if($is_coupon != 1){
-        $output .= '
+          $output = '';
+          if ($is_coupon != 1) {
+            $output .= '
       
 <div class="showcase-container position-relative">
 ' . $percent_off . '
@@ -2330,9 +2357,10 @@ if($is_coupon != 1){
 
 </div>
 
-</div>';}else{
-    $percent_off = '<div class="small text-orange position-absolute m-2 text-wrap  showcase-badge2"><span class="font-weight-bold a_no_result_title">COUPON CODE</span></div>';
-  $output .= '
+</div>';
+          } else {
+            $percent_off = '<div class="small text-orange position-absolute m-2 text-wrap  showcase-badge2"><span class="font-weight-bold a_no_result_title">COUPON CODE</span></div>';
+            $output .= '
  <div class="showcase-container position-relative">
 ' . $percent_off . '
 <div class="showcase   d-flex flex-column">
@@ -2367,17 +2395,18 @@ if($is_coupon != 1){
       <h4 class="showcase-title">' . $product_title . '</h4>
     </a>
     <div class="price-box bg-dealhopp text-light rounded mt-1">
-  <center class="mx-auto"><span class="hide_coupon text- ">'.$coupon.'</span><span  >*****</span></center>    
+  <center class="mx-auto"><span class="hide_coupon text- ">' . $coupon . '</span><span  >*****</span></center>    
     </div>
 
   </div>
 
 </div>
 
-</div>'; 
-}
+</div>';
+          }
 
-        echo $output;
+          echo $output;
+        }
       }
     }
   }

@@ -63,23 +63,24 @@ if (isset($_POST['action'])) {
       $pinned = $row['pinned'];
       $product_posted_user = $row['username'];
       $user_type = $row['user_type'];
-      $product_posted_user_img = $row['user_image']; 
+      $product_posted_user_img = $row['user_image'];
       $is_coupon = $row['is_coupon'];
 
 
       if ($product_old_price !== '0') {
-        $num  = 0;$str =0;
-          if (
-            $product_old_price != '' && $product_price != '' &&  $is_coupon != 1
-          ) {
-            $myNumber1 = $product_old_price;
-            $myNumber2 = $product_price;
-            $multiply = $myNumber2 * 100;
-            $answer = $multiply / $myNumber1;
-            $finalanswer = 100 - $answer;
-            $str = $finalanswer;
-            $num = (int)$str;
-          }
+        $num  = 0;
+        $str = 0;
+        if (
+          $product_old_price != '' && $product_price != '' &&  $is_coupon != 1
+        ) {
+          $myNumber1 = $product_old_price;
+          $myNumber2 = $product_price;
+          $multiply = $myNumber2 * 100;
+          $answer = $multiply / $myNumber1;
+          $finalanswer = 100 - $answer;
+          $str = $finalanswer;
+          $num = (int)$str;
+        }
 
         if ($str < 0) {
           $percent_off = '';
@@ -122,8 +123,8 @@ if (isset($_POST['action'])) {
       } else {
         $verified = '';
       }
-if($is_coupon != 1){
-      $output .= '
+      if ($is_coupon != 1) {
+        $output .= '
       <div class="showcase">
         <div class="showcase-banner">
         <a id="add-dark-here" href="product_details.php?product_id=' . $product_id . '&detail=' . $product_keywords . '&title=' . $product_title . '">
@@ -164,7 +165,7 @@ if($is_coupon != 1){
         </div>
         
           <div class="ml-auto">
-          <a href="store_details.php?brand_title='.$brand_title.'&brand_id='.$brand_id.'"> <img draggable="false" class=" ml-auto" src="admin' . $brand_logo . '" alt="">
+          <a href="store_details.php?brand_title=' . $brand_title . '&brand_id=' . $brand_id . '"> <img draggable="false" class=" ml-auto" src="admin' . $brand_logo . '" alt="">
         </a>
          
           </div>
@@ -196,7 +197,7 @@ if($is_coupon != 1){
         <div class="promouser ml-2 mt-1">
         <!--<a rel="nofollow" href="users/' . $product_posted_user . '" class=" text-capitalize a_tbn text-orange">
         ' . $product_posted_user . '' . $verified . '</a>-->
-        <span class="mb-0">' . $product_posted_user . '' . $verified . '</span>
+        <span class="mb-0 a_posted_user">' . $product_posted_user . '' . $verified . '</span>
         </div>
         <div class="promotime  ml-2 mb-0">
         
@@ -209,9 +210,10 @@ if($is_coupon != 1){
         
         </div>
         
-        ';}else{
-           $percent_off = '<div class="small text-orange a_dis_max mx-auto text-wrap  showcase-badge2"><span class="font-weight-bold a_no_result_title">COUPON CODE</span></div>';
-           $output .= '
+        ';
+      } else {
+        $percent_off = '<div class="small text-orange a_dis_max mx-auto text-wrap  showcase-badge2"><span class="font-weight-bold a_no_result_title">COUPON CODE</span></div>';
+        $output .= '
              <div class="showcase">
         <div class="showcase-banner ">
         <a id="add-dark-here" href="product_details.php?product_id=' . $product_id . '&detail=' . $product_keywords . '&title=' . $product_title . '">
@@ -225,7 +227,7 @@ if($is_coupon != 1){
         ' . $pin_product . '
         
         <div class=" showcase-rating">
-         '.$percent_off.'
+         ' . $percent_off . '
  
         <img class="flame" src="assets/images/icons/flame.png" alt="">
         
@@ -245,7 +247,7 @@ if($is_coupon != 1){
           <a href="#" class="showcase-category text_wrap ">' . $category_title . '</a>
         </div>
             <div class="ml-auto">
-          <a href="store_details.php?brand_title='.$brand_title.'&brand_id='.$brand_id.'"> <img draggable="false" class=" ml-auto" src="admin' . $brand_logo . '" alt="">
+          <a href="store_details.php?brand_title=' . $brand_title . '&brand_id=' . $brand_id . '"> <img draggable="false" class=" ml-auto" src="admin' . $brand_logo . '" alt="">
         </a>
          
           </div>
@@ -282,7 +284,7 @@ if($is_coupon != 1){
         <div class="promouser ml-2 mt-1">
         <!--<a rel="nofollow" href="users/' . $product_posted_user . '" class=" text-capitalize a_tbn text-orange">
         ' . $product_posted_user . '' . $verified . '</a>-->
-        <span class="mb-0">' . $product_posted_user . '' . $verified . '</span>
+        <span class="mb-0 a_posted_user">' . $product_posted_user . '' . $verified . '</span>
         </div>
         <div class="promotime  ml-2 mb-0">
         
@@ -296,7 +298,7 @@ if($is_coupon != 1){
         </div>
            
            ';
-        }
+      }
     }
   } else {
 

@@ -98,9 +98,22 @@
           $pin_product = '';
         }
 
-$output='';
-if($is_coupon!=1){
-      $output.=    '<div class="showcase">
+        $output = '';
+        if ($product_img2 == '' || $product_img2 == null) {
+          if ($product_img1 != '' || $product_img1 != null)
+            $product_img2 = $product_img1;
+          else
+            $product_img2 = './assets/images/icons/alt.png';
+        }
+        if ($product_img3 == '' || $product_img3 == null) {
+          if ($product_img1 != '' || $product_img1 != null)
+            $product_img3 = $product_img1;
+          else
+            $product_img3 = './assets/images/icons/alt.png';
+        }
+        if ($is_coupon != 1) {
+
+          $output .=    '<div class="showcase">
   <a href="../product_details.php?product_id=' . $product_id . '&detail=' . $product_keywords . '">
   <div class="showcase-banner">
   <img src=' . $product_img1 . ' alt="Dealhopp product Image" height="160" class="product-img default">
@@ -183,9 +196,10 @@ if($is_coupon!=1){
       </div>
 
   
-  ';}else{
-     $percent_off = '<div class="small text-orange a_dis_max mx-auto text-wrap  showcase-badge2"><span class="font-weight-bold a_no_result_title">COUPON CODE</span></div>';
-           $output .= '
+  ';
+        } else {
+          $percent_off = '<div class="small text-orange a_dis_max mx-auto text-wrap  showcase-badge2"><span class="font-weight-bold a_no_result_title">COUPON CODE</span></div>';
+          $output .= '
              <div class="showcase">
         <div class="showcase-banner ">
         <a id="add-dark-here" href="product_details.php?product_id=' . $product_id . '&detail=' . $product_keywords . '&title=' . $product_title . '">
@@ -199,7 +213,7 @@ if($is_coupon!=1){
         ' . $pin_product . '
         
         <div class=" showcase-rating">
-         '.$percent_off.'
+         ' . $percent_off . '
  
         <img class="flame" src="../assets/images/icons/flame.png" alt="">
         
@@ -266,9 +280,9 @@ if($is_coupon!=1){
 
   
   ';
-  }
+        }
 
-  echo $output;
+        echo $output;
       }
     }
 

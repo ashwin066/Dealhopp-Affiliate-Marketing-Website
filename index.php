@@ -206,7 +206,7 @@ include('user_area/common_function_user.php');
   -->
     <?php
   get_back_to_top();
-   get_slide_notify();
+  get_slide_notify();
 
   include 'parts/nav.php';
   ?>
@@ -238,8 +238,10 @@ include('user_area/common_function_user.php');
                     <div id="top_part">
                         <div class="banner skeleton border-radius-11 mb-2">
                             <div class="slider-container content has-scrollbar a_stickslider2">
-
-                                <a href="https://www.flipkart.com/" target="_blank">
+                                <?php
+                get_promo_banners()
+                ?>
+                                <!-- <a href="https://www.flipkart.com/" target="_blank">
                                     <div class="slider-item">
                                         <img src="https://rukminim1.flixcart.com/flap/1844/1400/image/f0ba4ffe837c8881.jpg"
                                             alt="-" class="banner-img">
@@ -269,7 +271,7 @@ include('user_area/common_function_user.php');
                                         <img src="https://rukminim1.flixcart.com/fk-p-flap/1844/1400/image/a87c5508e24536f7.jpg"
                                             alt="-" class="banner-img">
                                     </div>
-                                </a>
+                                </a> -->
 
                             </div>
                         </div>
@@ -361,7 +363,7 @@ include('user_area/common_function_user.php');
 
 
     <?php
-   
+
   include 'parts/footer.php';
   ?>
 

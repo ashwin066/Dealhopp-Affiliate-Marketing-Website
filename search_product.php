@@ -55,9 +55,7 @@ include ('functions/common_function.php');
                 <ion-icon name="close-outline"></ion-icon>
             </button>
 
-            <div class="newsletter-img">
-                <img src="./assets/images/newsletter.png" alt="subscribe newsletter" width="400" height="400">
-            </div>
+
 
             <div class="newsletter">
 

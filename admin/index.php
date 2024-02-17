@@ -1,14 +1,13 @@
 <?php
-include ('../includes/connect.php');
-include ('../functions/common_function.php');
+include('../includes/connect.php');
+include('../functions/common_function.php');
 //secure
 session_start();
-if(!isset ($_SESSION["username"]))
-{
-header ("location: ../user_area/login.php");
+if (!isset($_SESSION["username"])) {
+  header("location: ../user_area/login.php");
 }
-if($_SESSION['user_type']!=='admin'){
-  header ("location: ../index.php");
+if ($_SESSION['user_type'] !== 'admin') {
+  header("location: ../index.php");
 }
 //secure
 ?>
@@ -58,11 +57,13 @@ if($_SESSION['user_type']!=='admin'){
 </head>
 
 <body>
-    <button onclick="back_to_top_Function()" title="Go to top"><i id="back-to-top"
-            class="fa-solid fa-angles-up"></i></button>
+    <!-- <button onclick="back_to_top_Function()" title="Go to top"><i id="back-to-top"
+            class="fa-solid fa-angles-up"></i></button> -->
 
 
-    <?php include '../parts/admin-nav.php'?>
+    <?php 
+  get_back_to_top();
+  include '../parts/admin-nav.php' ?>
     <div class="container">
         <h5 class="text-center text-orange">Admin Panel <i class="text-dark fa-solid fa-user-tie"></i></h5>
         <div class="category d-flex justify-content-center mb-3">
@@ -126,24 +127,7 @@ if($_SESSION['user_type']!=='admin'){
         </a>
 
     </div>
-    <!-- <a href="#" class="d-flex align-items-center flex-column a_tbn">
-    <div class="a_category-item">
 
-      <div class="category-img-box">
-        <img src="https://cdn-icons-png.flaticon.com/128/3566/3566260.png" alt="shorts & jeans" width="30">
-      </div>
-
-      <div class="category-content-box">
-
-        <div class="category-content-flex">
-          <h3 class="category-item-title text_wrap">View Category</h3>
-
-        </div>
-
-
-      </div></a>
-
-    </div> -->
     <a href="index.php?insert_brands" class="d-flex align-items-center flex-column a_tbn">
         <div class="a_category-item">
 
@@ -162,7 +146,28 @@ if($_SESSION['user_type']!=='admin'){
             </div>
     </a>
 
+
+
     </div>
+    <!-- <a href="#" class="d-flex align-items-center flex-column a_tbn">
+        <div class="a_category-item">
+
+            <div class="category-img-box">
+                <img src="https://cdn-icons-png.flaticon.com/128/3566/3566260.png" alt="shorts & jeans" width="30">
+            </div>
+
+            <div class="category-content-box">
+
+                <div class="category-content-flex">
+                    <h3 class="category-item-title text_wrap">View Category</h3>
+
+                </div>
+
+
+            </div>
+    </a>
+
+    </div> -->
     <!-- <a href="#" class="d-flex align-items-center flex-column a_tbn">
     <div class="a_category-item">
 
@@ -200,7 +205,25 @@ if($_SESSION['user_type']!=='admin'){
     <!-- 
     </div> -->
 
+    <a href="index.php?edit_banners" class="d-flex align-items-center flex-column a_tbn">
+        <div class="a_category-item">
 
+            <div class="category-img-box">
+                <img src="https://cdn-icons-png.flaticon.com/512/8606/8606871.png" alt="shorts & jeans" width="30">
+            </div>
+
+            <div class="category-content-box">
+
+                <div class="category-content-flex">
+                    <h3 class="category-item-title text_wrap">Promo Banners</h3>
+
+                </div>
+
+
+            </div>
+    </a>
+
+    </div>
 
     </div>
 
@@ -213,33 +236,43 @@ if($_SESSION['user_type']!=='admin'){
 
 
     <?php
-if(isset($_GET['insert_category'])){
-  include('insert_category.php');
+  if (isset($_GET['insert_category'])) {
+    include('insert_category.php');
   }
-  if(isset($_GET['insert_brands'])){
+  if (isset($_GET['insert_brands'])) {
     include('insert_brands.php');
-    }
-    if(isset($_GET['insert_product'])){
-      include('insert_product.php');
-      }
-      if(isset($_GET['view_product'])){
-        include('view_product.php');
-        }
-        if(isset($_GET['updateid'])){
-          include('update.php');
-          }
-          if(isset($_GET['pin_id'])){
-            include('pin_product.php');
-            }
-          if(isset($_GET['delete_product'])){
-            include('delete_product.php');
-            }
-?>
+  }
+  if (isset($_GET['insert_product'])) {
+    include('insert_product.php');
+  }
+  if (isset($_GET['view_product'])) {
+    include('view_product.php');
+  }
+  if (isset($_GET['edit_banners'])) {
+    include('edit_banners.php');
+  }
+
+  if (isset($_GET['updateid'])) {
+    include('update.php');
+  }
+  if (isset($_GET['pin_id'])) {
+    include('pin_product.php');
+  }
+  if (isset($_GET['delete_product'])) {
+    include('delete_product.php');
+  }
+  ?>
 
     </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../assets/js/script.js"></script>
+
+    <script src="./assets/js/back_to_top.js"></script>
+    <script src="./assets/js/dark-theme.js"></script>
+    <script src="../assets/js/skeleton_loading.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../assets/js/back_to_top.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
@@ -248,6 +281,7 @@ if(isset($_GET['insert_category'])){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
+
 </body>
 
 </html>

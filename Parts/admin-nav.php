@@ -1,7 +1,6 @@
-
 <header>
 
-<!-- <div class="header-top">
+    <!-- <div class="header-top">
 
   <div class="container">
 
@@ -63,35 +62,25 @@
 
 </div> -->
 
-<div class="header-main" id="header-main">
+    <div class="header-main" id="header-main">
 
-  <div class="container d-flex h-100 justify-content-between">
- <div class="logodiv_mob"> <a href="../index.php" id="logo_mob" class="header-logo a_logo_box">
-  <div class="logo_img_mob" id="logo_img_mob"></div> 
-  </a></div>
-  <div class="logodiv"> <a href="../index.php" id="logo" class="header-logo a_logo_box">
-  <div class="logo_img" id="logo_img"></div> 
-  </a></div>
+        <div class="container d-flex h-100 justify-content-between">
+            <div class="logodiv_mob"> <a href="../index.php" id="logo_mob" class="header-logo a_logo_box">
+                    <div class="logo_img_mob" id="logo_img_mob"></div>
+                </a></div>
+            <div class="logodiv"> <a href="../index.php" id="logo" class="header-logo a_logo_box">
+                    <div class="logo_img" id="logo_img"></div>
+                </a></div>
 
-    <div class="header-search-container">
-  
-    </div>
+            <div class="header-search-container">
 
-    <div class="header-user-actions">
-    <!-- <span class="small text-orange">Made with <i class="fa fa-heart heart"></i> in INDIA</span> -->
-    <div class="a_search_box">
-     <form action="index.php" method="get">
-    
-      <input type="search" name="search_data" aria-lable="search" class="search-field" placeholder="Enter your product name...">
-      
-      <button type="submit" value="search" name="search_data_product" class="search-btn">
-      <i class="fa-solid fa-magnifying-glass"></i>
-    </button>  
-</form>
+            </div>
 
-     </div>
-     
-      <!-- <button class="action-btn">
+            <div class="header-user-actions">
+                <!-- <span class="small text-orange">Made with <i class="fa fa-heart heart"></i> in INDIA</span> -->
+
+
+                <!-- <button class="action-btn">
         <ion-icon name="heart-outline"></ion-icon>
         <span class="count">0</span>
       </button>
@@ -102,33 +91,33 @@
       </button>
        -->
 
-    </div>
-    <div class="d-flex align-items-center" style="overflow: visible!important;">
+            </div>
+            <div class="d-flex align-items-center" style="overflow: visible!important;">
 
-<?php
-    
-    if(!isset($_SESSION['username'])){
-      echo '<a href="../user_area/login.php" class="a_tbn font-weight-bold text-light">Login <i class="fa fa-sign-in" aria-hidden="true"></i>
+                <?php
+
+        if (!isset($_SESSION['username'])) {
+          echo '<a href="../user_area/login.php" class="a_tbn font-weight-bold text-light">Login <i class="fa fa-sign-in" aria-hidden="true"></i>
       </a>';
-    }else{
-      echo '<p class="text-light text-capitalize mb-0 a_res w-100">Welcome, '.$_SESSION['username'].'</p>';
-    }
-    if(isset($_SESSION['username'])){
-      echo'
+        } else {
+          echo '<p class="text-light text-capitalize mb-0 a_res w-100">Welcome, ' . $_SESSION['username'] . '</p>';
+        }
+        if (isset($_SESSION['username'])) {
+          echo '
     <a href="../user_area/profile.php" class="pl-2 pr-1">
       <button class="action-btn">
           
-      <img src="'.$_SESSION['user_image'].'" alt="" class="a_user_img"> 
+      <img src="' . $_SESSION['user_image'] . '" alt="" class="a_user_img"> 
       </button>
       </a>';
-      }?>
-       
-      </div>
-  </div>
+        } ?>
 
-</div>
-</div>
-<!-- <nav class="desktop-navigation-menu">
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <!-- <nav class="desktop-navigation-menu">
 
   <div class="container">
 
@@ -397,335 +386,315 @@
 
 </nav> -->
 
-<div class="mobile-bottom-navigation">
 
-<div class="container d-flex">
-<div class="a_search_box w-100 mr-auto ml-2">
-     <form action="index.php" method="get">
-    
-      <input type="search" name="search_data" aria-lable="search" class="search-field" placeholder="Enter your product name...">
-      
-      <button type="submit" value="search" name="search_data_product" class="search-btn">
-      <i class="fa-solid fa-magnifying-glass"></i>
-    </button>  
-</form>
+    </div>
 
-     </div>
+    <nav class="mobile-navigation-menu  has-scrollbar" data-mobile-menu>
 
+        <div class="menu-top">
+            <h2 class="menu-title">Menu</h2>
 
-
-
-
-  </div>
-</div>
-
-<nav class="mobile-navigation-menu  has-scrollbar" data-mobile-menu>
-
-  <div class="menu-top">
-    <h2 class="menu-title">Menu</h2>
-
-    <button class="menu-close-btn" data-mobile-menu-close-btn>
-      <ion-icon name="close-outline"></ion-icon>
-    </button>
-  </div>
-
-  <ul class="mobile-menu-category-list">
-
-    <li class="menu-category">
-      <a href="#" class="menu-title">Home</a>
-    </li>
-
-    <li class="menu-category">
-
-      <button class="accordion-menu" data-accordion-btn>
-        <p class="menu-title">Men's</p>
-
-        <div>
-          <ion-icon name="add-outline" class="add-icon"></ion-icon>
-          <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+            <button class="menu-close-btn" data-mobile-menu-close-btn>
+                <ion-icon name="close-outline"></ion-icon>
+            </button>
         </div>
-      </button>
 
-      <ul class="submenu-category-list" data-accordion>
+        <ul class="mobile-menu-category-list">
 
-        <li class="submenu-category">
-          <a href="#" class="submenu-title">Shirt</a>
-        </li>
+            <li class="menu-category">
+                <a href="#" class="menu-title">Home</a>
+            </li>
 
-        <li class="submenu-category">
-          <a href="#" class="submenu-title">Shorts & Jeans</a>
-        </li>
+            <li class="menu-category">
 
-        <li class="submenu-category">
-          <a href="#" class="submenu-title">Safety Shoes</a>
-        </li>
+                <button class="accordion-menu" data-accordion-btn>
+                    <p class="menu-title">Men's</p>
 
-        <li class="submenu-category">
-          <a href="#" class="submenu-title">Wallet</a>
-        </li>
+                    <div>
+                        <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                        <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                    </div>
+                </button>
 
-      </ul>
+                <ul class="submenu-category-list" data-accordion>
 
-    </li>
+                    <li class="submenu-category">
+                        <a href="#" class="submenu-title">Shirt</a>
+                    </li>
 
-    <li class="menu-category">
+                    <li class="submenu-category">
+                        <a href="#" class="submenu-title">Shorts & Jeans</a>
+                    </li>
 
-      <button class="accordion-menu" data-accordion-btn>
-        <p class="menu-title">Women's</p>
+                    <li class="submenu-category">
+                        <a href="#" class="submenu-title">Safety Shoes</a>
+                    </li>
 
-        <div>
-          <ion-icon name="add-outline" class="add-icon"></ion-icon>
-          <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-        </div>
-      </button>
+                    <li class="submenu-category">
+                        <a href="#" class="submenu-title">Wallet</a>
+                    </li>
 
-      <ul class="submenu-category-list" data-accordion>
+                </ul>
 
-        <li class="submenu-category">
-          <a href="#" class="submenu-title">Dress & Frock</a>
-        </li>
+            </li>
 
-        <li class="submenu-category">
-          <a href="#" class="submenu-title">Earrings</a>
-        </li>
+            <li class="menu-category">
 
-        <li class="submenu-category">
-          <a href="#" class="submenu-title">Necklace</a>
-        </li>
+                <button class="accordion-menu" data-accordion-btn>
+                    <p class="menu-title">Women's</p>
 
-        <li class="submenu-category">
-          <a href="#" class="submenu-title">Makeup Kit</a>
-        </li>
+                    <div>
+                        <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                        <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                    </div>
+                </button>
 
-      </ul>
+                <ul class="submenu-category-list" data-accordion>
 
-    </li>
+                    <li class="submenu-category">
+                        <a href="#" class="submenu-title">Dress & Frock</a>
+                    </li>
 
-    <li class="menu-category">
+                    <li class="submenu-category">
+                        <a href="#" class="submenu-title">Earrings</a>
+                    </li>
 
-      <button class="accordion-menu" data-accordion-btn>
-        <p class="menu-title">Jewelry</p>
+                    <li class="submenu-category">
+                        <a href="#" class="submenu-title">Necklace</a>
+                    </li>
 
-        <div>
-          <ion-icon name="add-outline" class="add-icon"></ion-icon>
-          <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-        </div>
-      </button>
+                    <li class="submenu-category">
+                        <a href="#" class="submenu-title">Makeup Kit</a>
+                    </li>
 
-      <ul class="submenu-category-list" data-accordion>
+                </ul>
 
-        <li class="submenu-category">
-          <a href="#" class="submenu-title">Earrings</a>
-        </li>
+            </li>
 
-        <li class="submenu-category">
-          <a href="#" class="submenu-title">Couple Rings</a>
-        </li>
+            <li class="menu-category">
 
-        <li class="submenu-category">
-          <a href="#" class="submenu-title">Necklace</a>
-        </li>
+                <button class="accordion-menu" data-accordion-btn>
+                    <p class="menu-title">Jewelry</p>
 
-        <li class="submenu-category">
-          <a href="#" class="submenu-title">Bracelets</a>
-        </li>
+                    <div>
+                        <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                        <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                    </div>
+                </button>
 
-      </ul>
+                <ul class="submenu-category-list" data-accordion>
 
-    </li>
+                    <li class="submenu-category">
+                        <a href="#" class="submenu-title">Earrings</a>
+                    </li>
 
-    <li class="menu-category">
+                    <li class="submenu-category">
+                        <a href="#" class="submenu-title">Couple Rings</a>
+                    </li>
 
-      <button class="accordion-menu" data-accordion-btn>
-        <p class="menu-title">Perfume</p>
+                    <li class="submenu-category">
+                        <a href="#" class="submenu-title">Necklace</a>
+                    </li>
 
-        <div>
-          <ion-icon name="add-outline" class="add-icon"></ion-icon>
-          <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-        </div>
-      </button>
+                    <li class="submenu-category">
+                        <a href="#" class="submenu-title">Bracelets</a>
+                    </li>
 
-      <ul class="submenu-category-list" data-accordion>
+                </ul>
 
-        <li class="submenu-category">
-          <a href="#" class="submenu-title">Clothes Perfume</a>
-        </li>
+            </li>
 
-        <li class="submenu-category">
-          <a href="#" class="submenu-title">Deodorant</a>
-        </li>
+            <li class="menu-category">
 
-        <li class="submenu-category">
-          <a href="#" class="submenu-title">Flower Fragrance</a>
-        </li>
+                <button class="accordion-menu" data-accordion-btn>
+                    <p class="menu-title">Perfume</p>
 
-        <li class="submenu-category">
-          <a href="#" class="submenu-title">Air Freshener</a>
-        </li>
+                    <div>
+                        <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                        <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                    </div>
+                </button>
 
-      </ul>
+                <ul class="submenu-category-list" data-accordion>
 
-    </li>
+                    <li class="submenu-category">
+                        <a href="#" class="submenu-title">Clothes Perfume</a>
+                    </li>
 
-    <li class="menu-category">
-      <a href="#" class="menu-title">Blog</a>
-    </li>
+                    <li class="submenu-category">
+                        <a href="#" class="submenu-title">Deodorant</a>
+                    </li>
 
-    <li class="menu-category">
-      <a href="#" class="menu-title">Hot Offers</a>
-    </li>
+                    <li class="submenu-category">
+                        <a href="#" class="submenu-title">Flower Fragrance</a>
+                    </li>
 
-  </ul>
+                    <li class="submenu-category">
+                        <a href="#" class="submenu-title">Air Freshener</a>
+                    </li>
 
-  <div class="menu-bottom">
+                </ul>
 
-    <ul class="menu-category-list">
+            </li>
 
-      <li class="menu-category">
+            <li class="menu-category">
+                <a href="#" class="menu-title">Blog</a>
+            </li>
 
-        <button class="accordion-menu" data-accordion-btn>
-          <p class="menu-title">Language</p>
-
-          <ion-icon name="caret-back-outline" class="caret-back"></ion-icon>
-        </button>
-
-        <ul class="submenu-category-list" data-accordion>
-
-          <li class="submenu-category">
-            <a href="#" class="submenu-title">English</a>
-          </li>
-
-          <li class="submenu-category">
-            <a href="#" class="submenu-title">Espa&ntilde;ol</a>
-          </li>
-
-          <li class="submenu-category">
-            <a href="#" class="submenu-title">Fren&ccedil;h</a>
-          </li>
+            <li class="menu-category">
+                <a href="#" class="menu-title">Hot Offers</a>
+            </li>
 
         </ul>
 
-      </li>
+        <div class="menu-bottom">
 
-      <li class="menu-category">
-        <button class="accordion-menu" data-accordion-btn>
-          <p class="menu-title">Currency</p>
-          <ion-icon name="caret-back-outline" class="caret-back"></ion-icon>
-        </button>
+            <ul class="menu-category-list">
 
-        <ul class="submenu-category-list" data-accordion>
-          <li class="submenu-category">
-            <a href="#" class="submenu-title">USD &dollar;</a>
-          </li>
+                <li class="menu-category">
 
-          <li class="submenu-category">
-            <a href="#" class="submenu-title">EUR &euro;</a>
-          </li>
-        </ul>
-      </li>
+                    <button class="accordion-menu" data-accordion-btn>
+                        <p class="menu-title">Language</p>
 
-    </ul>
+                        <ion-icon name="caret-back-outline" class="caret-back"></ion-icon>
+                    </button>
 
-    <ul class="menu-social-container">
+                    <ul class="submenu-category-list" data-accordion>
 
-      <li>
-        <a href="#" class="social-link">
-          <ion-icon name="logo-facebook"></ion-icon>
-        </a>
-      </li>
+                        <li class="submenu-category">
+                            <a href="#" class="submenu-title">English</a>
+                        </li>
 
-      <li>
-        <a href="#" class="social-link">
-          <ion-icon name="logo-twitter"></ion-icon>
-        </a>
-      </li>
+                        <li class="submenu-category">
+                            <a href="#" class="submenu-title">Espa&ntilde;ol</a>
+                        </li>
 
-      <li>
-        <a href="#" class="social-link">
-          <ion-icon name="logo-instagram"></ion-icon>
-        </a>
-      </li>
+                        <li class="submenu-category">
+                            <a href="#" class="submenu-title">Fren&ccedil;h</a>
+                        </li>
 
-      <li>
-        <a href="#" class="social-link">
-          <ion-icon name="logo-linkedin"></ion-icon>
-        </a>
-      </li>
+                    </ul>
 
-    </ul>
+                </li>
 
-  </div>
+                <li class="menu-category">
+                    <button class="accordion-menu" data-accordion-btn>
+                        <p class="menu-title">Currency</p>
+                        <ion-icon name="caret-back-outline" class="caret-back"></ion-icon>
+                    </button>
 
-</nav>
+                    <ul class="submenu-category-list" data-accordion>
+                        <li class="submenu-category">
+                            <a href="#" class="submenu-title">USD &dollar;</a>
+                        </li>
 
-<script>
-// When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
-window.onscroll = function() {scrollFunction()};
+                        <li class="submenu-category">
+                            <a href="#" class="submenu-title">EUR &euro;</a>
+                        </li>
+                    </ul>
+                </li>
 
-function scrollFunction() {
-  if (document.body.scrollTop >= 25 || document.documentElement.scrollTop >= 25) {
+            </ul>
 
-    document.getElementById("logo_img").style.cssText = `
+            <ul class="menu-social-container">
+
+                <li>
+                    <a href="#" class="social-link">
+                        <ion-icon name="logo-facebook"></ion-icon>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="social-link">
+                        <ion-icon name="logo-twitter"></ion-icon>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="social-link">
+                        <ion-icon name="logo-instagram"></ion-icon>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="social-link">
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+    <script>
+    // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop >= 25 || document.documentElement.scrollTop >= 25) {
+
+            document.getElementById("logo_img").style.cssText = `
     background:url(../assets/images/logo/1.png) no-repeat;
     width:90px;
     height:75px;
     background-position: center;
     background-size: contain;
 `;
-document.getElementById("logo").style.cssText = `
+            document.getElementById("logo").style.cssText = `
 border-radius:  0 0 11px 11px;
 
 
 `;
-document.getElementById("logo_img_mob").style.cssText = `
+            document.getElementById("logo_img_mob").style.cssText = `
     background:url(../assets/images/logo/1.png) no-repeat;
     width:45px;
     height:45px;
     background-position: center;
     background-size: contain;
 `;
-document.getElementById("logo_mob").style.cssText = `
+            document.getElementById("logo_mob").style.cssText = `
 border-radius:  0 0 11px 11px;
 
-`
-;
+`;
 
-   
-  } else {
 
-    document.getElementById("logo_img").style.cssText = `
+        } else {
+
+            document.getElementById("logo_img").style.cssText = `
     background:url(../assets/images/logo/logo1.png) no-repeat;
     width:270px;
     background-position: center;
     background-size: contain;
 `;
-document.getElementById("logo").style.cssText = `
+            document.getElementById("logo").style.cssText = `
 border-radius:  0 0 11px 11px;
 
 `;
 
-document.getElementById("logo_img_mob").style.cssText = `
+            document.getElementById("logo_img_mob").style.cssText = `
     background:url(../assets/images/logo/logo1.png) no-repeat;
     width:170px;
    height: 45px;
     background-position: center;
     background-size: contain;
 `;
-document.getElementById("logo_mob").style.cssText = `
+            document.getElementById("logo_mob").style.cssText = `
 border-radius:  0 0 11px 11px;
 
 `;
-  }
-}
+        }
+    }
 
 
 
-//on mobile,tablet etc,.
+    //on mobile,tablet etc,.
+    </script>
+    <script src="https://kit.fontawesome.com/d30de18806.js" crossorigin="anonymous"></script>
 
-
-</script>
-<script src="https://kit.fontawesome.com/d30de18806.js" crossorigin="anonymous"></script>
-
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 
 </header>

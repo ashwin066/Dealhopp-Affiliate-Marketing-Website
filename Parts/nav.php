@@ -18,14 +18,14 @@
             <div class="header-user-actions">
                 <div class="a_search_box">
                     <?php
-          if (isset($_GET['search'])) {
+                    if (isset($_GET['search'])) {
 
-            $search_value = $_GET['search'];
-          } else {
-            $search_value = '';
-          }
-          // disabled for temp resonons
-          echo '
+                        $search_value = $_GET['search'];
+                    } else {
+                        $search_value = '';
+                    }
+                    // disabled for temp resonons
+                    echo '
    <form type="text">
       <input   type="text" value="' . $search_value . '" id="search" name="search" aria-lable="search" class="search search-field" placeholder="Enter your product name...">
       
@@ -33,7 +33,7 @@
       <i class="fa-solid fa-magnifying-glass"></i>
     </button>  
     </form>';
-          ?>
+                    ?>
                 </div>
 
             </div>
@@ -48,21 +48,21 @@
                 </button>
                 <?php
 
-        if (!isset($_SESSION['username'])) {
-          echo '<button  onclick="openForm()" class="a_click a_tbn font-weight-bold text-light">Login <i class="fa fa-sign-in" aria-hidden="true"></i>
+                if (!isset($_SESSION['username'])) {
+                    echo '<button  onclick="openForm()" class="a_click a_tbn font-weight-bold text-light">Login <i class="fa fa-sign-in" aria-hidden="true"></i>
       </button>';
-        } else {
-          echo '<p class="text-light text-capitalize mb-0 a_res w-100">Welcome, ' . $_SESSION['username'] . '</p>';
-        }
-        if (isset($_SESSION['username'])) {
-          echo '
+                } else {
+                    echo '<p class="text-light text-capitalize mb-0 a_res w-100">Welcome, ' . $_SESSION['username'] . '</p>';
+                }
+                if (isset($_SESSION['username'])) {
+                    echo '
     <a href="/dealhopp/user_area/profile.php" class="pl-2 pr-1">
       <button class="action-btn">
           
       <img src="' . $_SESSION['user_image'] . '" alt="" class="a_user_img"> 
       </button>
       </a>';
-        } ?>
+                } ?>
 
             </div>
         </div>
@@ -113,7 +113,15 @@
             </li>
 
             <li class="menu-category">
-                <a href="#" class="menu-title">Blog</a>
+                <a href="privacy_policy.php" class="menu-title">Privacy Policy</a>
+            </li>
+
+            <li class="menu-category">
+                <a href="terms_of_use.php" class="menu-title">Terms Of Use</a>
+            </li>
+
+            <li class="menu-category">
+                <a href="disclaimer.php" class="menu-title">Disclaimer</a>
             </li>
 
             <!-- <li class="menu-category">
@@ -126,7 +134,7 @@
 
 
 
-            <ul class="menu-social-container">
+            <!-- <ul class="menu-social-container">
 
                 <li>
                     <a href="#" class="social-link">
@@ -150,7 +158,7 @@
 
 
 
-            </ul>
+            </ul> -->
 
         </div>
 

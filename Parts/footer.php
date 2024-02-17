@@ -7,12 +7,11 @@
     justify-content: center;">
       <h6 style="color:grey;">Made with <i class="fa fa-heart heart text-danger"></i>
           &
-          <i class="fas fa-coffee heart text-danger"></i> by&nbsp;
+          <i class="fas fa-coffee heart text-danger"></i> in&nbsp;INDIA
       </h6>
-      <a title="View my instagram" href="https://www.instagram.com/ashwin_r66/" target="_blank"
-          style="font-size: 1rem !important;text-transform:capitalize !important" class="footer-category-title">Ashwin
-          R</a>
-
+      <!-- <a title="View my instagram" href="https://www.instagram.com/ashwin_r66/" target="_blank"
+            style="font-size: 1rem !important;text-transform:capitalize !important" class="footer-category-title">Ashwin
+            R</a> -->
 
   </div>
   <footer>
