@@ -1,10 +1,9 @@
 <?php
-include ('../includes/connect.php');
-include ('../functions/common_function.php');
+include('../includes/connect.php');
+include('../functions/common_function.php');
 session_start();
-if(!isset ($_SESSION["username"]))
-{
-header ("location: login.php");
+if (!isset($_SESSION["username"])) {
+  header("location: login.php");
 }
 
 ?>
@@ -41,36 +40,35 @@ header ("location: login.php");
 <body>
 
     <?php
-get_back_to_top();
-get_slide_notify();
-?>
-    <?php include '../parts/nav.php'?>
+  get_back_to_top();
+  get_slide_notify();
+  ?>
+    <?php include '../parts/nav.php' ?>
     <!--card-1-->
 
     <!--card-2-->
     <div class="container">
         <?php
 
-if($_SESSION['user_type']=="admin"){
-  $admin_link='<a href="../admin/" class="text-right small a_tbn border-right pr-2 text-orange">Admin Panel</a>';
-  $verified='<i class="fa-solid text-orange ml-1 fa-circle-check"></i><span style="
+    if ($_SESSION['user_type'] == "admin") {
+      $admin_link = '<a href="../admin/" class="text-right small a_tbn border-right pr-2 text-orange">Admin Panel</a>';
+      $verified = '<i class="fa-solid text-orange ml-1 fa-circle-check"></i><span style="
     color: lightgray;
     font-style: italic;    font-size: 18px;
 ">&nbsp;(admin)</span>';
-}else{
-  $admin_link='';
-  $verified='';
-}
+    } else {
+      $admin_link = '';
+      $verified = '';
+    }
 
-    if(isset($_SESSION['username']))
-    {
-      $username=$_SESSION['username'];
-      $select_query="select * from `user_data` where username='$username'";
-      $result=mysqli_query($con,$select_query);
-      $row_count=mysqli_num_rows($result);
-      $row_data=mysqli_fetch_assoc($result);
-       
-      
+    if (isset($_SESSION['username'])) {
+      $username = $_SESSION['username'];
+      $select_query = "select * from `user_data` where username='$username'";
+      $result = mysqli_query($con, $select_query);
+      $row_count = mysqli_num_rows($result);
+      $row_data = mysqli_fetch_assoc($result);
+
+
       echo '  <div class="a_filter p-2">
     
     
@@ -82,7 +80,7 @@ if($_SESSION['user_type']=="admin"){
  
       <div class="image-upload">
       <label for="file-input">
-      <img  id="previewImg"  src="'.$_SESSION['user_image'].'" alt="profile-pic" class="mr-3 profile">
+      <img  id="previewImg"  src="' . $_SESSION['user_image'] . '" alt="profile-pic" class="mr-3 profile">
       </label>
    </form>   
    </div>
@@ -93,7 +91,7 @@ if($_SESSION['user_type']=="admin"){
       <div class="d-flex w-100 flex-column">
     <div class="d-flex">
     
-     <h5 class="title-2 text-capitalize d-flex align-items-center">'.$_SESSION['username'].''.$verified.'</h5>
+     <h5 class="title-2 text-capitalize d-flex align-items-center">' . $_SESSION['username'] . '' . $verified . '</h5>
      <li class="ml-auto">
         
      <a href="edit_profile.php" class="a_tbn a_edit"><i class="fas fa-edit"></i> Edit</a>
@@ -110,7 +108,7 @@ if($_SESSION['user_type']=="admin"){
 
 </div>
 <div class="d-flex justify-content-end">
-'.$admin_link.'
+' . $admin_link . '
 <a href="../user_area/logout.php" class="text-right small a_tbn text-orange">&nbsp; Logout</a>
 </div>
       </div>
@@ -127,15 +125,18 @@ if($_SESSION['user_type']=="admin"){
 <div class="mx-auto d-flex justify-content-center">
   <img src="./assets/images/icons/arrow.gif" alt="" class="mx-auto" id="loading" height="180" style="display:none; position:absolute; z-index: 20;">
 </div>
-';}
+';
+    }
 
-?>
+    ?>
 
 
         <?php
-get_user_products();
-?>
-
+    get_user_products();
+    ?>
+        <?php
+    get_post_popup();
+    ?>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" crossorigin="anonymous"
             defer></script>
         <script>

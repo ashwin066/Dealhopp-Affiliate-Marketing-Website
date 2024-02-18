@@ -61,7 +61,7 @@ if ($_SESSION['user_type'] !== 'admin') {
             class="fa-solid fa-angles-up"></i></button> -->
 
 
-    <?php 
+    <?php
   get_back_to_top();
   include '../parts/admin-nav.php' ?>
     <div class="container">
@@ -262,7 +262,9 @@ if ($_SESSION['user_type'] !== 'admin') {
     include('delete_product.php');
   }
   ?>
-
+    <?php
+  get_post_popup();
+  ?>
     </div>
 
     <!-- Optional JavaScript -->

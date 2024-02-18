@@ -51,7 +51,7 @@ if (isset($_POST['insert_brand'])) {
   }
 }
 ?>
-<div class="card w-100 bg-light p-4">
+<div class="card w-100 bg-light p-4 mb-4">
     <h4 class="text-center text-secondary">INSERT BRAND</h4>
     <form action="" method="post" class="mb-2" enctype='multipart/form-data'>
         <div class="input-group w-90 mb-3">
@@ -78,4 +78,21 @@ if (isset($_POST['insert_brand'])) {
 
         </div>
     </form>
+
+</div>
+<!-- Table for Listing Brand -->
+<div class="table-responsive">
+    <table class="w-full table table-striped   text-center  ">
+        <thead class="thead-dark ">
+            <tr>
+                <th>Brand Id</th>
+                <th>Brand Name</th>
+                <th>Brand Logo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php get_brands_cat_for_admin(false) ?>
+        </tbody>
+
+    </table>
 </div>

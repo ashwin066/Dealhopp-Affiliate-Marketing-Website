@@ -75,10 +75,10 @@ if ($result_promo_banners) {
     while ($row = mysqli_fetch_assoc($result_promo_banners)) {
         // Display each banner in the table rows
         echo '<tr>';
-        echo '<td>' . $row['title'] . '</td>';
-        echo '<td>' . $row['link'] . '</td>';
-        echo '<td><img src="' . $row['image'] . '" alt="Banner Image" class="img-fluid img-thumbnail"   ></td>';
-        echo '<td><form action="" method="post"> <a   href="edit_banner.php?id=' . $row['id'] . '">Edit</a>  
+        echo '<td  class="m-3" style="max-width:400px;">' . $row['title'] . '</td>';
+        echo '<td class="m-3 text-truncate" style="max-width:500px;" > ' . $row['link'] . ' </td>';
+         echo '<td ><img src="' . $row['image'] . '" alt="Banner Image" class="img  img-thumbnail"   ></td>';
+        echo '<td  class="m-3"><form action="" method="post"> <a   href="edit_banner.php?id=' . $row['id'] . '">Edit</a>  
         <input type="hidden" value=' . $row['id'] . '  name="id"  />
         <button type="submit"  >Delete</button></form></td>';
         echo '</tr>';

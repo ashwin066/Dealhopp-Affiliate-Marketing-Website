@@ -436,11 +436,68 @@ function get_Brands()
   }
 }
 
+function get_brands_cat_for_admin($is_category)
+{
+  global $con;
+  $select_brands = "Select * from `brands`";
+  $select_categories = "Select * from `category`";
+  $result_brands = mysqli_query($con, $is_category ? $select_categories : $select_brands);
+  if (isset($_GET['category'])) {
+    $category_i = $_GET['category'];
+    $all_link = '?category=' . $category_i . '';
+    $selected = 'style="background-color: var(--white); border:solid 2px #ff6600;"';
+  } else {
+    $all_link = 'index.php';
+    $selected = 'style="background-color: var(--white); border:solid 2px #ff6600;"';
+  }
+  if (isset($_GET['brand'])) {
+    $selected = '';
+  }
+  while ($row_data = mysqli_fetch_assoc($result_brands)) {
+    $brand_title = $is_category ? $row_data['category_title'] : $row_data['brand_title'];
+    $brand_id = $is_category ? $row_data['category_id'] : $row_data['brand_id'];
+    $brand_logo =
+      ltrim($is_category ? $row_data['category_logo'] : $row_data['brand_logo'], '/');
+
+
+
+    echo '<tr>';
+    echo '<td  class="m-3" style="max-width:400px;">' . $brand_id . '</td>';
+    echo '<td class="m-3 text-truncate" style="max-width:500px;" > ' . $brand_title . ' </td>';
+    echo '<td ><div class="form-check p-0 mr-1">
+      <label class="mb-0 form-check-lable">
+        
+        <div class="category-item" >
+      <div class="category-img-box contain">
+          <img  style="width:95px; height:45px; object-fit:contain" class=" contain brand_logo_top" src=' . $brand_logo . ' alt="' . $brand_title . '"  >
+        </div>
+  
+        <div class="category-content-box">
+  
+         <!-- <div class="category-content-flex">
+            <h3 class="category-item-title mb-0 mx-auto">' . $brand_title . '</h3>
+  
+          </div>-->
+        </div> 
+      </div>
+ 
+      
+      
+      
+        </label>
+    </div></td>';
+    // echo '<td  class="m-3"><form action="" method="post"> <a   href="edit_brand.php?id=' . $brand_id . '">Edit</a>  
+    //     <input type="hidden" value=' . $brand_id . '  name="id"  />
+    //     <button type="submit"  >Delete</button></form></td>';
+    echo '</tr>';
+  }
+}
+
 function get_promo_banners()
 {
   global $con;
   // Fetch Promo Banners from Database
-  $select_promo_banners = "SELECT * FROM `promo_banners`";
+  $select_promo_banners = "SELECT * FROM `promo_banners` ORDER BY `id` DESC";
   $result_promo_banners = mysqli_query($con, $select_promo_banners);
 
   if ($result_promo_banners) {
