@@ -1442,7 +1442,7 @@ border:solid 1px var(--salmon-orange)!important;
   margin-left: 5px;
 }
 .theme-change::after{
-  background: url(/dealhopp/assets/images/icons/moon.png);
+  background: url(../images/icons/moon.png);
     content: "";
     width: 23px;
     height: 23px;
@@ -1452,7 +1452,7 @@ border:solid 1px var(--salmon-orange)!important;
     display: block;
 }
 .moon::after{
-  background: url(/dealhopp/assets/images/icons/sun.png);
+  background: url(../images/icons/sun.png);
     content: "";
     width: 23px;
     height: 23px;
@@ -1699,7 +1699,7 @@ border:solid 1px var(--salmon-orange)!important;
   display: none;
 }
 
-.search-btn {
+.search-btn1 {
   position: absolute;
   top: 50%;
   right: 0;
@@ -1716,7 +1716,7 @@ border:solid 1px var(--salmon-orange)!important;
   transition: color var(--transition-timing);
 }
 
-.search-btn:hover {
+.search-btn1:hover {
   color: var(--grey-orange-opp);
 }
 

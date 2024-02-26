@@ -109,7 +109,7 @@
           if ($product_img1 != '' || $product_img1 != null)
             $product_img3 = $product_img1;
           else
-            $product_img3 = './assets/images/icons/alt.png';
+            $product_img3 = 'dealhopp./assets/images/icons/alt.png';
         }
         if ($is_coupon != 1) {
 

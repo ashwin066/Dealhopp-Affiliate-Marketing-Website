@@ -4,10 +4,10 @@
     <div class="header-main" id="header-main">
 
         <div class="container d-flex h-100 justify-content-between">
-            <div class="logodiv_mob"> <a href="/dealhopp/index.php" id="logo_mob" class="header-logo a_logo_box">
+            <div class="logodiv_mob"> <a href="./index.php" id="logo_mob" class="header-logo a_logo_box">
                     <div class="logo_img_mob" id="logo_img_mob"></div>
                 </a></div>
-            <div class="logodiv"> <a href="/dealhopp/index.php" id="logo" class="header-logo a_logo_box">
+            <div class="logodiv"> <a href="./index.php" id="logo" class="header-logo a_logo_box">
                     <div class="logo_img" id="logo_img"></div>
                 </a></div>
 
@@ -25,14 +25,21 @@
                         $search_value = '';
                     }
                     // disabled for temp resonons
-                    echo '
-   <form type="text">
-      <input   type="text" value="' . $search_value . '" id="search" name="search" aria-lable="search" class="search search-field" placeholder="Enter your product name...">
-      
-      <button  type=""  id="search-btn" name="search-btn" id="search-btn" class="search-btn">
-      <i class="fa-solid fa-magnifying-glass"></i>
-    </button>  
+
+                    $current_page = basename($_SERVER['PHP_SELF']);
+                    $is_in_navbar = true; // Adjust this condition based on your actual navbar setup
+
+                    if ($current_page === 'index.php' && $is_in_navbar) {
+                        echo '
+    <form type="text">
+        <input type="text" value="' . $search_value . '" id="search" name="search" aria-label="search" class="search search-field" placeholder="Enter your product name...">
+        <div   id="search-btn" name="search-btn" class="search-btn1">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>  
     </form>';
+                    }
+
+
                     ?>
                 </div>
 
@@ -56,7 +63,7 @@
                 }
                 if (isset($_SESSION['username'])) {
                     echo '
-    <a href="/dealhopp/user_area/profile.php" class="pl-2 pr-1">
+    <a href="./user_area/profile.php" class="pl-2 pr-1">
       <button class="action-btn">
           
       <img src="' . $_SESSION['user_image'] . '" alt="" class="a_user_img"> 
@@ -70,7 +77,12 @@
     </div>
     </div>
 
+    <?php
+    $current_page = basename($_SERVER['PHP_SELF']);
+    $is_in_navbar = true; // Adjust this condition based on your actual navbar setup
 
+    if ($current_page === 'index.php' && $is_in_navbar) {
+    ?>
     <div class="mobile-bottom-navigation">
 
         <div class="container p-0 d-flex">
@@ -80,9 +92,9 @@
                 <input type="text" id="search" autocomplete=off name="search" aria-lable="search"
                     class="search search-field" placeholder="Enter your product name...">
 
-                <button type="submit" id="search-btn-mob" value="search" name="search_data_product" class="search-btn">
+                <div id="search-btn-mob" value="search" name="search_data_product" class="search-btn1" 1>
                     <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
+                </div>
 
 
             </div>
@@ -91,6 +103,11 @@
 
         </div>
     </div>
+    <?php
+    }
+    ?>
+
+
 
     <nav class="mobile-navigation-menu  has-scrollbar" data-mobile-menu>
 

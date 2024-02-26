@@ -1,6 +1,6 @@
 <?php 
 //secure
-session_start();
+//session_start();
 if(!isset ($_SESSION["username"]))
 {
 header ("location: ../user_area/login.php");

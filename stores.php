@@ -235,7 +235,7 @@ include('user_area/common_function_user.php');
       - PRODUCT
     -->
 
-                 <h1 class="title1 align-self-center mt-2 text-uppercase font-weight-bold">All Stores</h1>
+                 <h1 class="title1 align-self-center mt-2 text-uppercase font-weight-bold">Our Partner Stores</h1>
                  <div class="container">
                      <div class="row d-flex justify-content-center">
                          <?php get_Brands_card();?>
@@ -262,7 +262,7 @@ include('user_area/common_function_user.php');
              slidesToShow: 1,
              speed: 400,
              autoplay: true,
-             autoplaySpeed: 2500,
+             autoplaySpeed: 3500,
          });
      });
      </script>

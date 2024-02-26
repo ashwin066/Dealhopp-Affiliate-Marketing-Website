@@ -20,8 +20,8 @@
               <h2 class="footer-category-title">Brand directory</h2>
               <div class="footer-category-box">
                   <h3 class="category-box-title mb-0">Explore :</h3>
-                  <a href="index.php" class="footer-category-link">Loot Deals</a>
-                  <a href="stores.php" class="footer-category-link">Stores</a>
+                  <a href="index.php" class="footer-category-link">Live Deals</a>
+                  <a href="stores.php" class="footer-category-link">Our Partner Stores</a>
                   <a href="privacy_policy.php" class="footer-category-link">Privacy policy</a>
                   <a href="terms_of_use.php" class="footer-category-link">Terms of use</a>
                   <a href="disclaimer.php" class="footer-category-link">Disclaimer</a>

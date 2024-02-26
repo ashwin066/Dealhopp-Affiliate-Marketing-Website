@@ -384,7 +384,7 @@ include('user_area/common_function_user.php');
             slidesToShow: 1,
             speed: 400,
             autoplay: true,
-            autoplaySpeed: 2500,
+            autoplaySpeed: 3500,
         });
     });
     </script>

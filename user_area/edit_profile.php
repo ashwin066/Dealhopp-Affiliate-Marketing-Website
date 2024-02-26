@@ -8,26 +8,26 @@ include ('../functions/common_function.php');
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../assets/css/profile_pic.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/profile_pic.css">
 
-  <link rel="stylesheet" href="../assets/css/profile.css">
-  <link rel="stylesheet" href="../assets/css/style-prefix.css">
-  <title>Your Profile</title>
+    <link rel="stylesheet" href="../assets/css/profile.css">
+    <link rel="stylesheet" href="../assets/css/style-prefix.css">
+    <title>Your Profile</title>
 </head>
 
 <body>
 
-<?php include '../parts/nav.php'?>
+    <?php include '../parts/nav.php'?>
 
-  <?php
+    <?php
  if(isset($_SESSION['username']))
  {
    $username=$_SESSION['username'];
@@ -104,10 +104,10 @@ include ('../functions/common_function.php');
             
               $extension = array('png', 'jpg', 'jpeg','webp','gif','jfif','svg');
               if(in_array ($profile_pic_extension,$extension)){
-                $upload_logo ='/dealhopp/user_area/user_img/'.$profile_pic_filename.'';
+                $upload_logo ='user_img/'.$profile_pic_filename.'';
                 move_uploaded_file($profile_pic_filetmp,$upload_logo);
                 
-                $insert_query="update `user_data` set user_image='$upload_logo' where username='$username'";
+                $insert_query="update `user_data` set user_image='./user_area/$upload_logo' where username='$username'";
                 $result=mysqli_query($con,$insert_query);
                 if($result){
                   echo '<meta http-equiv = "refresh" content = "0.2; url = ../index.php" />';
@@ -126,10 +126,10 @@ include ('../functions/common_function.php');
 ?>
 
 
-  <script src="../assets/js/app.js"></script>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-  <!-- <script>
+    <script src="../assets/js/app.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <!-- <script>
         function previewFile(input){
             var file = $("input[type=file]").get(0).files[0];
 
@@ -144,7 +144,7 @@ include ('../functions/common_function.php');
             }
         }
     </script> -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
 
 </body>
 

@@ -165,9 +165,8 @@ if (isset($_POST['action'])) {
         </div>
         
           <div class="ml-auto">
-          <a href="store_details.php?brand_title=' . $brand_title . '&brand_id=' . $brand_id . '"> <img draggable="false" class=" ml-auto" src="admin' . $brand_logo . '" alt="">
-        </a>
-         
+           <img draggable="false" class=" ml-auto" src="admin' . $brand_logo . '" alt="">
+          
           </div>
           </div>
           <div class="mb-2  ">
@@ -247,9 +246,9 @@ if (isset($_POST['action'])) {
           <a href="#" class="showcase-category text_wrap ">' . $category_title . '</a>
         </div>
             <div class="ml-auto">
-          <a href="store_details.php?brand_title=' . $brand_title . '&brand_id=' . $brand_id . '"> <img draggable="false" class=" ml-auto" src="admin' . $brand_logo . '" alt="">
-        </a>
          
+          <img draggable="false" class=" ml-auto" src="admin' . $brand_logo . '" alt="">
+           
           </div>
           </div>
           <div class="mb-2  ">

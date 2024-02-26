@@ -77,7 +77,7 @@ function get_login_form()
   <button onclick='closeForm()' class='float-right position-absolute' style='right:10px; top:10px;' onclick='closeForm()'>
   <i class='fa-solid text-orange h5 fa-circle-xmark'></i>
   </button>
-  <form action='/Dealhopp/user_area/login.php?loading' method='post' class='form' role='form'>
+  <form action='/user_area/login.php?loading' method='post' class='form' role='form'>
           <div class='form-group'>
               <label class='title-2' for='username'>Username or Email</label>
               <input type='text' autocomplete=off class='form-control' name='username' placeholder='Username or Email'>
@@ -269,7 +269,7 @@ function get_signup_form()
         <button onclick='closeForm2()' class='float-right position-absolute' style='right:10px; top:10px;' onclick='closeForm()'>
         <i class='fa-solid text-orange h5 fa-circle-xmark'></i>
         </button>
-            <form action='/Dealhopp/user_area/registration.php?loading' class='form' role='form' method='post' autocomplete='off'>
+            <form action='/user_area/registration.php?loading' class='form' role='form' method='post' autocomplete='off'>
                 <div class='form-group'>
                     <label class='title-2' for='username'>User Name</label>
                     <input type='text' autocomplete=off class='form-control' name='username' placeholder='User Name' required=''>
@@ -508,6 +508,7 @@ function get_promo_banners()
                                     <div class="slider-item">
                                         <img src="admin/' . $row['image'] . '"
                                             alt="' . $row['title'] . '" class="banner-img">
+                                            
                                     </div>
                                 </a>';
     }
@@ -1099,11 +1100,11 @@ function get_user_products()
           echo '<div class="w-100">
   <h6 class="text-center text-secondary">You Have not Posted any Deals or offers yet</h6>
   <div class="card a_btn2 text-white border-radius-18 my-3 mx-auto" style="width: 18rem;">
-  <div class="card-body w-100">
+  <button onclick="openpost_box()" class="card-body w-100">
     <h5 class="card-title">Add Deal</h5>
-    <p class="card-text">You can Post Best Deals and Offers Here.</p>
+    <p class="card-text">You can Post Best Deals and Offers Here.<br/><br/>The deals you post will be auto deleted in 3-4 weeks.</p>
     <a href="#" class="w-100 btn border-radius-18 btn-light border">Post <i class="fa-solid fa-plus"></i></a>
-  </div>
+  </button>
   </div>
   </div>
  ';
@@ -1314,9 +1315,9 @@ function get_post_popup()
          <button onclick="closepost_box()" class="float-right position-sticky" style="right:7px; top:7px;">
          <i class="fa-solid text-orange h5 fa-circle-xmark"></i>
          </button>
-  <form action="/dealhopp/admin/insert_product.php" method="post">
+  <form action="/admin/insert_product.php" method="post">
   <div class="d-flex mb-2 align-items-center">
-  <img src="/dealhopp/assets/images/logo/Logo1.png" height="40" class="mr-4">
+  <img src="./assets/images/logo/Logo1.png" height="40" class="mr-4">
   <h6 class="mt-3 text-center">Post Best Deals and Offers Here</h6>
   </div>
   <div class="form-group mb-2">
@@ -2111,9 +2112,8 @@ function product_details()
                   <div class="showcase-status">
                   <div class="wrapper a_store_logo2">
           
-                  <a href="index.php?brand=' . $brand_id . '" style="text-decoration:none;">
-                  <img src="./admin' . $brand_logo . '"
-                  alt="' . $product_title . '" ></a>
+                   <img src="./admin' . $brand_logo . '"
+                  alt="' . $product_title . '" >   
 
                   <p class="my-auto">
                   <a  class="text-orange a_tbn"><b>' . $category_title . '</b></a>
@@ -2296,12 +2296,13 @@ function get_related_product()
   global $con;
   if (isset($_GET['product_id'])) {
     $product_i = $_GET['product_id'];
-    if ($_GET['detail'] == '') {
+    if ($_GET['title'] == '') {
       $keyword = 'loot';
     } else {
-      $keyword = $_GET['detail'];
+      $keyword = $_GET['title'];
+      $keyword = explode(" ", $keyword);
     }
-    $search_query = "Select * from `products` JOIN `category` JOIN `brands` WHERE products.product_keywords like ('%$keyword%') AND products.product_id != '$product_i' AND products.product_category=category.category_id AND products.product_brand=brands.brand_id ORDER BY date desc";
+    $search_query = "Select * from `products` JOIN `category` JOIN `brands` WHERE products.product_title like '%$keyword[0]%' AND products.product_id != '$product_i' AND products.product_category=category.category_id AND products.product_brand=brands.brand_id ORDER BY date desc";
     $result_product = mysqli_query($con, $search_query);
 
     if (mysqli_num_rows($result_product) == 0) {
@@ -2380,7 +2381,7 @@ function get_related_product()
 
 <span class="p-0  text-secondary ml-auto a_updated text_wrap flex-nowrap" style="margin-top:0.5px;">' . $timeago . '</span>
 <div style="width:100%;" >
-  <a href="product_details.php?product_id=' . $product_id . '&detail=' . $product_keywords . '" class="mt-1 showcase-img-box">
+  <a href="product_details.php?product_id=' . $product_id . '&title=' . $product_title . '&detail=' . $product_keywords . '" class="mt-1 showcase-img-box">
     <img src="' . $product_img1 . '" alt="" height="160" class="mx-auto showcase-img" style="margin-top: -26px;">
   </a></div>
 
