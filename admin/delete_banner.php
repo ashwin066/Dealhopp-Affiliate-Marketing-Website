@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 include('../includes/connect.php');
 
@@ -15,11 +14,11 @@ if ($_SESSION['user_type'] !== 'admin') {
 
 // Check if the banner id is provided in the URL
 if (isset($_POST['id'])) {
- 
+
     // Check if the confirmation is received from the user
     if (isset($_POST['confirm']) && $_POST['confirm'] == 'yes') {
         $id = $_POST['id'];
-         // Prepare a delete query to remove the banner with the provided id
+        // Prepare a delete query to remove the banner with the provided id
         $delete_query = "DELETE FROM promo_banners WHERE id = $id";
 
         // Execute the delete query
@@ -56,5 +55,5 @@ if (isset($_POST['id'])) {
     }
 } else {
     // If the banner id is not provided in the URL, display an error message
-     // echo "<script>alert('Banner not deleted.')</script>";
+    // echo "<script>alert('Banner not deleted.')</script>";
 }
