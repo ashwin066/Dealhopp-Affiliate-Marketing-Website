@@ -2,8 +2,7 @@
 include('../includes/connect.php');
 
 // Secure the Page
-session_start();
-if (!isset($_SESSION["username"])) {
+ if (!isset($_SESSION["username"])) {
     header("location: ../user_area/login.php");
 }
 if ($_SESSION['user_type'] !== 'admin') {
