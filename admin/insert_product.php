@@ -1,15 +1,17 @@
 <?php
-//secure
+                    //secure
 
-// if(!isset ($_SESSION["username"]))
-// {
-// header ("location: ../user_area/login.php");
-// }
-// if($_SESSION['user_type']!=='admin'){
-//   header ("location: ../index.php");
-// }
-//secure
-//session_start();
+                    // if(!isset ($_SESSION["username"]))
+                    // {
+                    // header ("location: ../user_area/login.php");
+                    // }
+                    // if($_SESSION['user_type']!=='admin'){
+                    //   header ("location: ../index.php");
+                    // }
+                    //secure
+                    //session_start();
+                    session_status() === PHP_SESSION_ACTIVE ?: session_start();
+
 $is_coupon = 0;
 if (isset($_POST['content_type'])) {
     $is_coupon = $_POST['content_type'];
@@ -50,7 +52,8 @@ if (isset($_POST['insert_product'])) {
     include '../includes/connect.php';
 
     $product_img3 = '';
-    $product_posted_user = '';
+    $product_posted_user =  $_SESSION['user_id'] ;
+
     $product_title = $_POST['product_title'];
     $product_description = $_POST['product_description'];
     $coupon = $_POST['coupon'];
@@ -86,8 +89,7 @@ if (isset($_POST['insert_product'])) {
     }
 
 
-    $product_posted_user = $_COOKIE["user_id"];
-    $product_status = 'true';
+    $product_status = $_POST['status']??'true';
 
     //Select data from db
     $select_query = "Select * from `products` where product_title = '$product_title'";

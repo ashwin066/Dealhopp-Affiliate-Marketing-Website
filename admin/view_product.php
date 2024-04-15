@@ -12,7 +12,7 @@
     }
     //secure
     include('../includes/connect.php');
-    $select_product = "Select * from `products` JOIN `category` JOIN `brands` WHERE products.product_category=category.category_id AND products.product_brand=brands.brand_id ORDER BY pinned DESC, DATE DESC";
+    $select_product = "Select * from `products` JOIN `category` JOIN `brands` WHERE products.product_category=category.category_id AND  products.product_brand=brands.brand_id ORDER BY pinned DESC, DATE DESC";
     $result_product = mysqli_query($con, $select_product);
 
 

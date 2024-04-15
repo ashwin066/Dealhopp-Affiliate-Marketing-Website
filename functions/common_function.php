@@ -314,7 +314,8 @@ function get_signup_form()
 
 function get_slide_notify()
 {
-  echo '
+  if (1 === 0) {
+    echo '
   <div class="overlay" data-overlay></div>
 
   <!--
@@ -359,6 +360,7 @@ function get_slide_notify()
   </div>
    
 ';
+  }
 }
 function get_Brands()
 {
@@ -955,6 +957,15 @@ function get_user_products()
               $pin_product = '';
             }
 
+            $approved = '';
+
+            if ($product_status == "not_approved") {
+              $approved = '<span>Admin Approval pending</span>';
+            } else if ($product_status == "disapprove") {
+              $approved = '<span>Post Disapproved</span>';
+            } else if ($product_status == "approved" || $product_status == "true") {
+              $approved = '<span>Post Approved by Admin</span>';
+            }
             $output = '';
 
             if ($is_coupon != 1) {
@@ -967,7 +978,7 @@ function get_user_products()
         ' . $deal_expired . '
         <img src=' . $product_img2 . ' alt="Dealhopp product Image" height="160" class="product-img hover">
         </a> 
-        <a href="../admin/index.php?view_product"><span class="a_no_result_title font-weight-bold showcase-badge"><i class="fa-solid fa-pen"></i> Edit</span></a>
+  <span class="a_no_result_title font-weight-bold showcase-badge"><i class="fa-solid fa-check"></i> ' . $approved . '</span>
         <!--<p class="showcase-badge">' . $num . '% OFF</p> -->
         <!--<p class="showcase-badge angle orange">' . $num . '% OFF</p>-->
       
@@ -1016,7 +1027,7 @@ function get_user_products()
     ';
             } else {
               $output .= '
-<div class="showcase">
+<div class="showcase">' . $approved . '
        <div class="showcase-banner ">
         <a id="add-dark-here" href="product_details.php?product_id=' . $product_id . '&detail=' . $product_keywords . '&title=' . $product_title . '">
         
@@ -1125,7 +1136,7 @@ function get_public_user_products()
     $user_img = $row_data['user_image'];
     $user_type = $row_data['user_type'];
 
-    $select_product = "Select * from `products` JOIN `category` JOIN `brands` WHERE products.product_category=category.category_id AND products.product_brand=brands.brand_id and products.posted_user_id=$user_id ORDER BY pinned DESC, DATE DESC";
+    $select_product = "Select * from `products` JOIN `category` JOIN `brands` WHERE products.product_category=category.category_id AND  products.product_brand=brands.brand_id and products.posted_user_id=$user_id ORDER BY pinned DESC, DATE DESC";
     $result_product = mysqli_query($con, $select_product);
 
     $count = 0;
@@ -1319,6 +1330,7 @@ function get_post_popup()
   <div class="form-group mb-2">
     <label for="product_title">Product Title</label>
     <input type="text" class="border-secondary a_category-item px-2" name="product_title" id="product_title" placeholder="Product Title">
+    <input type="text" value="not_approved"  name="status" id="status" style="visibility:hidden; display:none;" >
   </div>
 
   <div class="form-row">
@@ -1551,7 +1563,7 @@ function get_unique_categories_brand()
 
       $category_title = $_GET['category'];
       $brands_title = $_GET['brand'];
-      $select_product = "Select * from `products` JOIN `category` JOIN `brands` where  products.brand_title=$brands_title and products.category_title=$category_title AND products.category_title=category.category_id and products.brand_title=brands.brand_id ORDER BY date desc";
+      $select_product = "Select * from `products` JOIN `category` JOIN `brands` where products.brand_title=$brands_title and products.category_title=$category_title AND products.category_title=category.category_id and products.brand_title=brands.brand_id ORDER BY date desc";
       $result_product = mysqli_query($con, $select_product);
 
       while ($row_data = mysqli_fetch_assoc($result_product)) {
@@ -1864,7 +1876,7 @@ function get_search_product()
   if (isset($_GET['search_data_product'])) {
     $search_data_value = $_GET['search_data'];
 
-    $search_query = "Select * from `products` JOIN `category` JOIN `brands` WHERE products.product_title like '%$search_data_value%' AND products.category_title=category.category_id AND products.brand_title=brands.brand_id ORDER BY date desc";
+    $search_query = "Select * from `products` JOIN `category` JOIN `brands` WHERE  products.product_title like '%$search_data_value%' AND products.category_title=category.category_id AND products.brand_title=brands.brand_id ORDER BY date desc";
     $result_product = mysqli_query($con, $search_query);
 
     while ($row_data = mysqli_fetch_assoc($result_product)) {

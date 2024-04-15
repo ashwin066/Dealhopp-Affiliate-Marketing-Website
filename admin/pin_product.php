@@ -1,4 +1,5 @@
   <?php
+  
 include ('../includes/connect.php');
 //secure
 
@@ -36,7 +37,7 @@ $pinned=$row['pinned'];
 
 ?>
 
-<?php 
+  <?php 
  $result=mysqli_query($con,$pin);
  if($result){
   echo "<script>alert('success')</script>";
@@ -46,4 +47,3 @@ $pinned=$row['pinned'];
    die(mysqli_error($con));
  }
  ?>
-  

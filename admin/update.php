@@ -1,105 +1,110 @@
      <?php
-      include('../includes/connect.php');
 
-      //secure
+        include('../includes/connect.php');
 
-      if (!isset($_SESSION["username"])) {
-        header("location: ../user_area/login.php");
-      }
-      if ($_SESSION['user_type'] !== 'admin') {
-        header("location: ../index.php");
-      }
+        //secure
 
-      //secure
-
-      $product_id = $_GET['updateid'];
-      $sql = "select * from `products` where product_id=$product_id";
-      $result = mysqli_query($con, $sql);
-      $row = mysqli_fetch_assoc($result);
-      $product_id = $row['product_id'];
-      $product_title = $row['product_title'];
-      $product_old_price = $row['product_old_price'];
-      $product_description = $row['product_description'];
-      $product_img1 = $row['product_img1'];
-      $product_img2 = $row['product_img2'];
-      $product_img3 = $row['product_img3'];
-      $product_link = $row['product_link'];
-      $product_price = $row['product_price'];
-      $product_keywords = $row['product_keywords'];
-      $status = $row['status'];
-      $is_coupon = $row['is_coupon'];
-      if (isset($_POST['content_type'])) {
-        $is_coupon =  $_POST['content_type'];
-      }
-      if (isset($_POST['submit'])) {
-        $Product_title = $_POST['product_title'];
-        $Product_old_price = $_POST['product_old_price'];
-        $Product_description = $_POST['product_description'];
-        $product_img1 = $_POST['product_img1'];
-        $product_img2 = $_POST['product_img2'];
-        $product_img3 = $_POST['product_img3'];
-        $product_link = $_POST['product_link'];
-        $product_price = $_POST['product_price'];
-         $product_keywords = $_POST['product_keywords'];
-        $status = $_POST['status'];
-        if ($is_coupon == null) {
-          $is_coupon = 0;
+        if (!isset($_SESSION["username"])) {
+            header("location: ../user_area/login.php");
+        }
+        if ($_SESSION['user_type'] !== 'admin') {
+            header("location: ../index.php");
         }
 
+        //secure
 
-        // echo '<h1 class="text-light">Entered Productsrmation :</h1>';
-        // echo $Product_title;
-        // echo '<br>';
-        //  echo '<br>';
-        // echo $Product_old_price;
-        // echo '<br>';
-        //  echo '<br>';
-        // echo $Product_description;
-        // echo '<br>';
-        //  echo '<br>';
-        // print_r($Product_img1);
-        // echo '<br>';
-        //  echo '<br>';
+        $product_id = $_GET['updateid'];
+        $sql = "select * from `products` where product_id=$product_id";
+        $result = mysqli_query($con, $sql);
+        $row = mysqli_fetch_assoc($result);
+        $product_id = $row['product_id'];
+        $product_title = $row['product_title'];
+        $product_old_price = $row['product_old_price'];
+        $product_description = $row['product_description'];
+        $product_img1 = $row['product_img1'];
+        $product_img2 = $row['product_img2'];
+        $product_img3 = $row['product_img3'];
+        $product_link = $row['product_link'];
+        $product_price = $row['product_price'];
+        $product_keywords = $row['product_keywords'];
+        $status = $row['status'];
+        $is_coupon = $row['is_coupon'];
+        $product_posted_user = $row['posted_user_id'];
+        if (isset($_POST['content_type'])) {
+            $is_coupon =  $_POST['content_type'];
+        }
+        if (isset($_POST['submit'])) {
+            $Product_title = $_POST['product_title'];
+            $Product_old_price = $_POST['product_old_price'];
+            $Product_description = $_POST['product_description'];
+            $product_img1 = $_POST['product_img1'];
+            $product_img2 = $_POST['product_img2'];
+            $product_img3 = $_POST['product_img3'];
+            $product_link = $_POST['product_link'];
+            $product_price = $_POST['product_price'];
+            $product_keywords = $_POST['product_keywords'];
 
-        //   $Product_img1_filename=$Product_img1['name']; 
-        //   // print_r($Product_img1_filename);
-        //   // echo '<br>';
-        //   $Product_img1_fileerror=$Product_img1['error']; 
-        //   // print_r($Product_img1_fileerror);
-        //   // echo '<br>';
-        //   $Product_img1_filetmp=$Product_img1['tmp_name'];
-        //   // print_r($Product_img1_filetmp);
-        //   // echo '<br>';
-        //   $Product_img1_name_separate=explode('.',$Product_img1_filename);
-        //   // print_r($Product_img1_name_separate);
-        //   // echo '<br>';
-        //   $Product_img1_extension=strtolower(end($Product_img1_name_separate));
-        //   // print_r($Product_img1_extension);
-        //   $extension = array('png', 'jpg', 'jpeg','webp','gif','jfif');
-        //   if(in_array ($Product_img1_extension,$extension)){
-        //     $upload_image ='upload/'.$Product_img1_filename;
-        //     move_uploaded_file($Product_img1_filetmp,$upload_image);
+            $status = $_POST['status'];
+            if ($is_coupon == null) {
+                $is_coupon = 0;
+            }
 
-        $sql = "update `products` set status='$status',product_keywords='$product_keywords',product_id=$product_id,Product_title='$Product_title',Product_old_price='$Product_old_price',Product_description='$Product_description',product_img1='$product_img1',product_img2='$product_img2',product_img3='$product_img3',product_link='$product_link',is_coupon = $is_coupon,product_price='$product_price' where product_id=$product_id ";
-      }
-      //  $sql="update `products` set id=$product_id,Product_title='$Product_title',Product_old_price='$Product_old_price',Product_description='$Product_description',Product_img1='$upload_image' where id=$product_id";
-      //  $result=mysqli_query($con,$sql);
-      //  if($result){
-      //    echo "<p>Data Updated Successfully</p>";
 
-      //  }
-      //  else{
-      //    die(mysqli_error($con));
-      //  }
+            // echo '<h1 class="text-light">Entered Productsrmation :</h1>';
+            // echo $Product_title;
+            // echo '<br>';
+            //  echo '<br>';
+            // echo $Product_old_price;
+            // echo '<br>';
+            //  echo '<br>';
+            // echo $Product_description;
+            // echo '<br>';
+            //  echo '<br>';
+            // print_r($Product_img1);
+            // echo '<br>';
+            //  echo '<br>';
 
-      //?products=added
-      //   header("location:index3.php");
-      // }
-      ?>
+            //   $Product_img1_filename=$Product_img1['name']; 
+            //   // print_r($Product_img1_filename);
+            //   // echo '<br>';
+            //   $Product_img1_fileerror=$Product_img1['error']; 
+            //   // print_r($Product_img1_fileerror);
+            //   // echo '<br>';
+            //   $Product_img1_filetmp=$Product_img1['tmp_name'];
+            //   // print_r($Product_img1_filetmp);
+            //   // echo '<br>';
+            //   $Product_img1_name_separate=explode('.',$Product_img1_filename);
+            //   // print_r($Product_img1_name_separate);
+            //   // echo '<br>';
+            //   $Product_img1_extension=strtolower(end($Product_img1_name_separate));
+            //   // print_r($Product_img1_extension);
+            //   $extension = array('png', 'jpg', 'jpeg','webp','gif','jfif');
+            //   if(in_array ($Product_img1_extension,$extension)){
+            //     $upload_image ='upload/'.$Product_img1_filename;
+            //     move_uploaded_file($Product_img1_filetmp,$upload_image);
+
+            $sql = "update `products` set status='$status',product_keywords='$product_keywords',product_id=$product_id,Product_title='$Product_title',Product_old_price='$Product_old_price',Product_description='$Product_description',product_img1='$product_img1',product_img2='$product_img2',product_img3='$product_img3',product_link='$product_link',is_coupon = $is_coupon,product_price='$product_price' where product_id=$product_id ";
+        }
+        //  $sql="update `products` set id=$product_id,Product_title='$Product_title',Product_old_price='$Product_old_price',Product_description='$Product_description',Product_img1='$upload_image' where id=$product_id";
+        //  $result=mysqli_query($con,$sql);
+        //  if($result){
+        //    echo "<p>Data Updated Successfully</p>";
+
+        //  }
+        //  else{
+        //    die(mysqli_error($con));
+        //  }
+
+        //?products=added
+        //   header("location:index3.php");
+        // }
+        ?>
 
      <div class="container card w-100 bg-light p-4">
          <h2 class="text-center">Update Product</h2>
          <form method="post" enctype='multipart/form-data'>
+             <label for="product_title">This Deal/oupon was posted by user with id :
+                 <?php echo $product_posted_user; ?></label><br>
              <div class="form-group"> <label for="product_title">This is a</label><br>
                  <div class="form-check form-check-inline">
                      <input class="form-check-input" type="radio" name="content_type" id="is_product_selected" value="0"
@@ -163,15 +168,15 @@
                      <select id="category_title" name="category_title" class="form-control">
 
                          <?php
-                $select_category = "Select * from `category` ";
-                $result_category = mysqli_query($con, $select_category);
-                while ($row_data = mysqli_fetch_assoc($result_category)) {
-                  $category_title = $row_data['category_title'];
-                  $category_id = $row_data['category_id'];
-                  $category_logo = $row_data['category_logo'];
-                  echo  "<option value='$category_id'>$category_title</option>";
-                }
-                ?>
+                            $select_category = "Select * from `category` ";
+                            $result_category = mysqli_query($con, $select_category);
+                            while ($row_data = mysqli_fetch_assoc($result_category)) {
+                                $category_title = $row_data['category_title'];
+                                $category_id = $row_data['category_id'];
+                                $category_logo = $row_data['category_logo'];
+                                echo  "<option value='$category_id'>$category_title</option>";
+                            }
+                            ?>
 
 
                      </select>
@@ -180,15 +185,15 @@
                      <label for="inputState">Select Brand(Store)</label>
                      <select id="brand_title" name="brand_title" class="form-control">
                          <?php
-                $select_brands = "Select * from `brands` ";
-                $result_brands = mysqli_query($con, $select_brands);
-                while ($row_data = mysqli_fetch_assoc($result_brands)) {
-                  $brand_title = $row_data['brand_title'];
-                  $brand_id = $row_data['brand_id'];
-                  $brand_logo = $row_data['brand_logo'];
-                  echo "<option value='$brand_id'>$brand_title</option>";
-                }
-                ?>
+                            $select_brands = "Select * from `brands` ";
+                            $result_brands = mysqli_query($con, $select_brands);
+                            while ($row_data = mysqli_fetch_assoc($result_brands)) {
+                                $brand_title = $row_data['brand_title'];
+                                $brand_id = $row_data['brand_id'];
+                                $brand_logo = $row_data['brand_logo'];
+                                echo "<option value='$brand_id'>$brand_title</option>";
+                            }
+                            ?>
                      </select>
                  </div>
              </div>
@@ -226,10 +231,17 @@
                      <label for="status" class="form-label">status</label>
 
                      <select name="status" id="status">
-                         <option value="<?php echo $status; ?>"><?php echo $status; ?></option>
-                         <?php echo ($status == "true") ? '<option value="expired">expired</option>' : '<option value="true">true</option>'; ?>
-
+                         <option value="expired" <?php if ($status === 'expired') echo 'selected'; ?>>expired</option>
+                         <option value="true" <?php if ($status === 'true') echo 'selected'; ?>>true</option>
+                         <option value="not_approved" <?php if ($status === 'not_approved') echo 'selected'; ?>>
+                             not_approved</option>
+                         <option value="approved" <?php if ($status === 'approved') echo 'selected'; ?>>approved
+                         </option>
+                         <option value="disapprove" <?php if ($status === 'disapprove') echo 'selected'; ?>>
+                             disapprove
+                         </option>
                      </select>
+
 
                  </div>
 
@@ -241,13 +253,13 @@
 
 
                      <?php
-              $result = mysqli_query($con, $sql);
-              if ($result) {
-                echo '<p class="text-success">&nbsp;Data was inserted successfully</p>';
-              } else {
-                die(mysqli_error($con));
-              }
-              ?>
+                        $result = mysqli_query($con, $sql);
+                        if ($result) {
+                            echo '<p class="text-success">&nbsp;Data was inserted successfully</p>';
+                        } else {
+                            die(mysqli_error($con));
+                        }
+                        ?>
 
 
 

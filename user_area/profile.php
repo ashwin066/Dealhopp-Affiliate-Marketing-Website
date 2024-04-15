@@ -99,8 +99,7 @@ if (!isset($_SESSION["username"])) {
      </li>
 </div>
 <div class="d-flex">
-<button class="btnss color-a mr-auto">Follow</button>
-
+ 
 </div>
 <div class="d-flex mt-1">
 <p class="text-left mt-1 small title-2 a_user_bio">You are a Smart Shopper</p>

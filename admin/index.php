@@ -3,11 +3,12 @@ include('../includes/connect.php');
 include('../functions/common_function.php');
 //secure
 session_start();
+
 if (!isset($_SESSION["username"])) {
   header("location: ../user_area/login.php");
 }
 if ($_SESSION['user_type'] !== 'admin') {
-  header("location: ../index.php");
+   header("location: ../index.php");
 }
 //secure
 ?>

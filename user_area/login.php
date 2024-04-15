@@ -197,19 +197,19 @@ include ('../functions/common_function.php');
                 echo "<script>window.open('profile.php', '_self')</script>";
              }
              else{
-              echo "<script>window.open('../admin/index.php', '_self')</script>";
+              echo "<script>window.open('/dealhopp/admin/index.php', '_self')</script>";
              }
             // echo "<script>alert('Logged in Sucessfully')</script>";
         }
         else{
             echo "<script>alert('incorrect password')</script>";
-            echo "<script>window.open('../user_area/login.php', '_self')</script>";
+            echo "<script>window.open('/dealhopp/user_area/login.php', '_self')</script>";
       
         }
       }
       else{
        echo "<script>alert('Username dose not exists')</script>";
-       echo "<script>window.open('../user_area/login.php', '_self')</script>";
+       echo "<script>window.open('/dealhopp/user_area/login.php', '_self')</script>";
       }
       }
       //nav

@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include('../includes/connect.php');
 
 // Secure the Page

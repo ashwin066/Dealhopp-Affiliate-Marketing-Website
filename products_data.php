@@ -5,10 +5,13 @@ include('functions/common_function.php');
 
 if (isset($_POST['action'])) {
 
-  $sql = "SELECT * FROM `products` JOIN `category` JOIN `brands` JOIN `user_data`
-    where `products`.`product_brand`!='' and `brands`.`brand_id`=`products`.`product_brand`
-    and `category`.`category_id`=`products`.`product_category`  and `user_data`.`user_id`=`products`.`posted_user_id`
-    ";
+  $sql = "SELECT * FROM `products` 
+        JOIN `category` ON `category`.`category_id` = `products`.`product_category`
+        JOIN `brands` ON `brands`.`brand_id` = `products`.`product_brand`
+        JOIN `user_data` ON `user_data`.`user_id` = `products`.`posted_user_id`
+        WHERE (`products`.`status` = 'expired' OR `products`.`status` = 'true') 
+        AND `products`.`product_brand` != ''";
+
 
   if (isset($_POST['brand'])) {
     $brand = implode("','", $_POST['brand']);

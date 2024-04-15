@@ -83,25 +83,26 @@
 
     if ($current_page === 'index.php' && $is_in_navbar) {
     ?>
-        <div class="mobile-bottom-navigation">
+    <div class="mobile-bottom-navigation">
 
-            <div class="container p-0 d-flex">
-                <div class="a_search_box w-100 mr-auto">
-
-
-                    <input type="text" id="search" autocomplete=off name="search" aria-lable="search" class="search search-field" placeholder="Enter your product name...">
-
-                    <div id="search-btn-mob" value="search" name="search_data_product" class="search-btn1" 1>
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </div>
+        <div class="container p-0 d-flex">
+            <div class="a_search_box w-100 mr-auto">
 
 
+                <input type="text" id="search" autocomplete=off name="search" aria-lable="search"
+                    class="search search-field" placeholder="Enter your product name...">
+
+                <div id="search-btn-mob" value="search" name="search_data_product" class="search-btn1" 1>
+                    <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
 
 
-
             </div>
+
+
+
         </div>
+    </div>
     <?php
     }
     ?>
