@@ -4,10 +4,10 @@
     <div class="header-main" id="header-main">
 
         <div class="container d-flex h-100 justify-content-between">
-            <div class="logodiv_mob"> <a href="./index.php" id="logo_mob" class="header-logo a_logo_box">
+            <div class="logodiv_mob"> <a href="/dealhopp/index.php" id="logo_mob" class="header-logo a_logo_box">
                     <div class="logo_img_mob" id="logo_img_mob"></div>
                 </a></div>
-            <div class="logodiv"> <a href="./index.php" id="logo" class="header-logo a_logo_box">
+            <div class="logodiv"> <a href="/dealhopp/index.php" id="logo" class="header-logo a_logo_box">
                     <div class="logo_img" id="logo_img"></div>
                 </a></div>
 
@@ -63,7 +63,7 @@
                 }
                 if (isset($_SESSION['username'])) {
                     echo '
-    <a href="./user_area/profile.php" class="pl-2 pr-1">
+    <a href="/dealhopp/user_area/profile.php" class="pl-2 pr-1">
       <button class="action-btn">
           
       <img src="' . $_SESSION['user_image'] . '" alt="" class="a_user_img"> 
@@ -83,26 +83,25 @@
 
     if ($current_page === 'index.php' && $is_in_navbar) {
     ?>
-    <div class="mobile-bottom-navigation">
+        <div class="mobile-bottom-navigation">
 
-        <div class="container p-0 d-flex">
-            <div class="a_search_box w-100 mr-auto">
+            <div class="container p-0 d-flex">
+                <div class="a_search_box w-100 mr-auto">
 
 
-                <input type="text" id="search" autocomplete=off name="search" aria-lable="search"
-                    class="search search-field" placeholder="Enter your product name...">
+                    <input type="text" id="search" autocomplete=off name="search" aria-lable="search" class="search search-field" placeholder="Enter your product name...">
 
-                <div id="search-btn-mob" value="search" name="search_data_product" class="search-btn1" 1>
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <div id="search-btn-mob" value="search" name="search_data_product" class="search-btn1" 1>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+
+
                 </div>
 
 
+
             </div>
-
-
-
         </div>
-    </div>
     <?php
     }
     ?>

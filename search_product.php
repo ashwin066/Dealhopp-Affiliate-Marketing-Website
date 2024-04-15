@@ -38,13 +38,13 @@ include ('functions/common_function.php');
 
 <body>
 
-
+    <!-- 
     <div class="overlay" data-overlay></div>
 
     <!--
     - MODAL
   -->
-
+    <!-- 
     <div class="modal" data-modal>
 
         <div class="modal-close-overlay" data-modal-overlay></div>
@@ -81,7 +81,7 @@ include ('functions/common_function.php');
 
         </div>
 
-    </div>
+    </div> -->
 
 
 

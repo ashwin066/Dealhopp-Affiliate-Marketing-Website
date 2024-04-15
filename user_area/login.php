@@ -9,24 +9,27 @@ include ('../functions/common_function.php');
 
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/style-prefix.css">
     <link rel="stylesheet" href="../assets/css/animate_bg.css">
 
     <title>User Registration</title>
     <style>
- 
+
     </style>
 </head>
+
 <body>
 
-<?php  
+    <?php  
  
  
     global $con;
@@ -253,14 +256,10 @@ echo'
                                 </div>
                     
                                 <div class="form-group mb-1">
-                                    <label for="user_password">Password</label><a href="#" class="small float-right" style="line-height: 29px;">Forgot password</a>
-                                    <input type="password" autocomplete=off class="form-control" name="user_password" placeholder="password" title="At least 6 characters with letters and numbers" required="">
+                                     <input type="password" autocomplete=off class="form-control" name="user_password" placeholder="password" title="At least 6 characters with letters and numbers" required="">
                                 </div>
                                 
-                                      <div class="d-flex">
-                                      <input class="my-1 mr-1" checked="checked" style="width:auto;" type="checkbox" name="remember">
-                                     <label for="remember" class="my-auto small"> Remember me</label>
-                                  </div>
+                                       
                                 <div class="vl my-4 rounded d-sm-block d-md-none d-lg-none d-xl-none">
                                 <span class="vl-innertext">or</span>
                               </div>

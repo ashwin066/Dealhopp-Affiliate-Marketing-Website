@@ -77,21 +77,17 @@ function get_login_form()
   <button onclick='closeForm()' class='float-right position-absolute' style='right:10px; top:10px;' onclick='closeForm()'>
   <i class='fa-solid text-orange h5 fa-circle-xmark'></i>
   </button>
-  <form action='/user_area/login.php?loading' method='post' class='form' role='form'>
+  <form action='/dealhopp/user_area/login.php?loading' method='post' class='form' role='form'>
           <div class='form-group'>
               <label class='title-2' for='username'>Username or Email</label>
               <input type='text' autocomplete=off class='form-control' name='username' placeholder='Username or Email'>
           </div>
 
           <div class='form-group mb-1'>
-              <label class='title-2' for='user_password'>Password</label><a href='#' class='small text-orange float-right' style='line-height: 29px;'>Forgot password</a>
-              <input type='password' autocomplete=off class='form-control' name='user_password' placeholder='Password' title='At least 6 characters with letters and numbers' required=''>
+               <input type='password' autocomplete=off class='form-control' name='user_password' placeholder='Password' title='At least 6 characters with letters and numbers' required=''>
           </div>
 
-          <div class='d-flex'>
-          <input class='my-1 mr-1' checked='checked' style='width:auto;' type='checkbox' name='remember'>
-  <label for='remember' class='my-auto text-muted small'> Remember me</label>
-      </div>
+      
          
           <div class='vl my-4 rounded d-sm-block d-md-none d-lg-none d-xl-none'>
         <span class='vl-innertext'>or</span>
@@ -269,7 +265,7 @@ function get_signup_form()
         <button onclick='closeForm2()' class='float-right position-absolute' style='right:10px; top:10px;' onclick='closeForm()'>
         <i class='fa-solid text-orange h5 fa-circle-xmark'></i>
         </button>
-            <form action='/user_area/registration.php?loading' class='form' role='form' method='post' autocomplete='off'>
+            <form action='/dealhopp/user_area/registration.php?loading' class='form' role='form' method='post' autocomplete='off'>
                 <div class='form-group'>
                     <label class='title-2' for='username'>User Name</label>
                     <input type='text' autocomplete=off class='form-control' name='username' placeholder='User Name' required=''>
@@ -1315,9 +1311,9 @@ function get_post_popup()
          <button onclick="closepost_box()" class="float-right position-sticky" style="right:7px; top:7px;">
          <i class="fa-solid text-orange h5 fa-circle-xmark"></i>
          </button>
-  <form action="/admin/insert_product.php" method="post">
+  <form action="/dealhopp/admin/insert_product.php" method="post">
   <div class="d-flex mb-2 align-items-center">
-  <img src="./assets/images/logo/Logo1.png" height="40" class="mr-4">
+  <img src="/dealhopp/assets/images/logo/Logo1.png" height="40" class="mr-4">
   <h6 class="mt-3 text-center">Post Best Deals and Offers Here</h6>
   </div>
   <div class="form-group mb-2">

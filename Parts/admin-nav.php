@@ -65,10 +65,10 @@
     <div class="header-main" id="header-main">
 
         <div class="container d-flex h-100 justify-content-between">
-            <div class="logodiv_mob"> <a href="../index.php" id="logo_mob" class="header-logo a_logo_box">
+            <div class="logodiv_mob"> <a href="/dealhopp/index.php" id="logo_mob" class="header-logo a_logo_box">
                     <div class="logo_img_mob" id="logo_img_mob"></div>
                 </a></div>
-            <div class="logodiv"> <a href="../index.php" id="logo" class="header-logo a_logo_box">
+            <div class="logodiv"> <a href="/dealhopp/index.php" id="logo" class="header-logo a_logo_box">
                     <div class="logo_img" id="logo_img"></div>
                 </a></div>
 
@@ -97,14 +97,14 @@
                 <?php
 
         if (!isset($_SESSION['username'])) {
-          echo '<a href="../user_area/login.php" class="a_tbn font-weight-bold text-light">Login <i class="fa fa-sign-in" aria-hidden="true"></i>
+          echo '<a href="/dealhopp/user_area/login.php" class="a_tbn font-weight-bold text-light">Login <i class="fa fa-sign-in" aria-hidden="true"></i>
       </a>';
         } else {
           echo '<p class="text-light text-capitalize mb-0 a_res w-100">Welcome, ' . $_SESSION['username'] . '</p>';
         }
         if (isset($_SESSION['username'])) {
           echo '
-    <a href="../user_area/profile.php" class="pl-2 pr-1">
+    <a href="/dealhopp/user_area/profile.php" class="pl-2 pr-1">
       <button class="action-btn">
           
       <img src="' . $_SESSION['user_image'] . '" alt="" class="a_user_img"> 
@@ -638,7 +638,7 @@
         if (document.body.scrollTop >= 25 || document.documentElement.scrollTop >= 25) {
 
             document.getElementById("logo_img").style.cssText = `
-    background:url(../assets/images/logo/1.png) no-repeat;
+    background:url(/dealhopp/assets/images/logo/1.png) no-repeat;
     width:90px;
     height:75px;
     background-position: center;
@@ -650,7 +650,7 @@ border-radius:  0 0 11px 11px;
 
 `;
             document.getElementById("logo_img_mob").style.cssText = `
-    background:url(../assets/images/logo/1.png) no-repeat;
+    background:url(/dealhopp/assets/images/logo/1.png) no-repeat;
     width:45px;
     height:45px;
     background-position: center;
@@ -665,7 +665,7 @@ border-radius:  0 0 11px 11px;
         } else {
 
             document.getElementById("logo_img").style.cssText = `
-    background:url(../assets/images/logo/logo1.png) no-repeat;
+    background:url(/dealhopp/assets/images/logo/Logo1.png) no-repeat;
     width:270px;
     background-position: center;
     background-size: contain;
@@ -676,7 +676,7 @@ border-radius:  0 0 11px 11px;
 `;
 
             document.getElementById("logo_img_mob").style.cssText = `
-    background:url(../assets/images/logo/logo1.png) no-repeat;
+    background:url(/dealhopp/assets/images/logo/Logo1.png) no-repeat;
     width:170px;
    height: 45px;
     background-position: center;

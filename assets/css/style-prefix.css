@@ -1184,7 +1184,7 @@ position: sticky;
 
 }
 .logo_img{
-  background:url(../images/logo/Logo1.png) no-repeat;
+  background:url(/dealhopp/assets/images/logo/Logo1.png) no-repeat;
   background-position: center;
   background-size: contain;
   width:270px;
@@ -1194,7 +1194,7 @@ position: sticky;
     transition: 0.3s;
 }
 .logo_img_mob{
-  background:url(../images/logo/Logo1.png) no-repeat;
+  background:url(/dealhopp/assets/images/logo/Logo1.png) no-repeat;
   background-position: center;
   background-size: contain;
   width:177px;

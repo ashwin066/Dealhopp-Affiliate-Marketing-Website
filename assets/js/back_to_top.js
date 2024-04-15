@@ -14,7 +14,7 @@ function scrollFunction() {
     mybutton.style.display = "flex";
 
     document.getElementById("logo_img").style.cssText = `
-    background:url(./assets/images/logo/1.png) no-repeat;
+    background:url(/dealhopp/assets/images/logo/1.png) no-repeat;
     width:90px;
     height:75px;
     background-position: center;
@@ -26,7 +26,7 @@ border-radius:  0 0 11px 11px;
 
 `;
     document.getElementById("logo_img_mob").style.cssText = `
-    background:url(./assets/images/logo/1.png) no-repeat;
+    background:url(/dealhopp/assets/images/logo/1.png) no-repeat;
     width:45px;
     height:45px;
     background-position: center;
@@ -40,7 +40,7 @@ border-radius:  0 0 11px 11px;
     mybutton.style.display = "none";
 
     document.getElementById("logo_img").style.cssText = `
-    background:url(./assets/images/logo/Logo1.png) no-repeat;
+    background:url(/dealhopp/assets/images/logo/Logo1.png) no-repeat;
     width:270px;
     background-position: center;
     background-size: contain;
@@ -51,7 +51,7 @@ border-radius:  0 0 11px 11px;
 `;
 
     document.getElementById("logo_img_mob").style.cssText = `
-    background:url(./assets/images/logo/Logo1.png) no-repeat;
+    background:url(/dealhopp/assets/images/logo/Logo1.png) no-repeat;
     width:177px;
    height: 45px;
     background-position: center;
