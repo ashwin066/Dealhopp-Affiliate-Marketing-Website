@@ -2134,7 +2134,7 @@ $hurry_up_text= 'Hurry Up! Offer can end anytime.';
                   <div class="showcase-status">
                   <div class="wrapper a_store_logo2">
           
-                   <img class=' . $deal_expired_style . '  src="./admin' . $brand_logo . '"
+                   <img class="' . $deal_expired_style . '"  src="./admin' . $brand_logo . '"
                   alt="' . $product_title . '" >   
 
                   <p class="my-auto">

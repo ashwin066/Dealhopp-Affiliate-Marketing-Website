@@ -152,6 +152,7 @@
 .deal_expired:hover {
   -webkit-filter: grayscale(0) !important;
   filter: none !important;
+  transition: .5s ease;
 }/* Disable grayscale on hover */
 .carousel-inner:hover .deal_expired{
   -webkit-filter: grayscale(0) !important;
