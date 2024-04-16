@@ -40,16 +40,16 @@ if ($status != "expired") {
     <br>
     <form class="row" method="post">
         <div class="col-12">
-            <label for="status" class="form-label">status</label>
+            <label for="status" class="form-label">Status:</label>
 
-            <select name="status" id="status">
-                <option value="expired" <?php if ($status === 'expired') echo 'selected'; ?>>expired</option>
+            <select name=" status" id="status">
+                <option value="expired" <?php if ($status === 'expired') echo 'selected'; ?>>Expired</option>
                 <option value="not_approved" <?php if ($status === 'not_approved') echo 'selected'; ?>>
-                    not_approved</option>
-                <option value="true" <?php if ($status === 'true') echo 'selected'; ?>>approved
+                    Not Approved</option>
+                <option value="true" <?php if ($status === 'true') echo 'selected'; ?>>Approved
                 </option>
                 <option value="disapprove" <?php if ($status === 'disapprove') echo 'selected'; ?>>
-                    disapprove
+                    Disapprove
                 </option>
 
             </select>

@@ -29,6 +29,7 @@
         $product_keywords = $row['product_keywords'];
         $status = $row['status'];
         $is_coupon = $row['is_coupon'];
+        $product_posted_at = $row['date'];
         $product_posted_user = $row['posted_user_id'];
         if (isset($_POST['content_type'])) {
             $is_coupon =  $_POST['content_type'];
@@ -104,50 +105,62 @@
          <h2 class="text-center">Update Product</h2>
          <form method="post" enctype='multipart/form-data'>
              <label for="product_title">This Deal was posted by user with id :
-                 <?php echo $product_posted_user; ?></label><br>
-             <div class="form-group"> <label for="product_title">This is a</label><br>
-                 <div class="form-check form-check-inline">
-                     <input class="form-check-input" type="radio" name="content_type" id="is_product_selected" value="0" <?php echo ($is_coupon != 1) ? 'checked' : '' ?> />
+                 <?php echo $product_posted_user; ?></label><br> <label for="product_title">Posted at
+                 :
+                 <?php echo $product_posted_at; ?></label><br><br>
+             <div class="form-group"> <label for="product_title">This is a</label>
+                 <div class="ml-2 form-check form-check-inline">
+                     <input class="form-check-input" type="radio" name="content_type" id="is_product_selected" value="0"
+                         <?php echo ($is_coupon != 1) ? 'checked' : '' ?> />
                      <label class="form-check-label" for="is_product_selected">Product</label>
                  </div>
 
                  <div class="form-check form-check-inline">
-                     <input class="form-check-input" type="radio" name="content_type" id="is_coupon_selected" value="1" <?php echo ($is_coupon == 1) ? 'checked' : '' ?> />
+                     <input class="form-check-input" type="radio" name="content_type" id="is_coupon_selected" value="1"
+                         <?php echo ($is_coupon == 1) ? 'checked' : '' ?> />
                      <label class="form-check-label" for="is_coupon_selected">Coupon</label>
                  </div>
              </div>
              <div class="form-group">
                  <label for="product_title">Product Title</label>
-                 <input type="text" class="form-control" name="product_title" id="product_title" placeholder="Product Title" value="<?php echo $product_title; ?>">
+                 <input type="text" class="form-control" name="product_title" id="product_title"
+                     placeholder="Product Title" value="<?php echo $product_title; ?>">
              </div>
 
              <div class="form-row">
                  <div class="form-group col-md-6">
                      <label class="text-danger">Old Price</label>
-                     <input type="text" class="form-control" id="product_old_price" name="product_old_price" placeholder="Old Price" value="<?php echo $product_old_price; ?>">
+                     <input type="text" class="form-control" id="product_old_price" name="product_old_price"
+                         placeholder="Old Price" value="<?php echo $product_old_price; ?>">
                  </div>
                  <div class="form-group col-md-6">
                      <label class="text-success">New Price</label>
-                     <input type="text" class="form-control" id="product_price" name="product_price" placeholder="New Price" value="<?php echo $product_price; ?>">
+                     <input type="text" class="form-control" id="product_price" name="product_price"
+                         placeholder="New Price" value="<?php echo $product_price; ?>">
                  </div>
              </div>
 
              <div class="form-group">
                  <label for="description">Description</label>
-                 <textarea type="textarea" class="form-control" id="product_description" name="product_description" placeholder="Description..."><?php echo $product_description; ?></textarea>
+                 <textarea type="textarea" class="form-control" id="product_description" name="product_description"
+                     placeholder="Description..."><?php echo $product_description; ?></textarea>
              </div>
 
              <!--keywords -->
              <div class="form-group">
                  <label for="product_keywords " class="form-label"> Product
                      Keywords</label>
-                 <input type="text" name="product_keywords" id="product_keywords" class="form-control" placeholder="Enter product keywords" autocomplete="on" required="required" value="<?php echo $product_keywords; ?>">
+                 <input type="text" name="product_keywords" id="product_keywords" class="form-control"
+                     placeholder="Enter product keywords" autocomplete="on" required="required"
+                     value="<?php echo $product_keywords; ?>">
              </div>
 
              <div class="form-group">
                  <label for="product_link " class="form-label "> Product
                      Link</label>
-                 <input type="text" name="product_link" id="product_link" class="form-control" placeholder="Enter product link" autocomplete="off" required="required" value="<?php echo $product_link; ?>">
+                 <input type="text" name="product_link" id="product_link" class="form-control"
+                     placeholder="Enter product link" autocomplete="off" required="required"
+                     value="<?php echo $product_link; ?>">
              </div>
 
 
@@ -192,20 +205,27 @@
 
                  <div class="form-group showcase-banner col-md-4">
                      <label for="product_img">Product Image 1</label>
-                     <input type="text" class="form-control" id="product_img1" name="product_img1" placeholder="Paste Product Image Link Here..." required="required" value="<?php echo $product_img1; ?>">
-                     <img src="<?php echo $product_img1; ?>" alt="" class="mt-1 border border-secondary rounded mx-auto" height="100">
+                     <input type="text" class="form-control" id="product_img1" name="product_img1"
+                         placeholder="Paste Product Image Link Here..." required="required"
+                         value="<?php echo $product_img1; ?>">
+                     <img src="<?php echo $product_img1; ?>" alt="" class="mt-1 border border-secondary rounded mx-auto"
+                         height="100">
                  </div>
 
                  <div class="form-group showcase-banner col-md-4">
                      <label for="product_img">Product Image 2(Optional)</label>
-                     <input type="text" class="form-control" id="product_img2" name="product_img2" placeholder="Paste Product Image Link Here..." value="<?php echo $product_img2; ?>">
-                     <img src="<?php echo $product_img2; ?>" alt="" class="mt-1 border border-secondary rounded mx-auto" height="100">
+                     <input type="text" class="form-control" id="product_img2" name="product_img2"
+                         placeholder="Paste Product Image Link Here..." value="<?php echo $product_img2; ?>">
+                     <img src="<?php echo $product_img2; ?>" alt="" class="mt-1 border border-secondary rounded mx-auto"
+                         height="100">
                  </div>
 
                  <div class="form-group showcase-banner col-md-4">
                      <label for="product_img">Product Image 3(Optional)</label>
-                     <input type="text" class="form-control" id="product_img3" name="product_img3" placeholder="Paste Product Image Link Here..." value="<?php echo $product_img3; ?>">
-                     <img src="<?php echo $product_img3; ?>" alt="" class="mt-1 border border-secondary rounded mx-auto" height="100">
+                     <input type="text" class="form-control" id="product_img3" name="product_img3"
+                         placeholder="Paste Product Image Link Here..." value="<?php echo $product_img3; ?>">
+                     <img src="<?php echo $product_img3; ?>" alt="" class="mt-1 border border-secondary rounded mx-auto"
+                         height="100">
                  </div>
 
 

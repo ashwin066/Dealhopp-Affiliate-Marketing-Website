@@ -1159,6 +1159,7 @@ function get_public_user_products()
         $product_img3 = $row_data['product_img3'];
         $product_link = $row_data['product_link'];
         $product_status = $row_data['status'];
+        $pinned = $row_data['pinned'];
         $time = $row_data['date'];
 
 
@@ -1213,7 +1214,7 @@ function get_public_user_products()
           $deal_expired = '';
           $price_expired = '<span class="price">₹' . $product_price . '.00</span>';
         }
-        if ("$pinned" == "1") {
+        if ( $pinned  == "1") {
           $pin_product = ' <div class="a_pinned" aria-label="Pinned Product">
         <i class="fa fa-thumb-tack text-danger" aria-hidden="true"></i>
         </div>';

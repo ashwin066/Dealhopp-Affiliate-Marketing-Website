@@ -97,7 +97,17 @@
         } else {
           $pin_product = '';
         }
+            $approved = '';
 
+            if ($product_status == "not_approved") {
+              $approved = '<i class="fa-solid fa-hourglass-start"></i><span>&nbsp  Admin Approval pending</span>';
+            } else if ($product_status == "disapprove") {
+              $approved = '<i class="fa-solid fa-xmark"></i><span> &nbsp Post Disapproved</span>';
+            } else if ($product_status == "approved" || $product_status == "true") {
+              $approved = '<i class="fa-solid fa-check"></i>';
+            } else if ($product_status == "expired") {
+              $approved = '<i class="fa-solid fa-store-slash"  ></i><span> &nbsp Deal Expired</span>';
+            }
         $output = '';
         if ($product_img2 == '' || $product_img2 == null) {
           if ($product_img1 != '' || $product_img1 != null)
@@ -120,6 +130,8 @@
   ' . $deal_expired . '
   <img src=' . $product_img2 . ' alt="Dealhopp product Image" height="160" class="product-img hover">
   </a> 
+    <span class="a_no_result_title font-weight-bold showcase-badge">' . $approved . '</span>
+
   <!--<p class="showcase-badge">' . $num . '% OFF</p> -->
   <!--<p class="showcase-badge angle orange">' . $num . '% OFF</p>-->
 

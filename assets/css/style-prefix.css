@@ -1151,7 +1151,8 @@ display: flex;    }
   .a_category-item{
     border:solid 2px var(--cultured)!important;
     padding:5px;
-    min-width: 120px;   
+    min-width: 135px;  
+    margin-bottom: 20px; 
     border-radius: var(--border-radius-md)!important;
     transition: 0.1s ease-in-out!important;
   }
