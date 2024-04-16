@@ -314,8 +314,7 @@ function get_signup_form()
 
 function get_slide_notify()
 {
-  if (1 === 0) {
-    echo '
+     echo '
   <div class="overlay" data-overlay></div>
 
   <!--
@@ -360,7 +359,7 @@ function get_slide_notify()
   </div>
    
 ';
-  }
+  
 }
 function get_Brands()
 {

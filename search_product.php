@@ -91,7 +91,7 @@ include ('functions/common_function.php');
     - NOTIFICATION TOAST
   -->
 
-    <div class="notification-toast" data-toast>
+    <!-- <div class="notification-toast" data-toast>
 
         <button class="toast-close-btn" data-toast-close>
             <ion-icon name="close-outline"></ion-icon>
@@ -117,7 +117,7 @@ include ('functions/common_function.php');
 
         </div>
 
-    </div>
+    </div> -->
 
 
 
