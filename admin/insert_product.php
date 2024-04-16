@@ -1,16 +1,16 @@
 <?php
-                    //secure
+//secure
 
-                    // if(!isset ($_SESSION["username"]))
-                    // {
-                    // header ("location: ../user_area/login.php");
-                    // }
-                    // if($_SESSION['user_type']!=='admin'){
-                    //   header ("location: ../index.php");
-                    // }
-                    //secure
-                    //session_start();
-                    session_status() === PHP_SESSION_ACTIVE ?: session_start();
+// if(!isset ($_SESSION["username"]))
+// {
+// header ("location: ../user_area/login.php");
+// }
+// if($_SESSION['user_type']!=='admin'){
+//   header ("location: ../index.php");
+// }
+//secure
+//session_start();
+session_status() === PHP_SESSION_ACTIVE ?: session_start();
 
 $is_coupon = 0;
 if (isset($_POST['content_type'])) {
@@ -52,7 +52,7 @@ if (isset($_POST['insert_product'])) {
     include '../includes/connect.php';
 
     $product_img3 = '';
-    $product_posted_user =  $_SESSION['user_id'] ;
+    $product_posted_user =  $_SESSION['user_id'];
 
     $product_title = $_POST['product_title'];
     $product_description = $_POST['product_description'];
@@ -89,7 +89,7 @@ if (isset($_POST['insert_product'])) {
     }
 
 
-    $product_status = $_POST['status']??'true';
+    $product_status = isset($_POST['status']) ?  $_POST['status']  : 'true';
 
     //Select data from db
     $select_query = "Select * from `products` where product_title = '$product_title'";
@@ -98,7 +98,7 @@ if (isset($_POST['insert_product'])) {
 
     if ($number > 0) {
         echo "<script>
-alert('Category already exists')
+alert('Deal with same title already exists')
 </script>";
     } else {
         $insert_query = "insert into `products` (product_title, product_description,coupon,
@@ -205,7 +205,7 @@ window.open('./index.php?view_product', '_self')
             </div>
             <div class="form-group col-md-3">
                 <label for="inputState">Select Brand(Store)</label>
-                <select id="brand_title" class="a_category-item px-2 border-secondary">
+                <select id="product_brand" name="product_brand" class="a_category-item px-2 border-secondary">
                     <?php
                     $select_brands = "Select * from `brands` ";
                     $result_brands = mysqli_query($con, $select_brands);

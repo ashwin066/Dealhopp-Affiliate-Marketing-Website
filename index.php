@@ -309,9 +309,12 @@ include('user_area/common_function_user.php');
                                 <div class="product-main w-100" id="result">
                                     <!-- <div class="showcase-actions"><button class="btn-action"><ion-icon name="heart-outline"></ion-icon></button><button class="btn-action"><ion-icon name="eye-outline"></ion-icon></button><button class="btn-action"><ion-icon name="repeat-outline"></ion-icon></button><button class="btn-action"><ion-icon name="bag-add-outline"></ion-icon></button></div> -->
                                 </div>
+
                             </div>
                             <!-- <div>sidebar</div>-->
                         </div>
+
+
                     </div>
                 </div>
             </div>

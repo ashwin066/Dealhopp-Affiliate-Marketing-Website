@@ -960,11 +960,13 @@ function get_user_products()
             $approved = '';
 
             if ($product_status == "not_approved") {
-              $approved = '<span>Admin Approval pending</span>';
+              $approved = '<i class="fa-solid fa-hourglass-start"></i><span>&nbsp  Admin Approval pending</span>';
             } else if ($product_status == "disapprove") {
-              $approved = '<span>Post Disapproved</span>';
+              $approved = '<i class="fa-solid fa-xmark"></i><span> &nbsp Post Disapproved</span>';
             } else if ($product_status == "approved" || $product_status == "true") {
-              $approved = '<span>Post Approved by Admin</span>';
+              $approved = '<i class="fa-solid fa-check"></i>';
+            }    else if ($product_status == "expired"  ) {
+              $approved = '<i class="fa-solid fa-store-slash"  ></i><span> &nbsp Deal Expired</span>';
             }
             $output = '';
 
@@ -978,7 +980,7 @@ function get_user_products()
         ' . $deal_expired . '
         <img src=' . $product_img2 . ' alt="Dealhopp product Image" height="160" class="product-img hover">
         </a> 
-  <span class="a_no_result_title font-weight-bold showcase-badge"><i class="fa-solid fa-check"></i> ' . $approved . '</span>
+  <span class="a_no_result_title font-weight-bold showcase-badge">' . $approved . '</span>
         <!--<p class="showcase-badge">' . $num . '% OFF</p> -->
         <!--<p class="showcase-badge angle orange">' . $num . '% OFF</p>-->
       
@@ -2006,7 +2008,15 @@ function product_details()
           $time = $row_data['date'];
 
 
+          $approved = '';
 
+          if ($product_status == "not_approved") {
+            $approved = '<span class="a_no_result_title font-weight-bold showcase-badge mb-2"><i class="fa-solid fa-hourglass-start" style="color: #ff0000;"></i><span class="text-danger  font-italic">&nbsp  Admin Approval pending.</span><p class="text-secondary mt-2 mb-0">Note: This deal has not yet been verified by Dealhopp.</p></span>';
+          } else if ($product_status == "disapprove") {
+            $approved = '<span class="a_no_result_title font-weight-bold showcase-badge mb-2"><i class="fa-solid fa-circle-xmark" style="color: #ff0000;"></i><span class="text-danger  font-italic"> &nbsp Post Disapproved</span></span>';
+          } else if ($product_status == "approved" || $product_status == "true") {
+            $approved = '<span class="a_no_result_title font-weight-bold showcase-badge mb-2"><i class="fa-solid fa-circle-check  " style="color: #28a745;"></i><span class="text-success  font-italic">&nbsp Dealhopp Verified</span></span>';
+          }    
           $num  = 0;
           if (
             $product_old_price != '' && $product_price != '' &&  $is_coupon != 1
@@ -2057,7 +2067,7 @@ function product_details()
           $user_type = $row_data['user_type'];
 
           $timeago = get_timeago(strtotime($time));
-          if ("$product_status" == "expired") {
+          if ("$product_status" == "expired" || "$product_status" == "disapprove") {
             $deal_expired = '<img draggable="false" src="./assets/images/icons/DEAL_EXPIRED.png" alt="Dealhopp product Image" width="" height="350" class="a_expired2 product-img">';
             $price_expired = '<del class="price">₹' . $product_price . '.00</del>';
           } else {
@@ -2126,23 +2136,28 @@ function product_details()
                   <p class="my-auto">
                   <a  class="text-orange a_tbn"><b>' . $category_title . '</b></a>
               </p>
-                  </div>
+                  </div>         
+                  
+                  ' . $approved . '
 
                   <div class="price-box">
                   ' . $price_expired . '
 
                       <del class="small my-auto">₹' . $product_old_price . '.00</del>
-                  </div>
+                  </div>          
+
                   <div class="d-flex">
                   <a style="text-decoration:none;" href="load-deal/redirect.php?redirect=' . $product_id . '&store=' . $brand_id . '" target="_blank">
                   <button class="add-cart-btn">&nbsp;Buy Now&nbsp;<i class="fa fa-arrow-right"></i></button>
                   </a>
+
                   </div>
                   
                   <p class="showcase-desc text_wrap2">( You Can Buy this Product at <b>' . $brand_title . '</b>. )<br>
                      ' . $product_description . '
                   </p>
 
+ 
                       <!--<div class="showcase-status-bar"></div>-->
                   </div>
 

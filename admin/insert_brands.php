@@ -41,7 +41,7 @@ if (isset($_POST['insert_brand'])) {
 
 
     if ($number > 0) {
-      echo "<script>alert('Category already exists')</script>";
+      echo "<script>alert('Brand/Store already exists')</script>";
     } else {
       $insert_query = "insert into `brands` (brand_title,brand_logo,brand_url) values ('$brand_title','/$upload_logo','$brand_url')";
       $result = mysqli_query($con, $insert_query);
@@ -53,7 +53,7 @@ if (isset($_POST['insert_brand'])) {
 }
 ?>
 <div class="card w-100 bg-light p-4 mb-4">
-    <h4 class="text-center text-secondary">INSERT BRAND</h4>
+    <h4 class="text-center text-secondary">INSERT BRAND/STORE</h4>
     <form action="" method="post" class="mb-2" enctype='multipart/form-data'>
         <div class="input-group w-90 mb-3">
 
