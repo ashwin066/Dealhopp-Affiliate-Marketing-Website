@@ -137,6 +137,28 @@
   color:#fff;
   background: #ff66009c;
 }
+
+
+.deal_expired {
+  filter: gray !important;
+  /* IE6-9 */
+  -webkit-filter: grayscale(1) !important;
+  /* Google Chrome, Safari 6+ & Opera 15+ */
+  filter: grayscale(1) !important;
+  /* Microsoft Edge and Firefox 35+ */
+}
+
+/* Disable grayscale on hover */
+.deal_expired:hover {
+  -webkit-filter: grayscale(0) !important;
+  filter: none !important;
+}/* Disable grayscale on hover */
+.carousel-inner:hover .deal_expired{
+  -webkit-filter: grayscale(0) !important;
+  filter: none !important;
+}
+
+
 a {
   text-decoration: none;
 }

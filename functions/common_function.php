@@ -314,7 +314,7 @@ function get_signup_form()
 
 function get_slide_notify()
 {
-     echo '
+  echo '
   <div class="overlay" data-overlay></div>
 
   <!--
@@ -359,7 +359,6 @@ function get_slide_notify()
   </div>
    
 ';
-  
 }
 function get_Brands()
 {
@@ -964,7 +963,7 @@ function get_user_products()
               $approved = '<i class="fa-solid fa-xmark"></i><span> &nbsp Post Disapproved</span>';
             } else if ($product_status == "approved" || $product_status == "true") {
               $approved = '<i class="fa-solid fa-check"></i>';
-            }    else if ($product_status == "expired"  ) {
+            } else if ($product_status == "expired") {
               $approved = '<i class="fa-solid fa-store-slash"  ></i><span> &nbsp Deal Expired</span>';
             }
             $output = '';
@@ -1623,7 +1622,7 @@ function get_unique_categories_brand()
       <img src=' . $product_img2 . ' alt="Dealhopp product Image" height="160" class="product-img hover">
     
       <!-- <p class="showcase-badge">15%</p> -->
-      <p class="showcase-badge angle orange">' . $num . '% OFF</p>
+      <p class="showcase-badge angle orange ">' . $num . '% OFF</p>
     <div class="showcase-rating">
         <img class="flame" src="assets/images/icons/flame.png" alt="">
         
@@ -2015,7 +2014,7 @@ function product_details()
             $approved = '<span class="a_no_result_title font-weight-bold showcase-badge mb-2"><i class="fa-solid fa-circle-xmark" style="color: #ff0000;"></i><span class="text-danger  font-italic"> &nbsp Post Disapproved</span></span>';
           } else if ($product_status == "approved" || $product_status == "true") {
             $approved = '<span class="a_no_result_title font-weight-bold showcase-badge mb-2"><i class="fa-solid fa-circle-check  " style="color: #28a745;"></i><span class="text-success  font-italic">&nbsp Dealhopp Verified</span></span>';
-          }    
+          }
           $num  = 0;
           if (
             $product_old_price != '' && $product_price != '' &&  $is_coupon != 1
@@ -2028,13 +2027,19 @@ function product_details()
             $str = $finalanswer;
             $num = (int)$str;
 
-
+            $deal_expired_style = '';
+$hurry_up_text= 'Hurry Up! Offer can end anytime.';
+            if ($product_status == 'expired' || $product_status == 'disapprove') {
+              $deal_expired_style = 'deal_expired';
+              $hurry_up_text= 'Sorry! This Deal/Offer has already been ended.';
+              
+            }
             if ($str < 0) {
               $percent_off = '';
               $deal_scale = '';
               $num = '';
             } else {
-              $percent_off = '<p class="a_no_result_title a_showcase-badge">' . $num . '% OFF</p>';
+              $percent_off = '<p class="a_no_result_title a_showcase-badge ' . $deal_expired_style . '">' . $num . '% OFF</p>';
               $deal_scale = '
        
        <div class="progress">
@@ -2079,7 +2084,7 @@ function product_details()
             $verified = '';
           }
 
-
+        
           $output = '';
           if ($is_coupon != 1) {
             $output = '<div class="product-featured a_filter ">
@@ -2097,10 +2102,10 @@ function product_details()
               <div class="skeleton carousel-inner d-flex justify-content-center align-items-center">
               ' . $deal_expired . '
                 <div class="a_box carousel-item active">
-                   <img draggable="false" class="content showcase-img d-block w-100" src="' . $product_img1 . '" alt="First slide">
+                   <img draggable="false" class="content showcase-img d-block w-100 ' . $deal_expired_style . '" src="' . $product_img1 . '" alt="First slide">
                 </div>
                 <div class="a_box carousel-item">
-                  <img draggable="false" class="showcase-img d-block w-100" src="' . $product_img2 . '" alt="Second slide">
+                  <img draggable="false" class="showcase-img d-block w-100 ' . $deal_expired_style . '" src="' . $product_img2 . '" alt="Second slide">
                 </div>
                
               </div>
@@ -2116,7 +2121,7 @@ function product_details()
               <div class="w-100 showcase-content">
               
               
-              <div class="showcase-rating">
+              <div class="showcase-rating ' . $deal_expired_style . '">
               <img class=" flame mt-auto mr-auto" src="assets/images/icons/flame.png" alt="">
               ' . $deal_scale . '
              
@@ -2129,7 +2134,7 @@ function product_details()
                   <div class="showcase-status">
                   <div class="wrapper a_store_logo2">
           
-                   <img src="./admin' . $brand_logo . '"
+                   <img class=' . $deal_expired_style . '  src="./admin' . $brand_logo . '"
                   alt="' . $product_title . '" >   
 
                   <p class="my-auto">
@@ -2139,7 +2144,7 @@ function product_details()
                   
                   ' . $approved . '
 
-                  <div class="price-box">
+                  <div class="price-box ' . $deal_expired_style . '">
                   ' . $price_expired . '
 
                       <del class="small my-auto">₹' . $product_old_price . '.00</del>
@@ -2147,7 +2152,7 @@ function product_details()
 
                   <div class="d-flex">
                   <a style="text-decoration:none;" href="load-deal/redirect.php?redirect=' . $product_id . '&store=' . $brand_id . '" target="_blank">
-                  <button class="add-cart-btn">&nbsp;Buy Now&nbsp;<i class="fa fa-arrow-right"></i></button>
+                  <button class="add-cart-btn ' . $deal_expired_style . '">&nbsp;Buy Now&nbsp;<i class="fa fa-arrow-right"></i></button>
                   </a>
 
                   </div>
@@ -2163,7 +2168,7 @@ function product_details()
                   <div class="countdown-box d-flex align-items-center ">
 
                       <p class="countdown-desc mr-auto py-2 my-auto">
-                          Hurry Up! Offer can end anytime.
+                           ' . $hurry_up_text . '
                       </p>
                       <span class="small py-2 text-secondary">' . $timeago . '</span>
                   </div>
@@ -2226,7 +2231,7 @@ function product_details()
   <div class="coupon_card">
     <div class="main">
       <div class="co-img">
-        <img src="./admin' . $brand_logo . '" alt="" />
+        <img class=' . $deal_expired_style . ' src="./admin' . $brand_logo . '" alt="" />
       </div>
       <div class="vertical"></div>
       <div class="content1">
@@ -2262,7 +2267,7 @@ function product_details()
                   <div class="countdown-box d-flex align-items-center ">
 
                       <p class="countdown-desc mr-auto py-2 my-auto">
-                          Hurry Up! Offer can end anytime.
+                          '. $hurry_up_text.'
                       </p>
                       <span class="small py-2 text-secondary">' . $timeago . '</span>
                   </div>
