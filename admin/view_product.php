@@ -98,15 +98,14 @@
           $pin_product = '';
         }
             $approved = '';
-
             if ($product_status == "not_approved") {
-              $approved = '<i class="fa-solid fa-hourglass-start"></i><span>&nbsp  Admin Approval pending</span>';
+              $approved = '<span class="a_no_result_title font-weight-bold showcase-badge "><i class="fa-solid fa-hourglass-start"></i><span>&nbsp  Admin Approval pending</span></span>';
             } else if ($product_status == "disapprove") {
-              $approved = '<i class="fa-solid fa-xmark"></i><span> &nbsp Post Disapproved</span>';
+              $approved = '<span class="a_no_result_title font-weight-bold showcase-badge "><i class="fa-solid fa-xmark"></i><span> &nbsp Post Disapproved</span></span>';
             } else if ($product_status == "approved" || $product_status == "true") {
-              $approved = '<i class="fa-solid fa-check"></i>';
+              $approved = '<span class="a_no_result_title font-weight-bold showcase-badge bg-success bg-gradient"><i class="fa-solid fa-check"></i></span>';
             } else if ($product_status == "expired") {
-              $approved = '<i class="fa-solid fa-store-slash"  ></i><span> &nbsp Deal Expired</span>';
+              $approved = '<span class="a_no_result_title font-weight-bold showcase-badge "><i class="fa-solid fa-store-slash"  ></i><span> &nbsp Deal Expired</span></span>';
             }
         $output = '';
         if ($product_img2 == '' || $product_img2 == null) {
@@ -124,13 +123,13 @@
         if ($is_coupon != 1) {
 
           $output .=    '<div class="showcase">
-  <a href="../product_details.php?product_id=' . $product_id . '&detail=' . $product_keywords . '">
+  <a href="../product_details.php?product_id=' . $product_id . '&title=' . $product_title . '&detail=' . $product_keywords . '">
   <div class="showcase-banner">
   <img src=' . $product_img1 . ' alt="Dealhopp product Image" height="160" class="product-img default">
   ' . $deal_expired . '
   <img src=' . $product_img2 . ' alt="Dealhopp product Image" height="160" class="product-img hover">
   </a> 
-    <span class="a_no_result_title font-weight-bold showcase-badge">' . $approved . '</span>
+   ' . $approved . '
 
   <!--<p class="showcase-badge">' . $num . '% OFF</p> -->
   <!--<p class="showcase-badge angle orange">' . $num . '% OFF</p>-->

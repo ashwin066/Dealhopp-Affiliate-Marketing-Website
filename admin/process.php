@@ -1,14 +1,13 @@
 <?php
 include('../includes/connect.php');
 
-// Secure the Page
+//secure
+
 if (!isset($_SESSION["username"])) {
     header("location: ../user_area/login.php");
-    exit();
 }
 if ($_SESSION['user_type'] !== 'admin') {
     header("location: ../index.php");
-    exit();
 }
 
 // Insert or Edit Banner Logic
@@ -78,7 +77,7 @@ if ($result_promo_banners) {
         echo '<td  class="m-3" style="max-width:400px;">' . $row['title'] . '</td>';
         echo '<td class="m-3 text-truncate" style="max-width:500px;" > ' . $row['link'] . ' </td>';
          echo '<td ><img src="' . $row['image'] . '" alt="Banner Image" class="img  img-thumbnail"   ></td>';
-        echo '<td  class="m-3"><form action="" method="post"> <a   href="edit_banner.php?id=' . $row['id'] . '">Edit</a>  
+        echo '<td  class="m-3"><form action="" method="post"> <a   href="index.php?edit_banner_id=' . $row['id'] . '">Edit</a>  
         <input type="hidden" value=' . $row['id'] . '  name="id"  />
         <button type="submit"  >Delete</button></form></td>';
         echo '</tr>';

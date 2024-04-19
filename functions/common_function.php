@@ -332,27 +332,7 @@ function get_slide_notify()
       </button>
 
      
-
-      <div class="newsletter">
-
-        <form action="#">
-
-          <div class="newsletter-header">
-
-            <h3 class="newsletter-title">Subscribe Newsletter.</h3>
-
-            <p class="newsletter-desc">
-              Subscribe the <b>Dealhopp</b> to get latest products and discount update.
-            </p>
-
-          </div>
-
-          <input type="email" name="email" class="email-field" placeholder="Email Address" required>
-
-          <button type="submit" class="btn-newsletter">Subscribe</button>
-
-        </form>
-      </div>
+ 
 
     </div>
 
@@ -958,13 +938,13 @@ function get_user_products()
             $approved = '';
 
             if ($product_status == "not_approved") {
-              $approved = '<i class="fa-solid fa-hourglass-start"></i><span>&nbsp  Admin Approval pending</span>';
+              $approved = '<span class="a_no_result_title font-weight-bold showcase-badge "><i class="fa-solid fa-hourglass-start"></i><span>&nbsp  Admin Approval pending</span></span>';
             } else if ($product_status == "disapprove") {
-              $approved = '<i class="fa-solid fa-xmark"></i><span> &nbsp Post Disapproved</span>';
+              $approved = '<span class="a_no_result_title font-weight-bold showcase-badge "><i class="fa-solid fa-xmark"></i><span> &nbsp Post Disapproved</span></span>';
             } else if ($product_status == "approved" || $product_status == "true") {
-              $approved = '<i class="fa-solid fa-check"></i>';
+              $approved = '<span class="a_no_result_title font-weight-bold showcase-badge bg-success bg-gradient"><i class="fa-solid fa-check"></i></span>';
             } else if ($product_status == "expired") {
-              $approved = '<i class="fa-solid fa-store-slash"  ></i><span> &nbsp Deal Expired</span>';
+              $approved = '<span class="a_no_result_title font-weight-bold showcase-badge "><i class="fa-solid fa-store-slash"  ></i><span> &nbsp Deal Expired</span></span>';
             }
             $output = '';
 
@@ -978,7 +958,7 @@ function get_user_products()
         ' . $deal_expired . '
         <img src=' . $product_img2 . ' alt="Dealhopp product Image" height="160" class="product-img hover">
         </a> 
-  <span class="a_no_result_title font-weight-bold showcase-badge">' . $approved . '</span>
+        ' . $approved . '
         <!--<p class="showcase-badge">' . $num . '% OFF</p> -->
         <!--<p class="showcase-badge angle orange">' . $num . '% OFF</p>-->
       

@@ -1,15 +1,16 @@
 <?php
 include('../includes/connect.php');
 
-// Secure the Page
- if (!isset($_SESSION["username"])) {
-    header("location: ../user_area/login.php");
-}
-if ($_SESSION['user_type'] !== 'admin') {
-    header("location: ../index.php");
-}
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+            //secure
+
+            if (!isset($_SESSION["username"])) {
+                header("location: ../user_area/login.php");
+            }
+            if ($_SESSION['user_type'] !== 'admin') {
+                header("location: ../index.php");
+            }
+if (isset($_GET['edit_banner_id'])) {
+    $id = $_GET['edit_banner_id'];
 
     // Fetch Banner Details from Database and populate the form for editing
     $select_banner = "SELECT * FROM `promo_banners` WHERE id = $id";

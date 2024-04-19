@@ -259,9 +259,12 @@ if ($_SESSION['user_type'] !== 'admin') {
   if (isset($_GET['pin_id'])) {
     include('pin_product.php');
   }
-  if (isset($_GET['delete_product'])) {
-    include('delete_product.php');
-  }
+    if (isset($_GET['delete_product'])) {
+      include('delete_product.php');
+    }
+    if (isset($_GET['edit_banner_id'])) {
+      include('edit_banner.php');
+    }
   ?>
     <?php
   get_post_popup();
