@@ -233,7 +233,7 @@
         </a> 
          
         
-        ' . $pin_product . '
+        ' . $pin_product . '  ' . $approved . '
         
         <div class=" showcase-rating">
          ' . $percent_off . '
