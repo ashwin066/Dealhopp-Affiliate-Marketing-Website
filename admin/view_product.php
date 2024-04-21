@@ -225,7 +225,7 @@
           $output .= '
              <div class="showcase">
         <div class="showcase-banner ">
-        <a id="add-dark-here" href="product_details.php?product_id=' . $product_id . '&detail=' . $product_keywords . '&title=' . $product_title . '">
+        <a id="add-dark-here" href="../product_details.php?product_id=' . $product_id . '&detail=' . $product_keywords . '&title=' . $product_title . '">
         
         <img  draggable="false" src=".' . $brand_logo . '" alt="Dealhopp product Image" height="160" class="p-2 product-img default">
         ' . $deal_expired . '
@@ -257,7 +257,7 @@
         <img class="ml-auto" src=".' . $brand_logo . '" alt="">
         </div>
         
-        <a href="product_details.php?product_id=' . $product_id . '">
+        <a href="../product_details.php?product_id=' . $product_id . '">
   
           <a class="showcase-title text_wrap">' . $product_title . '</a>
           
