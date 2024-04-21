@@ -8,11 +8,11 @@ session_start();
 
 <head>
     <?php
-  if (!isset($_SESSION['username'])) {
-    get_login_form();
-    get_signup_form();
-  }
-  ?>
+    if (!isset($_SESSION['username'])) {
+        get_login_form();
+        get_signup_form();
+    }
+    ?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -85,15 +85,17 @@ session_start();
             href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">Dealhopp</a></noscript>
     <!-- End of LiveChat code -->
     <?php
-  get_back_to_top();
-  get_slide_notify();
-  ?>
+    get_back_to_top();
+    get_slide_notify();
+    ?>
     <!--
   - HEADER
 -->
 
     <?php include 'parts/nav.php' ?>
-
+    <?php
+    get_post_popup();
+    ?>
 
 
 
@@ -123,8 +125,8 @@ session_start();
                 <div class="w-100">
 
                     <?php
-          product_details();
-          ?>
+                    product_details();
+                    ?>
 
                     <!--
             - PRODUCT MINIMAL
@@ -139,8 +141,8 @@ session_start();
                             <div class="showcase-wrapper has-scrollbar">
 
                                 <?php
-                get_related_product();
-                ?>
+                                get_related_product();
+                                ?>
 
                             </div>
                         </div>
@@ -156,8 +158,8 @@ session_start();
 
         <?php
 
-    include 'parts/footer.php';
-    ?>
+        include 'parts/footer.php';
+        ?>
         <!--
     - ionicon link
   -->

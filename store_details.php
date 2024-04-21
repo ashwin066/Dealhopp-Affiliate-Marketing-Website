@@ -116,9 +116,9 @@ session_start();
 
 
         <?php
-   
-  include 'parts/footer.php';
-  ?>
+
+    include 'parts/footer.php';
+    ?>
         <!--
     - ionicon link
   -->

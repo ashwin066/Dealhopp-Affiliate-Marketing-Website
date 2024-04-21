@@ -48,7 +48,9 @@ session_start();
     <?php
     get_back_to_top();
     get_slide_notify();
-    ?>
+    ?><?php
+        get_post_popup();
+        ?>
     <!--
   - HEADER
 -->
@@ -237,9 +239,9 @@ session_start();
 
 
     <?php
-   
-  include 'parts/footer.php';
-  ?>
+
+    include 'parts/footer.php';
+    ?>
     <!--
     - ionicon link
   -->

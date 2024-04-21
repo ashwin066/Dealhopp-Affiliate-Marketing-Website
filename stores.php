@@ -1,33 +1,33 @@
  <?php
-session_start();
+    session_start();
 
-if (isset($_COOKIE['username'])) {
-    $_SESSION['username'] = $_COOKIE['username'];
-}
-if (isset($_COOKIE['user_id'])) {
-    $_SESSION['user_id'] = $_COOKIE['user_id'];
-}
-if (isset($_COOKIE['user_image'])) {
-    $_SESSION['user_image'] = $_COOKIE['user_image'];
-}
-if (isset($_COOKIE['user_type'])) {
-    $_SESSION['user_type'] = $_COOKIE['user_type'];
-}
+    if (isset($_COOKIE['username'])) {
+        $_SESSION['username'] = $_COOKIE['username'];
+    }
+    if (isset($_COOKIE['user_id'])) {
+        $_SESSION['user_id'] = $_COOKIE['user_id'];
+    }
+    if (isset($_COOKIE['user_image'])) {
+        $_SESSION['user_image'] = $_COOKIE['user_image'];
+    }
+    if (isset($_COOKIE['user_type'])) {
+        $_SESSION['user_type'] = $_COOKIE['user_type'];
+    }
 
-include('includes/connect.php');
-include('functions/common_function.php');
-include('user_area/common_function_user.php');
-?>
+    include('includes/connect.php');
+    include('functions/common_function.php');
+    include('user_area/common_function_user.php');
+    ?>
  <!DOCTYPE html>
  <html lang="en">
 
  <head>
      <?php
-    if (!isset($_SESSION['username'])) {
-        get_login_form();
-        get_signup_form();
-    }
-    ?>
+        if (!isset($_SESSION['username'])) {
+            get_login_form();
+            get_signup_form();
+        }
+        ?>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -182,6 +182,9 @@ include('user_area/common_function_user.php');
  </head>
 
  <body class="">
+     <?php
+        get_post_popup();
+        ?>
      <!--login & signup-->
      <!-- <script type="text/javascript">
     function table(){
@@ -203,11 +206,11 @@ include('user_area/common_function_user.php');
     - HEADER
   -->
      <?php
-    get_back_to_top();
-    get_slide_notify();
+        get_back_to_top();
+        get_slide_notify();
 
-    include 'parts/nav.php';
-    ?>
+        include 'parts/nav.php';
+        ?>
      <!--
     - MAIN
   -->
@@ -238,13 +241,13 @@ include('user_area/common_function_user.php');
                  <h1 class="title1 align-self-center mt-2 text-uppercase font-weight-bold">Our Partner Stores</h1>
                  <div class="container">
                      <div class="row d-flex justify-content-center">
-                         <?php get_Brands_card();?>
+                         <?php get_Brands_card(); ?>
                      </div>
                  </div>
      </main> <?php
-   
-  include 'parts/footer.php';
-  ?>
+
+                include 'parts/footer.php';
+                ?>
      <!--
     - custom js link
   -->

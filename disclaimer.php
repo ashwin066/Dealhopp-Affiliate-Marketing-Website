@@ -12,7 +12,9 @@ session_start();
         get_login_form();
         get_signup_form();
     }
-    ?>
+    ?><?php
+        get_post_popup();
+        ?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -151,9 +153,9 @@ session_start();
     </div>
 
     <?php
-   
-  include 'parts/footer.php';
-  ?>
+
+    include 'parts/footer.php';
+    ?>
 
 
     <!--
