@@ -1194,7 +1194,7 @@ function get_public_user_products()
           $deal_expired = '';
           $price_expired = '<span class="price">₹' . $product_price . '.00</span>';
         }
-        if ( $pinned  == "1") {
+        if ($pinned  == "1") {
           $pin_product = ' <div class="a_pinned" aria-label="Pinned Product">
         <i class="fa fa-thumb-tack text-danger" aria-hidden="true"></i>
         </div>';
@@ -1995,6 +1995,8 @@ function product_details()
             $approved = '<span class="a_no_result_title font-weight-bold showcase-badge mb-2"><i class="fa-solid fa-circle-xmark" style="color: #ff0000;"></i><span class="text-danger  font-italic"> &nbsp Post Disapproved</span></span>';
           } else if ($product_status == "approved" || $product_status == "true") {
             $approved = '<span class="a_no_result_title font-weight-bold showcase-badge mb-2"><i class="fa-solid fa-circle-check  " style="color: #28a745;"></i><span class="text-success  font-italic">&nbsp Dealhopp Verified</span></span>';
+          } else if ($product_status == "expired"  ) {
+            $approved = '<span class="a_no_result_title font-weight-bold showcase-badge mb-2"><i class="fa-solid fa-circle-xmark  " style="color: #ff0000;"></i><span class="text-danger  font-italic">&nbsp Sorry this Offer has been Expired</span></span>';
           }
           $num  = 0;
           if (
@@ -2009,11 +2011,10 @@ function product_details()
             $num = (int)$str;
 
             $deal_expired_style = '';
-$hurry_up_text= 'Hurry Up! Offer can end anytime.';
+            $hurry_up_text = 'Hurry Up! Offer can end anytime.';
             if ($product_status == 'expired' || $product_status == 'disapprove') {
               $deal_expired_style = 'deal_expired';
-              $hurry_up_text= 'Sorry! This Deal/Offer has already been ended.';
-              
+              $hurry_up_text = 'Sorry! This Deal/Offer has already been ended.';
             }
             if ($str < 0) {
               $percent_off = '';
@@ -2065,7 +2066,7 @@ $hurry_up_text= 'Hurry Up! Offer can end anytime.';
             $verified = '';
           }
 
-        
+
           $output = '';
           if ($is_coupon != 1) {
             $output = '<div class="product-featured a_filter ">
@@ -2212,7 +2213,7 @@ $hurry_up_text= 'Hurry Up! Offer can end anytime.';
   <div class="coupon_card">
     <div class="main">
       <div class="co-img">
-        <img class=' . $deal_expired_style . ' src="./admin' . $brand_logo . '" alt="" />
+        <img src="./admin' . $brand_logo . '" alt="" />
       </div>
       <div class="vertical"></div>
       <div class="content1">
@@ -2235,7 +2236,7 @@ $hurry_up_text= 'Hurry Up! Offer can end anytime.';
                   <div class="showcase-status mt-4">
                   
 
-                 
+                  ' . $approved . '
                    
                   
                   <p class="showcase-desc text_wrap2">( You can apply this coupon at <b>' . $brand_title . '</b>. )<br>
@@ -2248,7 +2249,7 @@ $hurry_up_text= 'Hurry Up! Offer can end anytime.';
                   <div class="countdown-box d-flex align-items-center ">
 
                       <p class="countdown-desc mr-auto py-2 my-auto">
-                          '. $hurry_up_text.'
+                         Hurry Up! Coupon can expire anytime.
                       </p>
                       <span class="small py-2 text-secondary">' . $timeago . '</span>
                   </div>
