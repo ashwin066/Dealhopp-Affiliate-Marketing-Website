@@ -103,7 +103,7 @@
             } else if ($product_status == "disapprove") {
               $approved = '<span class="a_no_result_title font-weight-bold showcase-badge "><i class="fa-solid fa-xmark"></i><span> &nbsp Post Disapproved</span></span>';
             } else if ($product_status == "approved" || $product_status == "true") {
-              $approved = '<span class="a_no_result_title font-weight-bold showcase-badge bg-success bg-gradient"><i class="fa-solid fa-check"></i></span>';
+              $approved = '<span class="a_no_result_title font-weight-bold showcase-badge bg-success bg-gradient"><i class="fa-solid fa-check"></i><span> &nbsp Verified</span></span>';
             } else if ($product_status == "expired") {
               $approved = '<span class="a_no_result_title font-weight-bold showcase-badge "><i class="fa-solid fa-store-slash"  ></i><span> &nbsp Deal Expired</span></span>';
             }

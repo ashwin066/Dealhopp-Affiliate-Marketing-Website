@@ -34,7 +34,29 @@
 
 <body>
 
-
+    <!-- Start of the Sales tracker code (place after LiveChat tracking code) -->
+    <script type="text/javascript">
+    var LC_API = LC_API || {
+        on_after_load: function() {}
+    };
+    (function(cb) {
+        LC_API.on_after_load = function() {
+            cb();
+            try {
+                var custom_variables = [{
+                    name: '__order_id',
+                    value: $product_link
+                }];
+                LC_API.trigger_sales_tracker('KHM9mjRL4ANasFxkQbCCzZ1851s4BtPM', custom_variables);
+            } catch (error) {
+                if (window.console) {
+                    console.log('LiveChat sales tracker error:', error);
+                }
+            }
+        };
+    })(LC_API.on_after_load);
+    </script>
+    <!-- End of the Sales tracker code -->
     <?php
   include('../includes/connect.php');
 

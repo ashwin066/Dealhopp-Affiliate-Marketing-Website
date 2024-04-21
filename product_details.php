@@ -44,46 +44,7 @@ session_start();
 </head>
 
 <body>
-    <!-- Start of LiveChat (www.livechat.com) code -->
-    <script>
-    window.__lc = window.__lc || {};
-    window.__lc.license = 17728911;;
-    (function(n, t, c) {
-        function i(n) {
-            return e._h ? e._h.apply(null, n) : e._q.push(n)
-        }
-        var e = {
-            _q: [],
-            _h: null,
-            _v: "2.0",
-            on: function() {
-                i(["on", c.call(arguments)])
-            },
-            once: function() {
-                i(["once", c.call(arguments)])
-            },
-            off: function() {
-                i(["off", c.call(arguments)])
-            },
-            get: function() {
-                if (!e._h) throw new Error("[LiveChatWidget] You can't use getters before load.");
-                return i(["get", c.call(arguments)])
-            },
-            call: function() {
-                i(["call", c.call(arguments)])
-            },
-            init: function() {
-                var n = t.createElement("script");
-                n.async = !0, n.type = "text/javascript", n.src = "https://cdn.livechatinc.com/tracking.js",
-                    t.head.appendChild(n)
-            }
-        };
-        !n.__lc.asyncInit && e.init(), n.LiveChatWidget = n.LiveChatWidget || e
-    }(window, document, [].slice))
-    </script>
-    <noscript><a href="https://www.livechat.com/chat-with/17728911/" rel="nofollow">Chat with us</a>, powered by <a
-            href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">Dealhopp</a></noscript>
-    <!-- End of LiveChat code -->
+
     <?php
     get_back_to_top();
     get_slide_notify();
@@ -196,7 +157,71 @@ session_start();
         <script src="./assets/js/swipe_function_bs.js"></script>
         <script src="./assets/js/dark-theme.js"></script>
         <script src="./assets/js/skeleton_loading.js"></script>
+        <!-- Start of LiveChat (www.livechat.com) code -->
+        <script>
+        window.__lc = window.__lc || {};
+        window.__lc.license = 17728911;;
+        (function(n, t, c) {
+            function i(n) {
+                return e._h ? e._h.apply(null, n) : e._q.push(n)
+            }
+            var e = {
+                _q: [],
+                _h: null,
+                _v: "2.0",
+                on: function() {
+                    i(["on", c.call(arguments)])
+                },
+                once: function() {
+                    i(["once", c.call(arguments)])
+                },
+                off: function() {
+                    i(["off", c.call(arguments)])
+                },
+                get: function() {
+                    if (!e._h) throw new Error("[LiveChatWidget] You can't use getters before load.");
+                    return i(["get", c.call(arguments)])
+                },
+                call: function() {
+                    i(["call", c.call(arguments)])
+                },
+                init: function() {
+                    var n = t.createElement("script");
+                    n.async = !0, n.type = "text/javascript", n.src =
+                        "https://cdn.livechatinc.com/tracking.js",
+                        t.head.appendChild(n)
+                }
 
+            };
+            !n.__lc.asyncInit && e.init(), n.LiveChatWidget = n.LiveChatWidget || e
+        }(window, document, [].slice))
+        </script>
+        <noscript><a href="https://www.livechat.com/chat-with/17728911/" rel="nofollow">Chat with us</a>, powered by <a
+                href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">Dealhopp</a></noscript>
+        <!-- End of LiveChat code -->
+        <!-- Start of the Sales tracker code (place after LiveChat tracking code) -->
+        <script type="text/javascript">
+        var LC_API = LC_API || {
+            on_after_load: function() {}
+        };
+        (function(cb) {
+            LC_API.on_after_load = function() {
+                cb();
+                try {
+                    var custom_variables = [{
+                        name: '__order_price',
+                        value: $product_price
+                    }];
+                    LC_API.trigger_sales_tracker('NJYMqJWLQiK95GYrBR4z4UfuRv05Zd5C', custom_variables);
+                } catch (error) {
+                    if (window.console) {
+                        console.log('LiveChat sales tracker error:', error);
+                    }
+                }
+            };
+        })(LC_API.on_after_load);
+        </script>
+        <!-- End of the Sales tracker code -->
 </body>
 
 </html>
