@@ -3,6 +3,9 @@
 // include ('./includes/connect.php');
 function get_back_to_top()
 {
+
+
+
   if (isset($_SESSION['username'])) {
     $btn_value = 'openpost_box()';
   } else {
@@ -987,7 +990,7 @@ function get_user_products()
           <img class="ml-auto" src="../admin/' . $brand_logo . '" alt="">
           </div>
           
-          <a href="product_details.php?product_id=' . $product_id . '">
+          <a href="../product_details.php?product_id=' . $product_id . '">
         
             <a class="showcase-title text_wrap">' . $product_title . '</a>
             
@@ -1006,14 +1009,15 @@ function get_user_products()
         </div>
     ';
             } else {
+              $percent_off = '<div class="small text-orange a_dis_max mx-auto text-wrap  showcase-badge2"><span class="font-weight-bold a_no_result_title">COUPON CODE</span></div>';
               $output .= '
-<div class="showcase">' . $approved . '
-       <div class="showcase-banner ">
-        <a id="add-dark-here" href="product_details.php?product_id=' . $product_id . '&detail=' . $product_keywords . '&title=' . $product_title . '">
+             <div class="showcase">
+        <div class="showcase-banner ">
+        <a id="add-dark-here" href="../product_details.php?product_id=' . $product_id . '&detail=' . $product_keywords . '&title=' . $product_title . '">
         
-        <img  draggable="false" src="../admin' . $brand_logo . '" alt="Dealhopp product Image" height="160" class="p-2 product-img default">
+        <img  draggable="false" src="../admin/' . $brand_logo . '" alt="Dealhopp product Image" height="160" class="p-2 product-img default">
         ' . $deal_expired . '
-        <img draggable="false" src="../admin' . $brand_logo . '"  alt="Dealhopp product Image" height="160" class="p-2 product-img hover">
+        <img draggable="false" src="../admin/' . $brand_logo . '"  alt="Dealhopp product Image" height="160" class="p-2 product-img hover">
         </a> 
          
         
@@ -1024,7 +1028,7 @@ function get_user_products()
  
         <img class="flame" src="../assets/images/icons/flame.png" alt="">
         
-        <div class="progress"  ' . $deal_scale . '>
+        <div class="progress"  >
         <div class="progress-bar text_wrap" role="progressbar" aria-valuenow="70"
         aria-valuemin="0" aria-valuemax="100" style="width:100%">
        
@@ -1033,29 +1037,35 @@ function get_user_products()
             </div> 
           </div>
         </div>
+        
         <div class="showcase-content">
         <div class="a_store_logo">
-          <a href="#" class="showcase-category text_wrap">' . $category_title . '</a>
+        <a href="#" class="showcase-category text_wrap">' . $category_title . '</a>
+  
+        <img class="ml-auto" src="../admin/' . $brand_logo . '" alt="">
+        </div>
         
-          <img class="ml-auto" src="../admin/' . $brand_logo . '" alt="">
-          </div>
+        <a href="../product_details.php?product_id=' . $product_id . '">
+  
+          <a class="showcase-title text_wrap">' . $product_title . '</a>
           
-          <a href="product_details.php?product_id=' . $product_id . '">
-        
-            <a class="showcase-title text_wrap">' . $product_title . '</a>
-            
-          </a>
-          <a style="text-decoration:none;" href="../load-deal/redirect.php?redirect=' . $product_id . '&store=' . $brand_id . '" target="_blank">
-            <div class="price-box ">
-             <button class="btn  a_btn"  ><span class="hide_coupon" >' . $coupon . '</span><span>******</span><br>
-             <span class="b_sc">&nbsp;View Coupon Code  <i class="fa fa-arrow-right"></i></span></button>
-         </div></a>
-        </div>
-        
+        </a>
+        <a style="text-decoration:none;" href="../product_details.php?product_id=' . $product_id . '&detail=' . $product_keywords . '&title=' . $product_title . '"  >
+        <div class="price-box">
+          
+          <button class="btn a_btn" style="border-radius:8px;">
+
+        <span class="price">' . $coupon . '</span><span class="b_sc mt-1">&nbsp;View Coupon Code  <i class="fa fa-arrow-right"></i></span></button>
+          
+      </div></a>
+      
+      </div>
+    
          
-        
-        </div>
-    ';
+      </div>
+
+  
+  ';
             }
 
             echo $output;
@@ -1295,6 +1305,7 @@ function get_public_user_products()
 function get_post_popup()
 {
   global $con;
+
   echo '
     <div class="login_signup text-dark" id="post_popup">
     
@@ -1336,7 +1347,7 @@ function get_post_popup()
 Link</label>
 <input type="text" name="product_link"
 id="product_link" class="border-secondary a_category-item px-2"
-placeholder="Enter product link" autocomplete="off"
+placeholder="Enter product link" 
 required="required">
 </div>
 
@@ -1399,7 +1410,7 @@ required="required">
  
     </div>
     <div class="form-group mb-2 col-3 p-0 ml-auto">
-  <input type="submit" class="btn a_btn2 text-white" name="insert_product" value="Post"><i class="fa-solid fa-paper-plane-top"></i>
+  <input type="submit" class="btn a_btn2 text-white" name="submit" value="Post"><i class="fa-solid fa-paper-plane-top"></i>
  </div>
 </form>
 </div>
@@ -1995,7 +2006,7 @@ function product_details()
             $approved = '<span class="a_no_result_title font-weight-bold showcase-badge mb-2"><i class="fa-solid fa-circle-xmark" style="color: #ff0000;"></i><span class="text-danger  font-italic"> &nbsp Post Disapproved</span></span>';
           } else if ($product_status == "approved" || $product_status == "true") {
             $approved = '<span class="a_no_result_title font-weight-bold showcase-badge mb-2"><i class="fa-solid fa-circle-check  " style="color: #28a745;"></i><span class="text-success  font-italic">&nbsp Dealhopp Verified</span></span>';
-          } else if ($product_status == "expired"  ) {
+          } else if ($product_status == "expired") {
             $approved = '<span class="a_no_result_title font-weight-bold showcase-badge mb-2"><i class="fa-solid fa-circle-xmark  " style="color: #ff0000;"></i><span class="text-danger  font-italic">&nbsp Sorry this Offer has been Expired</span></span>';
           }
           $num  = 0;
@@ -2016,7 +2027,7 @@ function product_details()
             $num = (int)$str;
 
             $hurry_up_text = 'Hurry Up! Offer can end anytime.';
-          
+
             if ($str < 0) {
               $percent_off = '';
               $deal_scale = '';
@@ -2310,9 +2321,20 @@ function get_related_product()
       $keyword = 'loot';
     } else {
       $keyword = $_GET['title'];
+      if ($_GET['detail']) {
+        $keyword =
+          $keyword . $_GET['detail'];
+      }
       $keyword = explode(" ", $keyword);
     }
-    $search_query = "Select * from `products` JOIN `category` JOIN `brands` WHERE products.product_title like '%$keyword[0]%' AND products.product_id != '$product_i' AND products.product_category=category.category_id AND products.product_brand=brands.brand_id ORDER BY date desc";
+    $search_query = "SELECT * FROM `products`
+JOIN `category` ON products.product_category = category.category_id
+JOIN `brands` ON products.product_brand = brands.brand_id
+WHERE products.product_title LIKE '%$keyword[0]%' 
+   AND products.product_id != '$product_i'
+ORDER BY date DESC;
+";
+
     $result_product = mysqli_query($con, $search_query);
 
     if (mysqli_num_rows($result_product) == 0) {

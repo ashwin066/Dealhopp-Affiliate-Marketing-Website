@@ -12,7 +12,10 @@
     }
     //secure
     include('../includes/connect.php');
-    $select_product = "Select * from `products` JOIN `category` JOIN `brands` WHERE products.product_category=category.category_id AND  products.product_brand=brands.brand_id ORDER BY pinned DESC, DATE DESC";
+    $select_product = "SELECT * FROM `products` 
+        JOIN `category` ON `category`.`category_id` = `products`.`product_category`
+        JOIN `brands` ON `brands`.`brand_id` = `products`.`product_brand`
+        JOIN `user_data` ON `user_data`.`user_id` = `products`.`posted_user_id` WHERE products.product_category=category.category_id AND  products.product_brand=brands.brand_id ORDER BY pinned DESC, DATE DESC";
     $result_product = mysqli_query($con, $select_product);
 
 
@@ -37,7 +40,14 @@
         $product_status = $row_data['status'];
         $time = $row_data['date'];
         $pinned = $row_data['pinned'];
-
+        $product_posted_user = $row_data['username'];
+        $user_type = $row_data['user_type'];
+        $product_posted_user_img = $row_data['user_image'];
+        if ($user_type == "admin") {
+          $verified = '<i class="fa-solid text-orange ml-1 fa-circle-check"></i>';
+        } else {
+          $verified = '';
+        }
         if ($product_old_price !== '0') {
           $num  = 0;
           if (
@@ -97,16 +107,16 @@
         } else {
           $pin_product = '';
         }
-            $approved = '';
-            if ($product_status == "not_approved") {
-              $approved = '<span class="a_no_result_title font-weight-bold showcase-badge "><i class="fa-solid fa-hourglass-start"></i><span>&nbsp  Admin Approval pending</span></span>';
-            } else if ($product_status == "disapprove") {
-              $approved = '<span class="a_no_result_title font-weight-bold showcase-badge "><i class="fa-solid fa-xmark"></i><span> &nbsp Post Disapproved</span></span>';
-            } else if ($product_status == "approved" || $product_status == "true") {
-              $approved = '<span class="a_no_result_title font-weight-bold showcase-badge bg-success bg-gradient"><i class="fa-solid fa-check"></i><span> &nbsp Verified</span></span>';
-            } else if ($product_status == "expired") {
-              $approved = '<span class="a_no_result_title font-weight-bold showcase-badge "><i class="fa-solid fa-store-slash"  ></i><span> &nbsp Deal Expired</span></span>';
-            }
+        $approved = '';
+        if ($product_status == "not_approved") {
+          $approved = '<span class="a_no_result_title font-weight-bold showcase-badge "><i class="fa-solid fa-hourglass-start"></i><span>&nbsp  Admin Approval pending</span></span>';
+        } else if ($product_status == "disapprove") {
+          $approved = '<span class="a_no_result_title font-weight-bold showcase-badge "><i class="fa-solid fa-xmark"></i><span> &nbsp Post Disapproved</span></span>';
+        } else if ($product_status == "approved" || $product_status == "true") {
+          $approved = '<span class="a_no_result_title font-weight-bold showcase-badge bg-success bg-gradient"><i class="fa-solid fa-check"></i><span> &nbsp Verified</span></span>';
+        } else if ($product_status == "expired") {
+          $approved = '<span class="a_no_result_title font-weight-bold showcase-badge "><i class="fa-solid fa-store-slash"  ></i><span> &nbsp Deal Expired</span></span>';
+        }
         $output = '';
         if ($product_img2 == '' || $product_img2 == null) {
           if ($product_img1 != '' || $product_img1 != null)
@@ -184,26 +194,28 @@
       </div>
       </div>
     
-      <div class="promoblock">
-  <div class="tgrid">
-  <div class="img-dd tgrid-cell">
-  <a rel="nofollow" href="/users/17417">
-  <img src="../user_area/user_img/preview (24).png" height="36px" width="36px">
-  
-  
-  </a></div>
-  <div class="tgrid-cell">
-  <div class="promouser">
-  <a rel="nofollow" href="/users/17417" class="a_tbn text-orange ml-2">Ashwin</a>
-  </div>
-  <div class="promotime">
-  
-  <span class="p-0 text-secondary float-right a_updated ml-2">' . $timeago . '</span>
-  
-  </div>
-  </div>
-  </div>
-  </div>
+        <div class="promoblock">
+        <div class="tgrid">
+        <div class="img-dd tgrid-cell  rounded-circle">
+       <!-- <a class="" rel="nofollow" href="users/user_profile.php?user=' . $product_posted_user . '">
+        <img draggable="false" src="' . $product_posted_user_img . '" height="38px" width="38px">
+        
+        
+        </a>--><img draggable="false" src="' . $product_posted_user_img . '" height="38px" width="38px"></div>
+        <div class="tgrid-cell ">
+        <div class="promouser ml-2 mt-1">
+        <!--<a rel="nofollow" href="users/' . $product_posted_user . '" class=" text-capitalize a_tbn text-orange">
+        ' . $product_posted_user . '' . $verified . '</a>-->
+        <span class="mb-0 a_posted_user">' . $product_posted_user . '' . $verified . '</span>
+        </div>
+        <div class="promotime  ml-2 mb-0">
+        
+        <span class="p-0 a_updated text_wrap">' . $timeago . '</span>
+        
+        </div>
+        </div>
+        </div>
+        </div>
       </div>
 
   
@@ -267,26 +279,28 @@
       </div>
       </div>
     
-      <div class="promoblock">
-  <div class="tgrid">
-  <div class="img-dd tgrid-cell">
-  <a rel="nofollow" href="/users/17417">
-  <img src="../user_area/user_img/preview (24).png" height="36px" width="36px">
-  
-  
-  </a></div>
-  <div class="tgrid-cell">
-  <div class="promouser">
-  <a rel="nofollow" href="/users/17417" class="a_tbn text-orange ml-2">Ashwin</a>
-  </div>
-  <div class="promotime">
-  
-  <span class="p-0 text-secondary float-right a_updated ml-2">' . $timeago . '</span>
-  
-  </div>
-  </div>
-  </div>
-  </div>
+        <div class="promoblock">
+        <div class="tgrid">
+        <div class="img-dd tgrid-cell  rounded-circle">
+       <!-- <a class="" rel="nofollow" href="users/user_profile.php?user=' . $product_posted_user . '">
+        <img draggable="false" src="' . $product_posted_user_img . '" height="38px" width="38px">
+        
+        
+        </a>--><img draggable="false" src="' . $product_posted_user_img . '" height="38px" width="38px"></div>
+        <div class="tgrid-cell ">
+        <div class="promouser ml-2 mt-1">
+        <!--<a rel="nofollow" href="users/' . $product_posted_user . '" class=" text-capitalize a_tbn text-orange">
+        ' . $product_posted_user . '' . $verified . '</a>-->
+        <span class="mb-0 a_posted_user">' . $product_posted_user . '' . $verified . '</span>
+        </div>
+        <div class="promotime  ml-2 mb-0">
+        
+        <span class="p-0 a_updated text_wrap">' . $timeago . '</span>
+        
+        </div>
+        </div>
+        </div>
+        </div>
       </div>
 
   
