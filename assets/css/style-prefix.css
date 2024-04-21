@@ -335,7 +335,7 @@ hr {
    /* The loading Class */
  
    .skeleton {
-     opacity: 1;
+      opacity: 1;
     position: relative;
   overflow: hidden;
  border-radius: 4px;
@@ -363,7 +363,7 @@ hr {
   height: 19px;
   
  }
- .skeleton::after {
+ .skeleton::after { 
   position: absolute;
   top: 0;
   right: 0;
@@ -981,8 +981,7 @@ background-color: #fff;
   height: 440px;
   padding: 5px;
   z-index: 0;
-  background: var(--purewhite); 
-}
+ }
 
 .a_updated {
   font-size: 11px;

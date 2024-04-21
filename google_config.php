@@ -18,7 +18,7 @@ $google_client->setClientId('424645655483-ci2bt0o8gpnsg2lu8gsvjb0bp4oc8q2m.apps.
 $google_client->setClientSecret('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');
 
 //Set the OAuth 2.0 Redirect URI
-$google_client->setRedirectUri('http://localhost/dealhopp/');
+$google_client->setRedirectUri('http://192.168.198.49/dealhopp/');
 
 // to get the email and profile 
 $google_client->addScope('email');

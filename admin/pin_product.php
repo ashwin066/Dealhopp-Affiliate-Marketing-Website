@@ -40,7 +40,10 @@ $pinned=$row['pinned'];
   <?php 
  $result=mysqli_query($con,$pin);
  if($result){
-  echo "<script>alert('success')</script>";
+    if ($pinned == 0){
+  echo "<script>alert('Deal Pinned Successfully 📌')</script>";} else  if ($pinned == 1){
+      echo "<script>alert('Deal Unpinned Successfully 📌')</script>";
+  }
         echo "<script>window.open('./index.php?view_product','_self')</script>";
  }
  else{
