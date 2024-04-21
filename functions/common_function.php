@@ -1999,6 +1999,11 @@ function product_details()
             $approved = '<span class="a_no_result_title font-weight-bold showcase-badge mb-2"><i class="fa-solid fa-circle-xmark  " style="color: #ff0000;"></i><span class="text-danger  font-italic">&nbsp Sorry this Offer has been Expired</span></span>';
           }
           $num  = 0;
+          $deal_expired_style = '';
+          if ($product_status == 'expired' || $product_status == 'disapprove') {
+            $deal_expired_style = 'deal_expired';
+            $hurry_up_text = 'Sorry! This Deal/Offer has already been ended.';
+          }
           if (
             $product_old_price != '' && $product_price != '' &&  $is_coupon != 1
           ) {
@@ -2010,12 +2015,8 @@ function product_details()
             $str = $finalanswer;
             $num = (int)$str;
 
-            $deal_expired_style = '';
             $hurry_up_text = 'Hurry Up! Offer can end anytime.';
-            if ($product_status == 'expired' || $product_status == 'disapprove') {
-              $deal_expired_style = 'deal_expired';
-              $hurry_up_text = 'Sorry! This Deal/Offer has already been ended.';
-            }
+          
             if ($str < 0) {
               $percent_off = '';
               $deal_scale = '';
@@ -2210,7 +2211,7 @@ function product_details()
                   
 
 <div class="d-flex justify-content-center">
-  <div class="coupon_card">
+  <div class="coupon_card  ' . $deal_expired_style . '">
     <div class="main">
       <div class="co-img">
         <img src="./admin' . $brand_logo . '" alt="" />
