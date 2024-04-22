@@ -226,7 +226,7 @@ if (isset($_POST['submit'])) {
             <?php
             // Check if price and old price are valid
             // Validate MRP and price
-            if (isset($_POST['submit']))  if ($is_coupon !=  '1' || $is_coupon !=  1) {
+            if (isset($_POST['submit']))  if ((int)$is_coupon !=  1 ) {
                 if ($product_old_price <= 0 || $product_price <= 0 || $product_price >= $product_old_price) {
             ?><script>
             alert('Invalid MRP or price. Please provide valid values. ❌');
@@ -236,7 +236,7 @@ if (isset($_POST['submit'])) {
                         }
 
             // Validate URLs
-            if (isset($_POST['submit']))  if ($is_coupon !=  '1' || $is_coupon !=  1) {
+            if (isset($_POST['submit']))  if ((int)$is_coupon !=  1 ) {
 
                             if (
 
