@@ -58,8 +58,6 @@ if ($_SESSION['user_type'] !== 'admin') {
 </head>
 
 <body>
-    <!-- <button onclick="back_to_top_Function()" title="Go to top"><i id="back-to-top"
-            class="fa-solid fa-angles-up"></i></button> -->
 
 
     <?php
@@ -150,61 +148,7 @@ if ($_SESSION['user_type'] !== 'admin') {
 
 
     </div>
-    <!-- <a href="#" class="d-flex align-items-center flex-column a_tbn">
-        <div class="a_category-item">
 
-            <div class="category-img-box">
-                <img src="https://cdn-icons-png.flaticon.com/128/3566/3566260.png" alt="shorts & jeans" width="30">
-            </div>
-
-            <div class="category-content-box">
-
-                <div class="category-content-flex">
-                    <h3 class="category-item-title text_wrap">View Category</h3>
-
-                </div>
-
-
-            </div>
-    </a>
-
-    </div> -->
-    <!-- <a href="#" class="d-flex align-items-center flex-column a_tbn">
-    <div class="a_category-item">
-
-      <div class="category-img-box">
-        <img src="https://cdn-icons-png.flaticon.com/128/7111/7111069.png" alt="jacket" width="30">
-      </div>
-
-      <div class="category-content-box">
-
-        <div class="category-content-flex">
-          <h3 class="category-item-title text_wrap">View Brands</h3>
-
-        </div>
-
-
-      </div></a> -->
-
-    <!-- </div> -->
-    <!-- <a href="#" class="d-flex align-items-center flex-column a_tbn">
-    <div class="a_category-item">
-
-      <div class="category-img-box">
-        <img src="https://cdn-icons-png.flaticon.com/128/476/476863.png" alt="watch" width="30">
-      </div>
-
-      <div class="category-content-box">
-
-        <div class="category-content-flex">
-          <h3 class="category-item-title text_wrap">List Users</h3>
-
-        </div>
-
-
-      </div></a> -->
-    <!-- 
-    </div> -->
 
     <a href="index.php?edit_banners" class="d-flex align-items-center flex-column a_tbn">
         <div class="a_category-item">

@@ -33,11 +33,11 @@ $product_posted_user = $row['posted_user_id'];
 $coupon = $row['coupon'];
 
 
-            if (isset($_POST['content_type'])) {
-                $is_coupon = $_POST['content_type'];
-                //js below
-            }
-
+if (isset($_POST['content_type'])) {
+    $is_coupon = $_POST['content_type'];
+    //js below
+}
+ $stmt=null;
 if (isset($_POST['submit'])) {
     // Retrieve form data
     $product_title = $_POST['product_title'];
@@ -54,25 +54,30 @@ if (isset($_POST['submit'])) {
 
 
 
- 
-    // Perform the SQL update
-    $sql = "UPDATE `products` SET 
-                coupon='$coupon', 
-                status='$status', 
-                product_keywords='$product_keywords',
-                Product_title='$product_title',
-                Product_old_price='$product_old_price',
-                Product_description='$product_description',
-                product_img1='$product_img1',
-                product_img2='$product_img2',
-                product_img3='$product_img3',
-                product_link='$product_link',
-                is_coupon='$is_coupon',
-                product_price='$product_price' 
-            WHERE product_id=$product_id";
 
-    // Execute the SQL query
-    // Note: Ensure proper error handling here
+
+    // Prepare the SQL update statement using prepared statements
+    $sql1 = "UPDATE `products` SET 
+                coupon=?, 
+                status=?, 
+                product_keywords=?,
+                Product_title=?,
+                Product_old_price=?,
+                Product_description=?,
+                product_img1=?,
+                product_img2=?,
+                product_img3=?,
+                product_link=?,
+                is_coupon=?,
+                product_price=? 
+            WHERE product_id=?";
+
+    // Prepare the statement
+    $stmt = mysqli_prepare($con, $sql1);
+
+    // Bind parameters
+    mysqli_stmt_bind_param($stmt, "ssssdssssssdi", $coupon, $status, $product_keywords, $product_title, $product_old_price, $product_description, $product_img1, $product_img2, $product_img3, $product_link, $is_coupon, $product_price, $product_id);
+
 }
 ?>
 
@@ -226,7 +231,7 @@ if (isset($_POST['submit'])) {
             <?php
             // Check if price and old price are valid
             // Validate MRP and price
-            if (isset($_POST['submit']))  if ((int)$is_coupon !=  1 ) {
+            if (isset($_POST['submit']))  if ((int)$is_coupon !=  1) {
                 if ($product_old_price <= 0 || $product_price <= 0 || $product_price >= $product_old_price) {
             ?><script>
             alert('Invalid MRP or price. Please provide valid values. ❌');
@@ -235,16 +240,16 @@ if (isset($_POST['submit'])) {
                             }
                         }
 
-            // Validate URLs
-            if (isset($_POST['submit']))  if ((int)$is_coupon !=  1 ) {
+                        // Validate URLs
+                        if (isset($_POST['submit']))  if ((int)$is_coupon !=  1) {
 
                             if (
-
                                 !filter_var($product_img1, FILTER_VALIDATE_URL) && $product_img1 != '' ||
                                 !filter_var($product_img2, FILTER_VALIDATE_URL) && $product_img2 != '' ||
                                 !filter_var($product_img3, FILTER_VALIDATE_URL) && $product_img3 != '' ||
                                 !filter_var($product_link, FILTER_VALIDATE_URL) && $product_link != ''
                             ) {
+
                                 ?><script>
             alert('Invalid URL format. Please provide valid URLs. ❌');
             </script><?php
@@ -252,18 +257,20 @@ if (isset($_POST['submit'])) {
                             }
                         }
 
-            // Validate other fields if needed
-            if (isset($_POST['submit'])) 
-                        $result = mysqli_query($con, $sql);
-            if (isset($_POST['submit']))    if ($result) {
+                        // Validate other fields if needed
+                        if (isset($_POST['submit']))
+                             mysqli_stmt_execute($stmt);
+
+                        if (isset($_POST['submit']))
+                            if (mysqli_stmt_affected_rows($stmt) > 0) {
                                 ?><script>
             alert('Data was inserted successfully ✅');
             </script><?php
-                        } else {
+                            } else {
                             ?><script>
             alert('Something went wrong! ❌');
             </script><?php
-                        }
+                            }
                             ?>
 
         </div>

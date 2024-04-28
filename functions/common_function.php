@@ -599,30 +599,6 @@ function get_category()
     </div>
 
 ';
-    //USE THIS IF U NEED SUB CATEGORIES ELSE IGNORE
-    //    <ul class="sidebar-submenu-category-list" data-accordion>
-
-
-    //   <li class="sidebar-submenu-category">
-    //     <a href="#" class="sidebar-submenu-title">
-    //       <p class="product-name">shorts & jeans</p>
-    //       <data value="60" class="stock" title="Available Stock">60</data>
-    //     </a>
-    //   </li>
-    //   <li class="sidebar-submenu-category">
-    //     <a href="#" class="sidebar-submenu-title">
-    //       <p class="product-name">jacket</p>
-    //       <data value="50" class="stock" title="Available Stock">50</data>
-    //     </a>
-    //   </li>
-    //   <li class="sidebar-submenu-category">
-    //     <a href="#" class="sidebar-submenu-title">
-    //       <p class="product-name">dress & frock</p>
-    //       <data value="87" class="stock" title="Available Stock">87</data>
-    //     </a>
-    //   </li>
-    // </ul>
-
   }
 }
 
