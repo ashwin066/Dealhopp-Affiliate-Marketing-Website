@@ -32,12 +32,14 @@ $product_posted_at = $row['date'];
 $product_posted_user = $row['posted_user_id'];
 $coupon = $row['coupon'];
 
+$product_category = $row['product_category'];
+$product_brand = $row['product_brand'];
 
 if (isset($_POST['content_type'])) {
     $is_coupon = $_POST['content_type'];
     //js below
 }
- $stmt=null;
+$stmt = null;
 if (isset($_POST['submit'])) {
     // Retrieve form data
     $product_title = $_POST['product_title'];
@@ -53,7 +55,8 @@ if (isset($_POST['submit'])) {
     $status = $_POST['status'];
 
 
-
+    $product_category = $_POST['product_category'];
+    $product_brand = $_POST['product_brand'];
 
 
     // Prepare the SQL update statement using prepared statements
@@ -69,15 +72,16 @@ if (isset($_POST['submit'])) {
                 product_img3=?,
                 product_link=?,
                 is_coupon=?,
-                product_price=? 
+                product_price=?,
+                product_category=?,
+                product_brand=?
             WHERE product_id=?";
 
     // Prepare the statement
     $stmt = mysqli_prepare($con, $sql1);
 
     // Bind parameters
-    mysqli_stmt_bind_param($stmt, "ssssdssssssdi", $coupon, $status, $product_keywords, $product_title, $product_old_price, $product_description, $product_img1, $product_img2, $product_img3, $product_link, $is_coupon, $product_price, $product_id);
-
+    mysqli_stmt_bind_param($stmt, "ssssdssssssdiii", $coupon, $status, $product_keywords, $product_title, $product_old_price, $product_description, $product_img1, $product_img2, $product_img3, $product_link, $is_coupon, $product_price, $product_category, $product_brand,$product_id);
 }
 ?>
 
@@ -159,7 +163,7 @@ if (isset($_POST['submit'])) {
         <div class="form-row  mt-3 mb-2">
             <div class="form-group col-md-3">
                 <label for="inputState">Select Category</label>
-                <select id="category_title" name="product_category" class="a_category-item px-2 border-secondary">
+                <select id="product_category" name="product_category" class="a_category-item px-2 border-secondary">
                     <?php
                     $select_category = "Select * from `category` ";
                     $result_category = mysqli_query($con, $select_category);
@@ -167,7 +171,8 @@ if (isset($_POST['submit'])) {
                         $category_title = $row_data['category_title'];
                         $category_id = $row_data['category_id'];
                         $category_logo = $row_data['category_logo'];
-                        echo  "<option value='$category_id'>$category_title</option>";
+                        $selected =  ($row_data['category_id']===$product_category?'selected':'')  ;
+                        echo  "<option value='$category_id'   $selected>$category_title</option>";
                     }
                     ?>
                 </select>
@@ -183,7 +188,8 @@ if (isset($_POST['submit'])) {
                         $brand_id = $row_data['brand_id'];
                         $brand_logo = $row_data['brand_logo'];
                         $brand_url = $row_data['brand_url'];
-                        echo "<option value='$brand_id'>$brand_title</option>";
+                        $selected =   ($row_data['brand_id'] === $product_brand?'selected':'') ;
+                        echo "<option value='$brand_id'  $selected>$brand_title</option>";
                     }
                     ?>
                 </select>
@@ -244,9 +250,11 @@ if (isset($_POST['submit'])) {
                         if (isset($_POST['submit']))  if ((int)$is_coupon !=  1) {
 
                             if (
-                                !filter_var($product_img1, FILTER_VALIDATE_URL) && $product_img1 != '' ||
-                                !filter_var($product_img2, FILTER_VALIDATE_URL) && $product_img2 != '' ||
-                                !filter_var($product_img3, FILTER_VALIDATE_URL) && $product_img3 != '' ||
+                                !filter_var($product_img1, FILTER_VALIDATE_URL) && $product_img1 != ''
+                                && $product_img1 != '/dealhopp/assets/images/icons/alt.png' ||
+                                !filter_var($product_img2, FILTER_VALIDATE_URL) && $product_img2 != ''
+                                && $product_img2 != '/dealhopp/assets/images/icons/alt.png' ||
+                                !filter_var($product_img3, FILTER_VALIDATE_URL) && $product_img3 != '' && $product_img3 != '/dealhopp/assets/images/icons/alt.png' ||
                                 !filter_var($product_link, FILTER_VALIDATE_URL) && $product_link != ''
                             ) {
 
@@ -259,7 +267,7 @@ if (isset($_POST['submit'])) {
 
                         // Validate other fields if needed
                         if (isset($_POST['submit']))
-                             mysqli_stmt_execute($stmt);
+                            mysqli_stmt_execute($stmt);
 
                         if (isset($_POST['submit']))
                             if (mysqli_stmt_affected_rows($stmt) > 0) {

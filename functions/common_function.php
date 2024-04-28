@@ -2076,6 +2076,8 @@ function product_details()
                 </div>
                 <div class="a_box carousel-item">
                   <img draggable="false" class="showcase-img d-block w-100 ' . $deal_expired_style . '" src="' . $product_img2 . '" alt="Second slide">
+                </div> <div class="a_box carousel-item">
+                  <img draggable="false" class="showcase-img d-block w-100 ' . $deal_expired_style . '" src="' . $product_img2 . '" alt="Second slide">
                 </div>
                
               </div>
