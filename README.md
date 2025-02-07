@@ -30,3 +30,7 @@
   <img src="/screenshots/8.png" width="100%">
 </p>
 
+    Technologies: HTML, CSS, JavaScript, PHP, MySQL
+•	Developed DealHopp, a website for finding and sharing the best deals online.
+•	Built with HTML, CSS, JavaScript, PHP, and MySQL with Google Authentication for secure user access.
+•	Implemented an admin panel to manage deals, users, and content.
